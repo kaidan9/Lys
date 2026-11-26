@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 930" role="img" aria-labelledby="title desc">
+      <title id="title">Cinquième République · Constitution de 1958</title><desc id="desc">Président, Premier ministre, gouvernement, Parlement, Conseil constitutionnel et corps électoral selon le schéma V transmis.</desc><defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#13263B"/><stop offset=".56" stop-color="#0C1928"/><stop offset="1" stop-color="#0A1420"/></linearGradient>
+      <radialGradient id="glow" cx="50%" cy="0%" r="90%"><stop offset="0" stop-color="#45617E" stop-opacity=".22"/><stop offset="1" stop-color="#0A1420" stop-opacity="0"/></radialGradient>
+      <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 L6 3.5 L0 7 Z" fill="#D6C08A"/></marker>
+      <filter id="shadow" x="-15%" y="-20%" width="130%" height="145%"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000" flood-opacity=".20"/></filter>
+    </defs><style>
+      .edge-path{fill:none;stroke:#D6C08A;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;opacity:.92}
+      .edge-label rect{fill:#101C2A;stroke:#796A47;stroke-width:1}
+      .edge-label text{font:600 13px Georgia,serif;fill:#F1E2BD}
+      .node{filter:url(#shadow)}
+      .node-role{font:800 10px 'DM Sans',Arial,sans-serif;letter-spacing:1.5px}
+      .node-title{font-family:Georgia,'Times New Roman',serif;font-weight:700;fill:#fff}
+      .node-detail{font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#DCE4ED}
+      .legend-text{font:700 10px 'DM Sans',Arial,sans-serif;letter-spacing:1px;fill:#A7B7C8}
+    </style>
+      <rect x="8" y="8" width="1664" height="914" rx="26" fill="url(#bg)" stroke="#344D67" stroke-width="1.4"/>
+      <rect x="8" y="8" width="1664" height="914" rx="26" fill="url(#glow)"/>
+      <g class="edges"><path d="M720 182 V225 H440 V280" class="edge-path" marker-end="url(#arrow)"/><g class="edge-label"><rect x="507.5" y="210" width="105" height="30" rx="9"/><text x="560" y="230" text-anchor="middle">désigne</text></g><path d="M650 338 H1030" class="edge-path" marker-end="url(#arrow)"/><g class="edge-label"><rect x="760.0" y="293" width="160" height="30" rx="9"/><text x="840" y="313" text-anchor="middle">nomme / dirige</text></g><path d="M1000 182 V465 H840 V515" class="edge-path" stroke-dasharray="6 6" marker-end="url(#arrow)"/><g class="edge-label"><rect x="862.5" y="450" width="145" height="30" rx="9"/><text x="935" y="470" text-anchor="middle">peut dissoudre</text></g><path d="M540 396 V435 H840 V515" class="edge-path" marker-end="url(#arrow)"/><g class="edge-label"><rect x="592.5" y="417" width="155" height="30" rx="9"/><text x="670" y="437" text-anchor="middle">propose les lois</text></g><path d="M645 575 H440" class="edge-path" marker-end="url(#arrow)"/><g class="edge-label"><rect x="439.5" y="465" width="205" height="30" rx="9"/><text x="542" y="485" text-anchor="middle">contrôle la constitutionnalité</text></g><path d="M1385 745 V641" class="edge-path" marker-end="url(#arrow)"/><g class="edge-label"><rect x="1210.0" y="665" width="160" height="30" rx="9"/><text x="1290" y="685" text-anchor="middle">élisent le Sénat</text></g></g><g class="nodes"><g class="node node-exec" id="node-president">
+      <rect x="620" y="50" width="440" height="132" rx="20" fill="#173A5B" stroke="#79B8E8" stroke-width="2"/>
+      <path d="M 638 70 V 162" stroke="#79B8E8" stroke-width="4" stroke-linecap="round"/>
+      <text x="656" y="77" class="node-role" fill="#DDEEFF">EXÉCUTIF</text>
+      <text x="840.0" y="103" class="node-title" font-size="20" text-anchor="middle">PRÉSIDENT DE LA RÉPUBLIQUE</text><text x="840.0" y="136" class="node-detail" text-anchor="middle">Mandat de 5 ans dans le schéma fourni</text><text x="840.0" y="156" class="node-detail" text-anchor="middle">Élu au suffrage universel direct</text>
+    </g><g class="node node-exec" id="node-prime-minister">
+      <rect x="230" y="280" width="420" height="116" rx="20" fill="#173A5B" stroke="#79B8E8" stroke-width="2"/>
+      <path d="M 248 300 V 376" stroke="#79B8E8" stroke-width="4" stroke-linecap="round"/>
+      <text x="266" y="307" class="node-role" fill="#DDEEFF">EXÉCUTIF</text>
+      <text x="440.0" y="333" class="node-title" font-size="23" text-anchor="middle">PREMIER MINISTRE</text><text x="440.0" y="366" class="node-detail" text-anchor="middle">Nommé par le Président</text>
+    </g><g class="node node-exec" id="node-ministers">
+      <rect x="1030" y="280" width="420" height="116" rx="20" fill="#173A5B" stroke="#79B8E8" stroke-width="2"/>
+      <path d="M 1048 300 V 376" stroke="#79B8E8" stroke-width="4" stroke-linecap="round"/>
+      <text x="1066" y="307" class="node-role" fill="#DDEEFF">EXÉCUTIF</text>
+      <text x="1240.0" y="333" class="node-title" font-size="23" text-anchor="middle">MINISTRES</text><text x="1240.0" y="366" class="node-detail" text-anchor="middle">Nommés et dirigés par le Premier ministre</text>
+    </g><g class="node node-cons" id="node-constitutional-council">
+      <rect x="50" y="515" width="390" height="126" rx="20" fill="#352D54" stroke="#AFA1E1" stroke-width="2"/>
+      <path d="M 68 535 V 621" stroke="#AFA1E1" stroke-width="4" stroke-linecap="round"/>
+      <text x="86" y="542" class="node-role" fill="#EAE4FF">INSTITUTION</text>
+      <text x="245.0" y="568" class="node-title" font-size="23" text-anchor="middle">CONSEIL CONSTITUTIONNEL</text><text x="245.0" y="601" class="node-detail" text-anchor="middle">Contrôle les lois et les élections</text><text x="245.0" y="621" class="node-detail" text-anchor="middle">Membres nommés par tiers</text>
+    </g><g class="node node-leg" id="node-assembly">
+      <rect x="645" y="515" width="390" height="126" rx="20" fill="#542536" stroke="#E18C9B" stroke-width="2"/>
+      <path d="M 663 535 V 621" stroke="#E18C9B" stroke-width="4" stroke-linecap="round"/>
+      <text x="681" y="542" class="node-role" fill="#FFE1E5">LÉGISLATIF</text>
+      <text x="840.0" y="568" class="node-title" font-size="23" text-anchor="middle">ASSEMBLÉE NATIONALE</text><text x="840.0" y="601" class="node-detail" text-anchor="middle">Mandat de 5 ans</text>
+    </g><g class="node node-leg" id="node-senate">
+      <rect x="1190" y="515" width="390" height="126" rx="20" fill="#542536" stroke="#E18C9B" stroke-width="2"/>
+      <path d="M 1208 535 V 621" stroke="#E18C9B" stroke-width="4" stroke-linecap="round"/>
+      <text x="1226" y="542" class="node-role" fill="#FFE1E5">LÉGISLATIF</text>
+      <text x="1385.0" y="568" class="node-title" font-size="23" text-anchor="middle">SÉNAT</text><text x="1385.0" y="601" class="node-detail" text-anchor="middle">Mandat de 6 ans dans le schéma</text>
+    </g><g class="node node-elect" id="node-electorate">
+      <rect x="260" y="745" width="460" height="100" rx="20" fill="#51401C" stroke="#D9B96F" stroke-width="2"/>
+      <path d="M 278 765 V 825" stroke="#D9B96F" stroke-width="4" stroke-linecap="round"/>
+      <text x="296" y="772" class="node-role" fill="#FFF0C6">CORPS ÉLECTORAL</text>
+      <text x="490.0" y="798" class="node-title" font-size="23" text-anchor="middle">CORPS ÉLECTORAL</text><text x="490.0" y="831" class="node-detail" text-anchor="middle">Ensemble des citoyens</text>
+    </g><g class="node node-elect" id="node-grand-electors">
+      <rect x="960" y="745" width="460" height="100" rx="20" fill="#51401C" stroke="#D9B96F" stroke-width="2"/>
+      <path d="M 978 765 V 825" stroke="#D9B96F" stroke-width="4" stroke-linecap="round"/>
+      <text x="996" y="772" class="node-role" fill="#FFF0C6">CORPS ÉLECTORAL</text>
+      <text x="1190.0" y="798" class="node-title" font-size="23" text-anchor="middle">GRANDS ÉLECTEURS</text><text x="1190.0" y="831" class="node-detail" text-anchor="middle">Conseillers régionaux, généraux et municipaux</text>
+    </g></g>
+      <path d="M64 867 H1616" stroke="#53677C" stroke-opacity=".38"/>
+      <g class="legend"><rect x="80" y="880" width="14" height="14" rx="4" fill="#173A5B" stroke="#79B8E8"/><text x="103" y="892" class="legend-text">EXÉCUTIF</text><rect x="360" y="880" width="14" height="14" rx="4" fill="#542536" stroke="#E18C9B"/><text x="383" y="892" class="legend-text">LÉGISLATIF</text><rect x="680" y="880" width="14" height="14" rx="4" fill="#51401C" stroke="#D9B96F"/><text x="703" y="892" class="legend-text">CORPS ÉLECTORAL</text><rect x="1050" y="880" width="14" height="14" rx="4" fill="#174237" stroke="#78B99D"/><text x="1073" y="892" class="legend-text">JUDICIAIRE</text><rect x="1330" y="880" width="14" height="14" rx="4" fill="#352D54" stroke="#AFA1E1"/><text x="1353" y="892" class="legend-text">INSTITUTION</text></g>
+    </svg>
