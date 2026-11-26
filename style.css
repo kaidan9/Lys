@@ -12007,3 +12007,380 @@ header.lys-data-header>h2{white-space:normal!important;overflow-wrap:anywhere!im
   padding:0!important;margin:0!important;border:0!important;border-radius:0!important;
   background:transparent!important;box-shadow:none!important;min-width:0!important;
 }
+
+
+/* LYS — commandes des présidents réparties en trois groupes thématiques */
+.presidents-panel-heading{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  justify-content:flex-start!important;
+  gap:19px!important;
+  min-height:0!important;
+  margin-bottom:28px!important;
+  padding:0!important;
+  text-align:center!important;
+}
+.presidents-action-groups{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  gap:14px clamp(14px,2.8vw,34px)!important;
+  width:100%!important;
+}
+.presidents-action-group{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:10px!important;
+  min-width:0!important;
+  padding:13px 16px 14px!important;
+  border:1px solid rgba(214,183,125,.20)!important;
+  border-radius:17px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(8,14,22,.30))!important;
+  box-shadow:0 8px 20px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.025)!important;
+}
+.presidents-action-group-title{
+  display:block!important;
+  color:#d6b77d!important;
+  font:700 10px/1.2 "DM Sans",sans-serif!important;
+  letter-spacing:.16em!important;
+  text-transform:none!important;
+}
+.presidents-action-group-buttons{
+  display:flex!important;
+  flex-direction:row!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  width:auto!important;
+  min-height:50px!important;
+  margin:0!important;
+  position:static!important;
+  inset:auto!important;
+  transform:none!important;
+}
+.presidents-panel-heading .presidents-cocarde-button,
+.presidents-panel-heading .constitution-launch-button,
+.presidents-panel-heading .programmes-launch-button,
+.presidents-panel-heading .finance-launch-button,
+.presidents-panel-heading .media-launch-button,
+.presidents-panel-heading .republic-era-button{
+  position:static!important;
+  inset:auto!important;
+  top:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  left:auto!important;
+  transform:none!important;
+  flex:0 0 auto!important;
+  margin:0!important;
+}
+.presidents-panel-heading .presidents-cocarde-button{
+  width:50px!important;height:50px!important;min-width:50px!important;min-height:50px!important;
+}
+.presidents-panel-heading .constitution-launch-button,
+.presidents-panel-heading .programmes-launch-button,
+.presidents-panel-heading .finance-launch-button,
+.presidents-panel-heading .media-launch-button,
+.presidents-panel-heading .republic-era-button{
+  width:50px!important;height:50px!important;min-width:50px!important;min-height:50px!important;
+}
+.presidents-panel-heading .republic-era-buttons{
+  position:static!important;
+  inset:auto!important;
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  width:auto!important;
+  margin:0!important;
+  transform:none!important;
+}
+.presidents-panel-heading-main{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+}
+.presidents-panel-heading-main>span{
+  color:#d6b77d!important;
+  font-size:10px!important;
+  font-weight:700!important;
+  letter-spacing:.2em!important;
+}
+.presidents-panel-heading-main p{
+  margin:8px auto 0!important;
+}
+.presidents-panel-heading .presidents-action-groups button:hover{
+  transform:translateY(-2px) scale(1.04)!important;
+}
+.presidents-panel-heading .presidents-action-groups button:focus-visible{
+  outline:2px solid rgba(214,183,125,.95)!important;
+  outline-offset:4px!important;
+}
+@media(max-width:900px){
+  .presidents-panel-heading{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:17px!important;
+    min-height:0!important;
+    padding:0!important;
+  }
+  .presidents-action-groups{gap:12px 16px!important;}
+}
+@media(max-width:600px){
+  .presidents-action-groups{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    justify-items:stretch!important;
+    gap:10px!important;
+  }
+  .presidents-action-group{
+    width:100%!important;
+    box-sizing:border-box!important;
+    padding:11px 10px 12px!important;
+    gap:8px!important;
+  }
+  .presidents-action-group-buttons{gap:7px!important;}
+  .presidents-panel-heading .presidents-cocarde-button,
+  .presidents-panel-heading .constitution-launch-button,
+  .presidents-panel-heading .programmes-launch-button,
+  .presidents-panel-heading .finance-launch-button,
+  .presidents-panel-heading .media-launch-button,
+  .presidents-panel-heading .republic-era-button{
+    width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;
+  }
+  .presidents-panel-heading .republic-era-button{font-size:14px!important;}
+  .presidents-panel-heading .republic-era-button-rv{font-size:11px!important;}
+  .presidents-panel-heading .constitution-launch-button{font-size:18px!important;}
+  .presidents-panel-heading .programmes-launch-button,
+  .presidents-panel-heading .finance-launch-button,
+  .presidents-panel-heading .media-launch-button{font-size:16px!important;}
+  .presidents-panel-heading .republic-era-buttons{gap:5px!important;flex-wrap:wrap!important;}
+}
+
+/* V117 — photographies éditoriales des fiches institutionnelles */
+.institution-visual{width:100%;align-items:stretch}
+.institution-photo-frame{
+  position:relative;width:100%;margin:0;overflow:hidden;border:1px solid rgba(125,143,162,.42);
+  border-radius:22px;background:linear-gradient(145deg,#172331 0%,#33495d 55%,#111a24 100%);
+  box-shadow:0 16px 34px rgba(28,43,56,.17)
+}
+.institution-photo-frame>img{
+  display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center center;
+  background:#dbe2e9
+}
+.institution-photo-frame:after{
+  content:"";position:absolute;z-index:0;left:0;right:0;top:30%;bottom:66px;
+  background:linear-gradient(180deg,rgba(8,16,27,0) 0%,rgba(8,16,27,.22) 28%,rgba(8,16,27,.87) 100%);
+  pointer-events:none
+}
+.institution-photo-overlay{
+  position:absolute;z-index:1;left:20px;right:16px;bottom:78px;display:flex;flex-direction:column;
+  align-items:flex-start;gap:8px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.45)
+}
+.institution-photo-overlay .institution-visual-kicker{color:#f1ca8c;text-shadow:0 1px 5px rgba(0,0,0,.5)}
+.institution-photo-overlay strong{
+  font:600 clamp(29px,4.8vw,48px)/.96 "Cormorant Garamond",serif;letter-spacing:-.025em;
+  color:#fff;max-width:100%;overflow-wrap:anywhere
+}
+.institution-photo-overlay>span:last-child{
+  color:#f3f4f5;font:600 22px/1 "Cormorant Garamond",serif;opacity:.95
+}
+.institution-photo-frame figcaption{
+  position:relative;z-index:2;display:flex;flex-direction:column;gap:5px;padding:11px 13px 12px;
+  background:#f7f9fb;color:#536274;text-align:left
+}
+.institution-photo-caption{font:600 11px/1.35 "DM Sans",sans-serif;color:#2d3d4e}
+.institution-photo-credit{font:500 9px/1.45 "DM Sans",sans-serif;color:#6f7d8e}
+.institution-photo-credit a{color:#315f86;text-decoration:underline;text-underline-offset:2px;font-weight:700}
+.institution-photo-credit a:hover{color:#173c60}
+.institution-photo-frame.is-missing{min-height:300px}
+.institution-photo-frame.is-missing:after{top:0;bottom:0;background:linear-gradient(145deg,rgba(19,33,48,.15),rgba(7,14,23,.55))}
+.institution-photo-frame.is-missing .institution-photo-overlay{bottom:86px}
+@media(max-width:820px){
+  .institution-photo-frame>img{aspect-ratio:16/10}
+  .institution-photo-overlay{left:17px;right:14px;bottom:76px;gap:6px}
+  .institution-photo-overlay strong{font-size:clamp(30px,8vw,44px)}
+  .institution-photo-credit{font-size:9px}
+}
+
+
+/* LYS — accent visuel du groupe Élections 2027 (P, F, M). */
+.presidents-action-group.presidents-election-highlight{
+  border:1px solid rgba(232,190,107,.68)!important;
+  background:linear-gradient(145deg,rgba(199,151,68,.18),rgba(22,25,30,.52))!important;
+  box-shadow:0 0 0 1px rgba(232,190,107,.12),0 12px 30px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,231,185,.12)!important;
+}
+.presidents-election-highlight .presidents-action-group-title{
+  color:#f1ce8c!important;
+  text-shadow:0 0 16px rgba(228,183,99,.22);
+}
+.presidents-election-highlight .presidents-action-group-buttons button{
+  box-shadow:0 0 0 1px rgba(241,206,140,.22),0 0 18px rgba(214,170,91,.12)!important;
+}
+.presidents-election-highlight .presidents-action-group-buttons button:hover{
+  box-shadow:0 0 0 2px rgba(241,206,140,.48),0 8px 22px rgba(214,170,91,.22)!important;
+}
+
+/* LYS — cohérence esthétique des fiches de personnalités et de leurs rubriques. */
+#modal .reader .political-unified-sheet{display:block;max-width:1120px;margin:0 auto}
+#modal .reader .political-unified-sheet .political-profile-grid{gap:14px;margin-bottom:18px}
+#modal .reader .political-unified-sheet .profile-card{position:relative;min-height:0;border-radius:18px;padding:22px 24px;}
+#modal .reader .political-unified-sheet .profile-card-wide{grid-column:1/-1}
+#modal .reader .political-unified-sheet .profile-card h3{font-size:25px;line-height:1.12;letter-spacing:-.015em}
+#modal .reader .political-unified-sheet .profile-card p{font-size:13.5px;line-height:1.78}
+#modal .reader .political-meter-modern{margin:18px 0 20px}
+#modal .reader .political-meter-unclassified{border:1px dashed rgba(177,192,207,.30)!important;background:linear-gradient(145deg,#111c29,#0b121c)!important}
+#modal .reader .political-meter-unclassified .political-meter-current-wrap{padding:9px 13px;border:1px solid rgba(177,192,207,.24);border-radius:999px;background:rgba(177,192,207,.07)}
+#modal .reader .political-meter-unclassified .political-meter-current{color:#b7c3d0!important}
+#modal .reader .political-cases{margin:18px 0 20px;padding:22px;border:1px solid rgba(126,158,190,.18);border-radius:20px;background:linear-gradient(145deg,#101a27,#0b121c)}
+#modal .reader .political-cases-empty{padding:22px;border:1px dashed rgba(126,158,190,.30);border-radius:20px;background:linear-gradient(145deg,rgba(16,26,39,.82),rgba(11,18,28,.82))}
+#modal .reader .political-cases-empty .political-cases-head h3{color:#eef3f8!important}
+#modal .reader .political-cases-empty .political-cases-head p{color:#aab7c4!important}
+#modal .reader .political-cases-head h3{font-size:26px;line-height:1.15}
+#modal .reader .political-cases-head p{font-size:12.5px;line-height:1.7}
+#modal .reader .political-cases .political-case-card{border-radius:15px}
+#modal .reader .political-sources{margin-top:18px;border-radius:20px;overflow:hidden}
+@media(max-width:760px){
+  #modal .reader .political-unified-sheet .profile-card{padding:18px 17px;border-radius:16px}
+  #modal .reader .political-unified-sheet .profile-card-wide{grid-column:1}
+  #modal .reader .political-unified-sheet .profile-card h3{font-size:22px}
+  #modal .reader .political-cases{padding:17px 14px}
+}
+
+
+/* LYS V130 — grille éditoriale et repères biographiques harmonisés pour toutes les personnalités. */
+#modal .reader .political-sheet-label{
+  display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;padding:7px 11px;
+  border:1px solid rgba(196,164,111,.25);border-radius:999px;background:rgba(196,164,111,.07);
+  color:#c9ad7d;font:800 9px/1.2 "DM Sans",sans-serif;letter-spacing:.16em;text-transform:uppercase;
+}
+#modal .reader .political-unified-sheet .political-profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#modal .reader .political-unified-sheet .profile-card{background:linear-gradient(155deg,rgba(23,36,51,.98),rgba(13,22,33,.98));border:1px solid rgba(137,164,190,.16);box-shadow:0 10px 28px rgba(0,0,0,.12)}
+#modal .reader .political-unified-sheet .profile-card-wide{grid-column:1/-1}
+#modal .reader .political-unified-sheet .profile-card-kicker{margin-bottom:8px;color:#9bb0c3;font-size:9px;font-weight:800;letter-spacing:.15em}
+#modal .reader .political-unified-sheet .profile-card h3{margin:0 0 10px;color:#f4f0e8}
+#modal .reader .political-unified-sheet .profile-card p{margin:0;color:#c5d0da}
+#modal .reader .political-personal-card{margin:14px 0 18px;border:1px solid rgba(143,171,197,.18);border-radius:19px;background:linear-gradient(150deg,rgba(25,40,56,.96),rgba(13,22,33,.96));padding:20px}
+#modal .reader .political-personal-card h3{margin:4px 0 12px;color:#f3efe8;font:600 25px/1.1 "Cormorant Garamond",serif}
+#modal .reader .political-personal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:9px}
+#modal .reader .political-personal-item{min-width:0;padding:11px 12px;border:1px solid rgba(151,176,198,.13);border-radius:12px;background:rgba(255,255,255,.025)}
+#modal .reader .political-personal-item span{display:block;margin-bottom:6px;color:#91a6b9;font-size:8px;font-weight:800;letter-spacing:.12em}
+#modal .reader .political-personal-item strong{display:block;color:#edf2f6;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+#modal .reader .profile-personal-note{margin:12px 0 0;color:#99a9b8;font-size:10px;line-height:1.6}
+#modal .reader .political-cases-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}
+#modal .reader .political-cases-head h3{margin:6px 0 8px;color:#f3efe8;font:600 28px/1.05 "Cormorant Garamond",serif}
+#modal .reader .political-cases-head p{max-width:760px;color:#aebdca}
+#modal .reader .political-case-card{border:1px solid rgba(143,171,197,.15);background:rgba(255,255,255,.025)}
+#modal .reader .political-case-status{max-width:100%}
+#modal .reader .political-sources{border:1px solid rgba(143,171,197,.16);background:linear-gradient(145deg,rgba(19,31,45,.96),rgba(11,19,29,.96))}
+#modal .reader .political-sources-head h3{color:#f0ece4}
+#modal .reader .political-sources-head p{color:#9eafbf}
+@media(max-width:760px){
+  #modal .reader .political-unified-sheet .political-profile-grid{grid-template-columns:1fr;gap:11px}
+  #modal .reader .political-unified-sheet .profile-card-wide{grid-column:1}
+  #modal .reader .political-personal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #modal .reader .political-cases-head{display:block}
+}
+@media(max-width:420px){
+  #modal .reader .political-personal-grid{grid-template-columns:1fr}
+}
+
+
+/* LYS — trois nouveaux outils Élections 2027 (S · E · V), cohérents avec F et M */
+.presidents-panel-heading .election-launch-button{position:static!important;display:inline-grid!important;place-items:center!important;width:50px!important;height:50px!important;min-width:50px!important;min-height:50px!important;margin:0!important;padding:0!important;border:1px solid rgba(214,183,125,.55)!important;border-radius:50%!important;color:#ead5ad!important;font:700 18px/1 "Cormorant Garamond",serif!important;letter-spacing:.04em!important;box-shadow:0 8px 20px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.035)!important;cursor:pointer!important;z-index:13!important;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease!important;}
+.presidents-panel-heading .survey-launch-button{background:radial-gradient(circle at 35% 30%,#4b3d60,#191326 72%)!important;border-color:rgba(181,151,211,.7)!important;}
+.presidents-panel-heading .elected-launch-button{background:radial-gradient(circle at 35% 30%,#31505b,#101e25 72%)!important;border-color:rgba(130,190,194,.7)!important;}
+.presidents-panel-heading .review-launch-button{background:radial-gradient(circle at 35% 30%,#66502e,#21190e 72%)!important;border-color:rgba(214,183,125,.75)!important;}
+.presidents-panel-heading .election-launch-button:hover{transform:translateY(-2px) scale(1.04)!important;box-shadow:0 12px 28px rgba(0,0,0,.36),0 0 18px rgba(145,180,207,.16)!important;}
+.presidents-panel-heading .election-launch-button:focus-visible{outline:2px solid rgba(214,183,125,.95)!important;outline-offset:4px!important;}
+.lys-election-poll-list{display:grid;gap:11px;margin:18px 0 22px;}
+.lys-election-poll-row{display:grid;grid-template-columns:minmax(170px,245px) minmax(60px,1fr) 65px;gap:12px;align-items:center;color:#e8edf4;font-size:.82rem;}
+.lys-election-poll-row>i{display:block;height:10px;overflow:hidden;border-radius:20px;background:rgba(255,255,255,.09);}
+.lys-election-poll-row>i>b{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,#b79a69,#e2c58d);}
+.lys-election-poll-row>strong{text-align:right;color:#f0d7a6;font-variant-numeric:tabular-nums;}
+.lys-election-age-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0;}
+.lys-election-age-grid article,.lys-election-note-grid article{padding:17px;border:1px solid rgba(168,190,213,.2);border-radius:15px;background:rgba(255,255,255,.045);}
+.lys-election-age-grid article{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#d8e1ec;}
+.lys-election-age-grid b{color:#e6c78d;font-size:1.2rem;}
+.lys-election-note-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0;}
+.lys-election-note-grid h3{margin:0 0 8px;color:#f0d7a6;font-family:"Cormorant Garamond",Georgia,serif;font-size:1.25rem;}
+.lys-election-note-grid p,.lys-election-method-list{color:#bdc9d8;font-size:.86rem;line-height:1.65;}
+.lys-data-method-list{padding-left:20px;color:#c5d0de;font-size:.9rem;line-height:1.75;}
+.lys-program-review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0 22px;}
+.lys-program-review-grid article{position:relative;min-height:250px;padding:22px 18px;border:1px solid rgba(214,183,125,.28);border-radius:18px;background:linear-gradient(155deg,rgba(47,64,83,.8),rgba(12,23,37,.92));}
+.lys-program-review-grid article>span{display:grid;place-items:center;width:42px;height:42px;margin-bottom:17px;border:1px solid rgba(214,183,125,.55);border-radius:50%;color:#efd5a4;font:700 1.25rem "Cormorant Garamond",serif;}
+.lys-program-review-grid h3{margin:0 0 10px;color:#f2e5cc;font:700 1.35rem "Cormorant Garamond",Georgia,serif;}
+.lys-program-review-grid p,.lys-program-review-grid small{color:#c3cfdd;line-height:1.6;}
+.lys-program-review-grid small{display:block;margin-top:15px;color:#e1c99e;}
+@media(max-width:700px){.lys-election-poll-row{grid-template-columns:minmax(105px,135px) minmax(35px,1fr) 52px;gap:7px;font-size:.68rem}.lys-election-age-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.lys-election-note-grid,.lys-program-review-grid{grid-template-columns:1fr}.lys-program-review-grid article{min-height:0}.lys-election-poll-list{gap:12px}}
+
+
+/* LYS — nuancier partisan commun aux catégories S, E et V (reprend Finance/Médias). */
+.lys-data-overlay [data-party="rn"]{--lys-party-color:#315987!important;}
+.lys-data-overlay [data-party="lr"]{--lys-party-color:#3269a5!important;}
+.lys-data-overlay [data-party="le"]{--lys-party-color:#4d9b62!important;}
+.lys-data-overlay [data-party="ps"]{--lys-party-color:#d75e96!important;}
+.lys-data-overlay [data-party="lfi"]{--lys-party-color:#8d4cda!important;}
+.lys-data-overlay [data-party="pcf"]{--lys-party-color:#d63d48!important;}
+.lys-data-overlay [data-party="re"]{--lys-party-color:#456fae!important;}
+.lys-data-overlay [data-party="pp"]{--lys-party-color:#d5ae42!important;}
+.lys-data-overlay [data-party="horizons"]{--lys-party-color:#62acd0!important;}
+.lys-data-overlay [data-party="modem"]{--lys-party-color:#e99a48!important;}
+.lys-data-overlay [data-party="upr"]{--lys-party-color:#22c2c1!important;}
+.lys-data-overlay [data-party="reconquete"]{--lys-party-color:#b18a53!important;}
+.lys-data-overlay [data-party="dlf"]{--lys-party-color:#9177bc!important;}
+.lys-data-overlay [data-party="newenergy"]{--lys-party-color:#9bb6d1!important;}
+.lys-data-overlay [data-party="debout"]{--lys-party-color:#9177bc!important;}
+.lys-data-overlay [data-party="lfh"]{--lys-party-color:#a9b3c1!important;}
+.lys-data-overlay [data-party="lo"]{--lys-party-color:#c34848!important;}
+.lys-data-overlay [data-party="liot"]{--lys-party-color:#93a2b3!important;}
+.lys-data-overlay [data-party="udr"]{--lys-party-color:#b18a53!important;}
+.lys-data-overlay [data-party="independent"],
+.lys-data-overlay [data-party="nonpartisan"]{--lys-party-color:#8995a4!important;}
+.lys-election-poll-row[data-party]>span{display:flex;align-items:center;gap:8px;min-width:0;}
+.lys-election-poll-row[data-party]>span:before{content:"";display:inline-block;flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--lys-party-color,#9aabc0);box-shadow:0 0 0 3px color-mix(in srgb,var(--lys-party-color,#9aabc0) 18%,transparent);}
+.lys-election-poll-row[data-party]>i>b{background:linear-gradient(90deg,color-mix(in srgb,var(--lys-party-color,#9aabc0) 76%,#0a1524),var(--lys-party-color,#9aabc0))!important;}
+.lys-election-poll-row[data-party]>strong{color:var(--lys-party-color,#e4d0ab)!important;}
+.lys-party-legend{display:flex;flex-wrap:wrap;gap:7px 12px;margin:12px 0 4px;color:#aebdcc;font-size:.68rem;}
+.lys-party-legend span{display:inline-flex;align-items:center;gap:6px;}
+.lys-party-legend i,.lys-programme-party-list i{display:inline-block;flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--lys-party-color,#9aabc0);}
+.lys-party-legend i[data-party]{width:8px;height:8px;}
+.lys-expert-podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:end;gap:12px;margin:24px 0 22px;padding:12px 10px 0;position:relative;}
+.lys-expert-step{position:relative;display:flex;flex-direction:column;min-width:0;border:1px solid rgba(214,183,125,.26);border-radius:18px 18px 8px 8px;background:linear-gradient(155deg,rgba(47,64,83,.88),rgba(12,23,37,.96));box-shadow:0 15px 32px rgba(0,0,0,.22);overflow:hidden;}
+.lys-expert-step-one{grid-column:2;grid-row:1;min-height:340px;z-index:2;}
+.lys-expert-step-two{grid-column:1;grid-row:1;min-height:300px;}
+.lys-expert-step-three{grid-column:3;grid-row:1;min-height:275px;}
+.lys-expert-place{display:grid;place-items:center;width:58px;height:58px;margin:18px auto 6px;border:1px solid rgba(223,194,137,.62);border-radius:50%;background:radial-gradient(circle at 35% 30%,#8a7148,#2b2114 74%);color:#f5dfb4;font:700 1.55rem/1 "Cormorant Garamond",Georgia,serif;box-shadow:0 0 24px rgba(214,183,125,.13);}
+
+.lys-expert-step-one .lys-expert-place{border-color:rgba(243,211,130,.9);background:radial-gradient(circle at 35% 30%,#d7b45b,#6f511f 76%);color:#fff3d4;box-shadow:0 0 28px rgba(215,180,91,.24);}
+.lys-expert-step-two .lys-expert-place{border-color:rgba(207,218,230,.75);background:radial-gradient(circle at 35% 30%,#aebbc9,#4b5b6d 76%);color:#f5f8fb;}
+.lys-expert-step-three .lys-expert-place{border-color:rgba(210,160,119,.82);background:radial-gradient(circle at 35% 30%,#bd8963,#68442f 76%);color:#fff0e3;}
+.lys-expert-step-body{display:flex;flex:1;flex-direction:column;padding:12px 16px 18px;text-align:center;}
+.lys-expert-step-body .lys-data-eyebrow{font-size:.58rem;letter-spacing:.12em;}
+.lys-expert-step-body h3{margin:8px 0;color:#f3e6ce;font:700 1.45rem/1.12 "Cormorant Garamond",Georgia,serif;}
+.lys-expert-metric{display:block;margin:4px 0 10px;color:#e7c98f;font-size:1.12rem;font-variant-numeric:tabular-nums;}
+.lys-expert-step-body p{margin:0 0 14px;color:#c2cedb;font-size:.78rem;line-height:1.62;}
+.lys-expert-step-body a{display:inline-flex;align-self:center;justify-content:center;gap:6px;margin-top:auto;padding:8px 11px;border:1px solid rgba(214,183,125,.34);border-radius:999px;color:#ead5ad;font-size:.69rem;text-decoration:none;background:rgba(255,255,255,.035);}
+.lys-expert-step-body a:hover{border-color:#d7bb82;background:rgba(214,183,125,.09);}
+.lys-expert-podium:after{content:"";position:absolute;left:0;right:0;bottom:-11px;height:11px;border-radius:0 0 9px 9px;background:linear-gradient(90deg,#493b26,#8a7048,#493b26);opacity:.8;}
+.lys-programme-party-list{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0 22px;}
+.lys-programme-party-list a{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid color-mix(in srgb,var(--lys-party-color,#9aabc0) 35%,transparent);border-radius:999px;background:color-mix(in srgb,var(--lys-party-color,#9aabc0) 10%,transparent);color:#e5edf5;font-size:.75rem;text-decoration:none;transition:transform .18s ease,border-color .18s ease;}
+.lys-programme-party-list a:hover{transform:translateY(-2px);border-color:var(--lys-party-color,#9aabc0);}
+.lys-programme-party-list a i{background:var(--lys-party-color,#9aabc0);}
+@media(max-width:760px){
+  .lys-expert-podium{grid-template-columns:1fr;align-items:stretch;gap:10px;padding:0;margin-top:16px;}
+  .lys-expert-step-one,.lys-expert-step-two,.lys-expert-step-three{grid-column:1;grid-row:auto;min-height:0;}
+  .lys-expert-step{display:grid;grid-template-columns:66px minmax(0,1fr);align-items:start;border-radius:15px;}
+  .lys-expert-place{width:46px;height:46px;margin:16px auto;}
+  .lys-expert-step-body{text-align:left;padding:14px 14px 16px 0;}
+  .lys-expert-step-body a{align-self:flex-start;}
+  .lys-expert-podium:after{display:none;}
+}

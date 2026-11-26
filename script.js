@@ -1081,6 +1081,35 @@ const POLITICAL_METER = {
 "Georges-Jacques Danton":{label:"Antilibéralisme"}
 };
 
+/* LYS — compléments des repères idéologiques absents de plusieurs fiches historiques.
+   Ces catégories restent éditoriales et indicatives ; elles ne constituent pas des scores. */
+Object.assign(POLITICAL_METER, {
+  "Bernard Tapie": {label:'Social-Libéralisme'},
+  "Charles Pasqua": {label:'Souverainisme'},
+  "Jean-Marie Le Pen": {label:'Nationalisme'},
+  "Lionel Jospin": {label:'Socialisme'},
+  "Olivier Marleix": {label:'Conservatisme'},
+  "Pierre Bérégovoy": {label:'Socialisme'},
+  "Raymond Barre": {label:'Libéralisme'},
+  "Robert Badinter": {label:'Humanisme'},
+  "Simone Veil": {label:'Européisme'},
+  "Francis Lalanne": {label:'Souverainisme'}
+});
+
+const POLITICAL_METER_PERSONAL_NOTES = {
+  "Bernard Tapie":'Repère social-réformiste et social-libéral retenu à titre indicatif. Son parcours politique et économique est éclectique et ne se réduit pas à une seule doctrine.',
+  "Charles Pasqua":'Repère gaulliste et souverainiste : accent mis sur l’indépendance nationale, l’autorité de l’État et la continuité de la souveraineté française.',
+  "Jean-Marie Le Pen":'Repère associé au nationalisme du Front national historique. Cette étiquette décrit une orientation politique documentée et ne constitue pas une appréciation.',
+  "Lionel Jospin":'Repère socialiste, lié à la tradition social-démocrate du Parti socialiste et à l’exercice du gouvernement de gauche plurielle.',
+  "Olivier Marleix":'Repère conservateur et gaulliste au sein de la droite républicaine ; il s’agit d’une synthèse indicative de ses affiliations et responsabilités.',
+  "Pierre Bérégovoy":'Repère socialiste réformiste, inscrit dans la tradition du Parti socialiste et dans une pratique gouvernementale de gauche.',
+  "Raymond Barre":'Repère libéral et centriste, notamment en matière économique, associé à sa pratique de Premier ministre et à son parcours dans la famille UDF.',
+  "Robert Badinter":'Repère humaniste et libéral au sens des libertés publiques : droits fondamentaux, État de droit et abolition de la peine de mort.',
+  "Simone Veil":'Repère européen et démocrate-chrétien/centriste, marqué par la construction européenne, les droits des femmes et les institutions démocratiques.',
+  "Francis Lalanne":'Repère souverainiste fondé sur le programme et la communication de campagne publiés pour 2027, qui revendiquent explicitement la souveraineté nationale ; ce repère décrit cette campagne et ne résume pas toute sa carrière artistique.',
+  "Nathalie Arthaud":'Le repère « communiste » est précisé par son appartenance à Lutte ouvrière et par son orientation révolutionnaire trotskiste ; il ne doit pas être confondu avec le communisme gouvernemental ou réformiste.'
+};
+
 const POLITICAL_METER_LABELS = {
   left:['Humanisme','Antilibéralisme','Communiste','Socialisme','Ecologiste','Animalisme','Social-Libéralisme'],
   center:['Européisme','Monarchisme','Mondialisme','Euroscepticisme'],
@@ -1111,8 +1140,29 @@ function politicalGaugeIndex(label){
   return idx < 0 ? 6 : idx;
 }
 
+const POLITICAL_METER_UNCLASSIFIED_NOTES = {
+  "Dieudonné M'Bala M'Bala":'La fiche documente des candidatures et des prises de position politiques, dont une liste dite antisioniste en 2009. Ces éléments ne suffisent pas à ramener l’ensemble de son parcours à une catégorie unique du repère utilisé ici.',
+  "Patrick Sébastien":'Son mouvement DARD s’est présenté en 2010 comme un rassemblement humaniste, tandis que « Ça suffit » se définit comme un mouvement citoyen. Ces initiatives ne permettent pas d’attribuer avec prudence une doctrine politique stable à la personne.',
+  "Caroline Galactéros":'Ses sources de présentation décrivent une approche géopolitique réaliste et une inspiration gaullienne en matière d’indépendance nationale. Il s’agit d’une approche d’analyse stratégique, pas d’une affiliation partisane permettant de la placer automatiquement sur ce repère.',
+  "Francis Lalanne":'La catégorie retenue renvoie à ses positions revendiquées dans la campagne de 2027 ; elle ne constitue pas une étiquette exhaustive de son parcours.'
+};
+const POLITICAL_METER_UNCLASSIFIED_EXPLANATIONS = {
+  "Dieudonné M'Bala M'Bala":'La fiche documente un engagement électoral et des prises de position, mais les catégories disponibles ne résument pas correctement ce parcours.',
+  "Patrick Sébastien":'Des initiatives citoyennes sont documentées, sans doctrine politique stable suffisamment étayée pour attribuer une catégorie.',
+  "Caroline Galactéros":'Une approche géopolitique réaliste est documentée, mais elle ne correspond pas automatiquement à une famille partisane ou idéologique de cette échelle.'
+};
+
 function politicalGaugeHtml(name){
-  const current = POLITICAL_METER[name] || {label:'Positionnement à préciser'};
+  const current = POLITICAL_METER[name];
+  if(!current){
+    const note = POLITICAL_METER_UNCLASSIFIED_NOTES[name] || 'Aucun positionnement n’est déduit du nom, de l’origine, de la fonction ou d’une seule prise de parole. Cette rubrique pourra être complétée si des sources pertinentes sont ajoutées.';
+    const explanation = POLITICAL_METER_UNCLASSIFIED_EXPLANATIONS[name] || 'Aucune catégorie n’est attribuée à cette fiche faute d’un repère suffisamment étayé dans les sources actuellement référencées.';
+    return `<section class="political-meter political-meter-modern political-meter-unclassified" aria-label="Repère idéologique non renseigné pour ${safeText(name)}">
+      <div class="political-meter-modern-head"><div><span class="section-kicker">POSITIONNEMENT POLITIQUE</span><h4>Repère idéologique</h4><p class="political-meter-subtitle">${safeText(explanation)}</p></div>
+      <div class="political-meter-current-wrap"><strong class="political-meter-current">Non renseigné</strong></div></div>
+      <p class="political-meter-note">${safeText(note)}</p>
+    </section>`;
+  }
   const displayedLabel = POLITICAL_METER_DISPLAY[POLITICAL_METER_GROUPS[current.label] || current.label] || POLITICAL_METER_GROUPS[current.label] || current.label;
   const index = politicalGaugeIndex(current.label);
   const segments = POLITICAL_METER_ORDER.length;
@@ -1181,7 +1231,7 @@ function politicalGaugeHtml(name){
       <span class="political-gauge-principal-kicker">COURANT RETENU</span>
       <span class="political-gauge-principal-value" style="--current-color:${groupColor}">${safeText(displayName)}</span>
     </div>
-    <p class="political-meter-note">Repère éditorial indicatif : la position matérialisée correspond au courant principal associé à cette fiche. Ce repère ne constitue ni un score scientifique ni une mesure absolue.</p>
+    <p class="political-meter-note">${safeText(POLITICAL_METER_PERSONAL_NOTES[name] || 'Repère éditorial indicatif : la position matérialisée correspond au courant principal associé à cette fiche. Ce repère ne constitue ni un score scientifique ni une mesure absolue.')}</p>
   </section>`;
 }
 
@@ -1351,6 +1401,84 @@ Object.assign(POLITICAL_CASES, {
   ]
 });
 
+/* LYS — mise à jour juridique et compléments documentés au 26 novembre 2026. */
+POLITICAL_CASES["Marine Le Pen"][1] = {
+  year:'2026', category:'Affaire judiciaire · appel et cassation', title:'Décision en appel et pourvois devant la Cour de cassation',
+  status:'Condamnation en appel · pourvois en cassation en cours',
+  text:'Le 7 juillet 2026, la cour d’appel de Paris a confirmé la culpabilité de Marine Le Pen dans l’affaire des assistants parlementaires européens du Front national, avec une peine réduite par rapport à la première instance. Cette décision n’est pas définitive : treize pourvois en cassation ont été formés, dont ceux des douze personnes condamnées et celui du Parlement européen. Au 16 octobre 2026, les mémoires avaient été déposés et la Cour de cassation devait examiner des questions prioritaires de constitutionnalité le 16 décembre 2026. La Cour indiquait qu’un éventuel arrêt sur le fond pourrait intervenir au plus tard début avril 2027, sous réserve d’évolution du calendrier. ',
+  sources:[["Cour de cassation — suivi de la procédure, 16 octobre 2026","https://www.courdecassation.fr/toutes-les-actualites/2026/10/16/communique-affaire-dite-des-assistants-parlementaires-du-front"],["Cour de cassation — calendrier indicatif de la procédure","https://www.courdecassation.fr/toutes-les-actualites/2026/07/08/affaire-dite-des-assistants-parlementaires-du-front-national"]]
+};
+POLITICAL_CASES["Rachida Dati"][2] = {
+  year:'2026–2027', category:'Affaire judiciaire · procès', title:'Procès dans le dossier Renault-Nissan',
+  status:'Procès tenu en septembre 2026 · délibéré annoncé le 21 janvier 2027',
+  text:'Le procès de Rachida Dati et de Carlos Ghosn s’est ouvert le 16 septembre 2026 devant le tribunal correctionnel de Paris. Rachida Dati est jugée notamment pour corruption passive, trafic d’influence passif et recel d’abus de pouvoir et d’abus de confiance, au sujet d’honoraires d’environ 900 000 euros versés par Renault-Nissan entre 2010 et 2012. À la date de cette fiche, aucune décision de culpabilité n’est rendue dans ce procès ; le délibéré est annoncé pour le 21 janvier 2027. Rachida Dati conteste les accusations et bénéficie de la présomption d’innocence.',
+  sources:[["Le Monde — ouverture du procès, 16 septembre 2026","https://www.lemonde.fr/societe/article/2026/09/16/le-proces-de-rachida-dati-jugee-notamment-pour-corruption-passive-et-trafic-d-influence-passif-dans-l-affaire-ghosn-renault-a-debute_6774445_3225.html"],["PoliTrust — chronologie de l’affaire Renault-Nissan, délibéré annoncé en janvier 2027","https://www.politrust.fr/affaires/affaire-renault-nissan-corruption-et-trafic-d-influence-passifs-041010b3"]]
+};
+POLITICAL_CASES["François Bayrou"].push({
+  year:'2026', category:'Affaire judiciaire · procès en appel', title:'Appel dans l’affaire des assistants parlementaires européens du MoDem',
+  status:'Relaxe en première instance · décision d’appel attendue le 17 décembre 2026',
+  text:'Relaxé le 5 février 2024 au bénéfice du doute, François Bayrou comparaît de nouveau devant la cour d’appel de Paris à partir du 9 septembre 2026. Le procès s’est achevé le 2 octobre. Le parquet général a requis deux ans d’emprisonnement avec sursis, 50 000 euros d’amende et trois ans d’inéligibilité avec sursis. La défense a demandé la confirmation de la relaxe. Au 26 novembre 2026, la cour n’a pas encore rendu sa décision, annoncée pour le 17 décembre 2026 : les réquisitions ne sont pas une condamnation.',
+  sources:[["Le Monde — ouverture du procès en appel, 8 septembre 2026","https://www.lemonde.fr/societe/article/2026/09/08/francois-bayrou-juge-en-appel-dans-l-affaire-des-assistants-parlementaires-europeens-du-modem_6768404_3224.html"],["Le Monde — clôture du procès, 2 octobre 2026","https://www.lemonde.fr/societe/article/2026/10/02/au-proces-en-appel-des-assistants-parlementaires-europeens-du-modem-les-avocats-de-bayrou-demontent-les-indices-concordants-du-parquet-general_6787214_3224.html"],["PoliTrust — suivi de la procédure et date du délibéré","https://www.politrust.fr/affaires/affaire-des-assistants-parlementaires-du-modem-au-parlement-europeen-cd8cff04"]]
+});
+POLITICAL_CASES["Édouard Philippe"][0] = {
+  year:'2026', category:'Information judiciaire', title:'Cité numérique du Havre : statut de témoin assisté',
+  status:'Information judiciaire en cours · témoin assisté · présomption d’innocence',
+  text:'Une information judiciaire ouverte en mai 2026 porte sur des soupçons de contournement des règles de marchés publics et sur le montage juridique lié à l’exploitation de la Cité numérique du Havre par l’association LH French Tech. Édouard Philippe, maire du Havre et président de la communauté urbaine, a été entendu le 29 octobre 2026 sous le statut de témoin assisté. Ce statut est distinct d’une mise en examen et ne vaut pas déclaration de culpabilité. Les qualifications évoquées dans l’information judiciaire comprennent notamment favoritisme, détournement de fonds publics, prise illégale d’intérêts et concussion.',
+  sources:[["Le Monde — deux juges d’instruction désignés, 18 juin 2026","https://www.lemonde.fr/societe/article/2026/06/18/affaire-edouard-philippe-deux-juges-d-instruction-ont-ete-designes_6704520_3224.html"],["Le Monde — point d’étape du 24 novembre 2026","https://www.lemonde.fr/societe/article/2026/11/24/metropole-du-havre-une-enquete-preliminaire-ouverte-par-le-parquet-apres-un-signalement-pour-detournement-de-fonds-publics_6814732_3224.html"]]
+};
+POLITICAL_CASES["Édouard Philippe"].push({
+  year:'2026', category:'Enquête préliminaire distincte', title:'Signalement concernant la gestion de la communauté urbaine du Havre',
+  status:'Enquête préliminaire ouverte à l’automne 2026 · pas de condamnation',
+  text:'À la suite d’un signalement déposé en mai 2026 par une ancienne directrice générale adjointe de la communauté urbaine, le parquet du Havre a ouvert une enquête préliminaire à l’automne, après dessaisissement du Parquet national financier fin juillet. Le signalement évoque notamment un possible détournement de fonds publics et une procédure-bâillon alléguée. Une plainte formelle a été déposée le 23 novembre 2026. Cette enquête est distincte de l’information judiciaire sur la Cité numérique ; aucune condamnation n’est prononcée dans ce dossier à la date de la fiche.',
+  sources:[["Le Monde — enquête préliminaire ouverte au Havre, 24 novembre 2026","https://www.lemonde.fr/societe/article/2026/11/24/metropole-du-havre-une-enquete-preliminaire-ouverte-par-le-parquet-apres-un-signalement-pour-detournement-de-fonds-publics_6814732_3224.html"]]
+});
+POLITICAL_CASES["Éric Ciotti"][0] = {
+  year:'2025', category:'Plainte d’une association anticorruption', title:'Signalement et plainte d’Anticor concernant la gestion du conseil départemental',
+  status:'Plainte déposée le 14 janvier 2025 · suite judiciaire non confirmée dans les sources consultées',
+  text:'Anticor indique avoir déposé le 14 janvier 2025 une plainte auprès du procureur de la République de Nice concernant des avantages et moyens qui auraient continué à bénéficier à Éric Ciotti après son départ de la présidence du conseil départemental des Alpes-Maritimes en 2017. L’association invoque notamment des soupçons de détournement de fonds publics et de recel, en s’appuyant sur un rapport de la chambre régionale des comptes. La plainte est une initiative de partie civile : elle ne démontre pas les faits et ne constitue pas une mise en examen ou une condamnation. Les sources consultées ne permettent pas de confirmer une évolution judiciaire plus récente.',
+  sources:[["Anticor — présentation de la plainte, 9 avril 2025","https://www.anticor.org/2025/04/09/affaire-eric-ciotti/"]]
+};
+POLITICAL_CASES["Nicolas Sarkozy"][2] = {
+  year:'2025–2026', category:'Financement présumé de campagne', title:'Affaire du financement libyen de la campagne de 2007',
+  status:'Condamnation en première instance · décision d’appel attendue le 30 novembre 2026',
+  text:'Condamné en première instance le 25 septembre 2025 à cinq ans d’emprisonnement ferme pour association de malfaiteurs, Nicolas Sarkozy a fait appel. Le procès en appel s’est tenu au printemps 2026 et le parquet général a requis sept ans d’emprisonnement. La cour d’appel doit rendre sa décision le 30 novembre 2026. La condamnation de première instance n’est donc pas définitive à la date de la présente fiche.',
+  sources:[["Le Monde — état des affaires Sarkozy, 24 novembre 2026","https://www.lemonde.fr/les-decodeurs/article/2026/11/24/ou-en-sont-les-affaires-concernant-nicolas-sarkozy_6071603_4355771.html"]]
+};
+POLITICAL_CASES["Nicolas Sarkozy"].push({
+  year:'2023–2027', category:'Justice pénale · subornation de témoin alléguée', title:'Affaire de la fausse rétractation de Ziad Takieddine',
+  status:'Renvoi en procès ordonné en novembre 2026 · audience prévue en 2027',
+  text:'Cette procédure porte sur la rétractation, en 2020, des accusations de Ziad Takieddine concernant le financement libyen de la campagne de 2007. Nicolas Sarkozy a été mis en examen en 2023 pour recel de subornation de témoin et association de malfaiteurs en vue d’une escroquerie au jugement alléguée. En novembre 2026, il a été renvoyé devant le tribunal avec neuf autres personnes ; le procès est prévu en 2027. Le renvoi en procès ne constitue pas une condamnation et la présomption d’innocence s’applique.',
+  sources:[["Le Monde — renvoi en procès et chronologie des affaires, 24 novembre 2026","https://www.lemonde.fr/les-decodeurs/article/2026/11/24/ou-en-sont-les-affaires-concernant-nicolas-sarkozy_6071603_4355771.html"]]
+});
+POLITICAL_CASES["Bernard Tapie"] = [
+  {year:'1995–1997',category:'Justice pénale · corruption sportive et subornation de témoin',title:'Affaire VA-OM (match Valenciennes–Olympique de Marseille)',status:'Condamnation en appel · peine exécutée',text:'Dans l’affaire du match Valenciennes–OM, Bernard Tapie est condamné en première instance en mai 1995. Le 28 novembre 1995, la cour d’appel de Douai le condamne à deux ans d’emprisonnement, dont huit mois ferme, trois ans d’inéligibilité et une amende, pour corruption et subornation de témoin. Il se pourvoit en cassation puis est incarcéré en février 1997. La fiche distingue cette condamnation des autres procédures financières le concernant.',sources:[["Assemblée nationale — biographie et affaire VA-OM","https://www2.assemblee-nationale.fr/sycomore/fiche?num_dept=6949"],["Le Monde — chronologie de l’affaire VA-OM","https://www.lemonde.fr/archives/article/2003/05/13/les-grandes-dates-de-l-affaire-va-om_4264490_1819218.html"]]},
+  {year:'1996–2005',category:'Justice pénale · affaires financières',title:'Affaires du Phocéa, des comptes de l’OM et fraude fiscale',status:'Plusieurs condamnations prononcées à des dates distinctes',text:'Bernard Tapie a également été condamné dans des dossiers financiers distincts : fraude fiscale liée à la gestion du yacht Le Phocéa, puis affaire des comptes de l’Olympique de Marseille. Les décisions ont été prononcées à différentes dates et les peines ont fait l’objet de procédures d’appel et de confusion. Cette notice les regroupe pour signaler l’existence de ces dossiers, sans additionner les peines ni laisser entendre qu’il s’agit d’une seule procédure.',sources:[["Le Monde — principales condamnations, 11 juillet 1996","https://www.lemonde.fr/archives/article/1996/07/11/les-principales-condamnations_3724991_1819218.html"],["Le Monde — affaire des comptes de l’OM, 5 juillet 1997","https://www.lemonde.fr/archives/article/1997/07/05/bernard-tapie-est-condamne-a-un-an-et-demi-de-prison-ferme-dans-l-affaire-des-comptes-de-l-om_3783685_1819218.html"],["Le Monde — condamnation pour fraude fiscale, 16 décembre 2005","https://www.lemonde.fr/societe/article/2005/12/16/trois-ans-de-prison-pour-m-tapie_719365_3224.html"]]}
+];
+POLITICAL_CASES["Charles Pasqua"] = [
+  {year:'2008–2010',category:'Justice pénale · financement électoral',title:'Financement de la campagne européenne de 1999 et casino d’Annemasse',status:'Condamnation définitive · Cour de cassation',text:'Le tribunal correctionnel de Paris condamne Charles Pasqua en mars 2008 à dix-huit mois d’emprisonnement avec sursis dans le dossier relatif au financement de sa campagne européenne de 1999, lié à l’autorisation d’exploitation du casino d’Annemasse. La peine est confirmée en appel en septembre 2009 ; la Cour de cassation rejette son pourvoi le 8 avril 2010, rendant la condamnation définitive.',sources:[["Le Monde — première condamnation, 13 mars 2008","https://www.lemonde.fr/societe/article/2008/03/13/le-tribunal-correctionnel-condamne-pour-la-premiere-fois-charles-pasqua_1022434_3224.html"],["Le Monde — chronologie des condamnations de Charles Pasqua, 30 juin 2015","https://www.lemonde.fr/politique/article/2015/06/30/charles-pasqua-un-habitude-des-tribunaux_4664223_823448.html"]]},
+  {year:'2010',category:'Justice pénale · abus de biens sociaux',title:'Dossier de la Sofremi',status:'Condamnation par la Cour de justice de la République',text:'Le 30 avril 2010, la Cour de justice de la République condamne Charles Pasqua à un an d’emprisonnement avec sursis pour complicité d’abus de biens sociaux et recel dans le dossier de la Sofremi, société de matériel de police liée au ministère de l’Intérieur. Cette procédure est distincte de celle du casino d’Annemasse.',sources:[["Le Monde — récapitulatif des condamnations, 30 juin 2015","https://www.lemonde.fr/politique/article/2015/06/30/charles-pasqua-un-habitude-des-tribunaux_4664223_823448.html"]]}
+];
+
+
+/* Dossiers complémentaires sourcés : on distingue strictement pénal, civil et contentieux électoral. */
+POLITICAL_CASES["Francis Lalanne"] = [
+  {year:'2025–2026',category:'Contentieux électoral · inéligibilité',title:'Absence de dépôt du compte de campagne des européennes de 2024',status:'Inéligibilité de 18 mois prononcée le 17 avril 2025 · période échue le 17 octobre 2026',text:'Le Conseil d’État a prononcé le 17 avril 2025 une inéligibilité de dix-huit mois à l’encontre de Francis Lalanne, à la suite de l’absence de dépôt de son compte de campagne comme tête de liste « France libre » aux élections européennes de juin 2024. Le 26 février 2026, le tribunal administratif de Lyon a rejeté son recours contre le refus d’enregistrer une liste municipale, en raison de cette inéligibilité alors en vigueur. La durée de dix-huit mois arrivait à échéance le 17 octobre 2026. Il s’agit d’une sanction électorale liée au compte de campagne, pas d’une condamnation pénale.',sources:[["Tribunal administratif de Lyon — décision du 27 février 2026","https://lyon.tribunal-administratif.fr/decisions-de-justice/dernieres-decisions/elections-municipales-a-lyon-le-tribunal-rejette-le-recours-contre-le-refus-de-la-prefete-d-enregistrer-la-liste-de-francis-lalanne"]]}
+];
+POLITICAL_CASES["Dieudonné M'Bala M'Bala"] = [
+  {year:'2006–2015',category:'Justice pénale · injures, diffamation et incitation à la haine',title:'Plusieurs condamnations en France pour des propos publics',status:'Plusieurs condamnations prononcées ; certaines devenues définitives',text:'Dieudonné M’Bala M’Bala a fait l’objet de plusieurs condamnations pénales pour injure raciale, diffamation, provocation à la haine et contestation de crimes contre l’humanité. Parmi les décisions recensées figurent des condamnations pour des propos visant les Juifs, une chanson et des séquences de spectacle. Cette notice regroupe les grandes lignes d’un contentieux composé de décisions distinctes ; elle ne remplace pas la lecture de chaque jugement et ne prétend pas dresser un inventaire exhaustif.',sources:[["Le Monde — principaux procès de Dieudonné depuis 2007, 29 janvier 2015","https://www.lemonde.fr/police-justice/article/2015/01/29/dieudonne-huit-proces-perdus-depuis-2007_4565466_1653578.html"],["Cour européenne des droits de l’homme — M’Bala M’Bala c. France, 20 octobre 2015","https://hudoc.echr.coe.int/app/conversion/docx/pdf?filename=CEDH.pdf&id=002-10752&library=ECHR"]]},
+  {year:'2019–2023',category:'Justice pénale · Suisse · discrimination raciale',title:'Condamnation confirmée par le Tribunal fédéral suisse',status:'Condamnation confirmée en 2023',text:'À la suite de propos négationnistes tenus lors de spectacles à Nyon et Genève en 2019, Dieudonné a été condamné en 2021 par le Tribunal de police de Genève pour discrimination raciale, diffamation et injure. La Cour de justice genevoise a confirmé la décision en 2022. Le Tribunal fédéral suisse a rejeté son recours le 16 mars 2023 et confirmé la condamnation pour discrimination raciale.',sources:[["Tribunal fédéral suisse — communiqué du 14 avril 2023","https://www.tribunal-federal.ch/files/live/sites/bger/files/pdf/fr/6b_0777_2022_2023_04_14_T_f_10_42_12.pdf"]]}
+];
+POLITICAL_CASES["Bernard Tapie"].push({
+  year:'2008–2021',category:'Contentieux civil et procédure pénale distincte',title:'Arbitrage Adidas–Crédit lyonnais et restitution des sommes',
+  status:'Relaxe pénale en 2019 · action éteinte à son décès en 2021 · obligation civile de restitution définitive',
+  text:'L’arbitrage privé de 2008 avait accordé plus de 400 millions d’euros aux époux Tapie. Les sentences ont ensuite été annulées au motif d’une fraude affectant l’arbitrage, et la Cour de cassation a confirmé en 2017 l’obligation civile de restituer les sommes perçues. Sur le volet pénal, Bernard Tapie a été relaxé en première instance le 9 juillet 2019 dans les poursuites pour escroquerie et détournement de fonds publics. Son décès, en octobre 2021, a éteint les actions judiciaires à son encontre et rendu cette relaxe définitive à son égard. Il faut donc distinguer la restitution civile des sommes et l’absence de condamnation pénale dans cette procédure.',
+  sources:[["Cour de cassation — arbitrage dans l’affaire Adidas, 30 juin 2016","https://www.courdecassation.fr/toutes-les-actualites/2016/06/30/arbitrage-dans-laffaire-adidas"],["Le Monde — relaxe dans l’affaire de l’arbitrage, 9 juillet 2019","https://www.lemonde.fr/societe/article/2019/07/09/arbitrage-du-credit-lyonnais-juge-pour-escroquerie-bernard-tapie-relaxe_5487192_3224.html"],["Reuters — décès et extinction de l’action pénale, 4 octobre 2021","https://www.boursorama.com/bourse/actualites/france-la-cour-d-appel-reporte-sa-decision-dans-le-dossier-de-l-arbitrage-tapie-sce-ed6dbcb08f3850a8136967a07c8ec10e"],["Le Monde — restitution des 405 millions d’euros, 19 mai 2017","https://www.lemonde.fr/police-justice/article/2017/05/19/tapie-definitivement-condamne-a-rembourser-405-millions-d-euros_5130472_1653578.html"]]
+});
+POLITICAL_CASES["Charles Pasqua"].push(
+  {year:'2013–2015',category:'Justice pénale · Fondation Hamon',title:'Dossier de la Fondation Hamon',status:'Condamnation en première instance non définitive au décès',text:'Charles Pasqua avait été condamné en avril 2013 à deux ans d’emprisonnement avec sursis et deux ans d’inéligibilité dans le dossier de la Fondation Hamon. Il avait fait appel ; il est décédé en juin 2015 avant que la cour d’appel ne statue. La condamnation de première instance ne doit donc pas être présentée comme définitive.',sources:[["Assemblée nationale — biographie et chronologie judiciaire de Charles Pasqua","https://www2.assemblee-nationale.fr/sycomore/fiche/5698"],["Le Monde — état des affaires judiciaires, 30 juin 2015","https://www.lemonde.fr/politique/article/2015/06/30/charles-pasqua-un-habitue-des-tribunaux_4664223_823448.html"]]},
+  {year:'2010–2013',category:'Justice pénale · issues diverses',title:'Autres procédures : acquittements et non-lieu',status:'Acquittements et non-lieu dans plusieurs dossiers distincts',text:'La biographie parlementaire de Charles Pasqua mentionne également des issues judiciaires favorables dans plusieurs procédures : acquittement dans le dossier du siège de GEC-Alsthom Transport (2010), dans l’affaire des ventes d’armes à l’Angola (2011) et dans le dossier « Pétrole contre nourriture » (2013), ainsi qu’un non-lieu dans l’affaire Elf. Ces issues sont rappelées pour que la fiche ne réduise pas toute sa chronologie judiciaire aux seules condamnations.',sources:[["Assemblée nationale — biographie et chronologie judiciaire de Charles Pasqua","https://www2.assemblee-nationale.fr/sycomore/fiche/5698"]]}
+);
+
 function politicalCaseBadge(c){
   const status=(c.status||'').toLowerCase();
   let kind='procedure';
@@ -1360,9 +1488,9 @@ function politicalCaseBadge(c){
 
 function politicalCasesHtml(name){
   const cases = POLITICAL_CASES[name];
-  if(!cases || !cases.length) return '<section class="political-cases political-cases-empty"><div class="political-cases-head"><span class="section-kicker">JUSTICE & CONTROVERSES</span><h3>Aucun dossier majeur retenu</h3><p>La base documentaire actuelle ne retient pas de condamnation ou de procédure judiciaire personnelle suffisamment établie pour être présentée ici comme une affaire majeure. Cela n’exclut pas l’existence de controverses ou de démarches engagées par la personne.</p></div></section>';
-  const convictions=cases.filter(c=>/(condamn|définitive)/i.test(c.status||''));
-  return '<section class="political-cases"><div class="political-cases-head"><div><span class="section-kicker">JUSTICE & CONTROVERSES</span><h3>Chronologie judiciaire</h3><p>Les faits sont classés par année et par statut. Une plainte, une enquête, une mise en examen ou un renvoi ne vaut pas condamnation.</p></div>'+(convictions.length?'<div class="political-case-highlight"><span>CONDAMNATION(S) RETENUE(S)</span><strong>'+convictions.length+'</strong></div>':'')+'</div><div class="political-case-timeline">'+cases.map(c=>'<article class="political-case"><div class="political-case-year">'+safeText(c.year)+'</div><div class="political-case-card"><div class="political-case-meta"><span class="political-case-category">'+safeText(c.category)+'</span>'+politicalCaseBadge(c)+'</div><h4>'+safeText(c.title)+'</h4><p>'+safeText(c.text)+'</p>'+((c.sources||[]).length?'<div class="political-case-sources">'+c.sources.map(src=>'<a href="'+src[1]+'" target="_blank" rel="noreferrer">↗ '+safeText(src[0])+'</a>').join('')+'</div>':'')+'</div></article>').join('')+'</div></section>';
+  if(!cases || !cases.length) return '<section class="political-cases political-cases-empty"><div class="political-cases-head"><span class="section-kicker">AFFAIRES JUDICIAIRES</span><h3>Aucun dossier individuel documenté dans cette fiche</h3><p>Les sources actuellement référencées ne permettent pas d’ajouter ici une affaire judiciaire personnelle suffisamment établie. Cette absence de notice ne constitue pas une preuve qu’aucune procédure n’a jamais existé : elle évite de transformer une rumeur ou une controverse politique en fait judiciaire.</p></div></section>';
+  const sortedCases=[...cases].sort((a,b)=>(parseInt(String(a.year).match(/\d{4}/)?.[0]||'0',10)-parseInt(String(b.year).match(/\d{4}/)?.[0]||'0',10)));
+  return '<section class="political-cases"><div class="political-cases-head"><div><span class="section-kicker">AFFAIRES JUDICIAIRES & DOSSIERS PUBLICS</span><h3>Chronologie des dossiers documentés</h3><p>Actualisation de la fiche : 26 novembre 2026. Une plainte, une enquête, une mise en examen ou un renvoi ne vaut pas condamnation ; une décision de première instance peut encore faire l’objet d’un appel ou d’un pourvoi.</p></div></div><div class="political-case-timeline">'+sortedCases.map(c=>'<article class="political-case"><div class="political-case-year">'+safeText(c.year)+'</div><div class="political-case-card"><div class="political-case-meta"><span class="political-case-category">'+safeText(c.category)+'</span>'+politicalCaseBadge(c)+'</div><h4>'+safeText(c.title)+'</h4><p>'+safeText(c.text)+'</p>'+((c.sources||[]).length?'<div class="political-case-sources">'+c.sources.map(src=>'<a href="'+src[1]+'" target="_blank" rel="noreferrer">↗ '+safeText(src[0])+'</a>').join('')+'</div>':'')+'</div></article>').join('')+'</div></section>';
 }
 
 function politicalTags(d){
@@ -1380,9 +1508,10 @@ function politicalPersonalFactsHtml(d){
     ['ENFANTS', d.children],
     ['ÉTUDES & FORMATION', d.studies],
     ['PARTIS POLITIQUES', d.parties]
-  ];
-  const affiliations = d.religion_maconnique ? '<div class="political-affiliation-card"><div class="political-affiliation-copy"><span>APPARTENANCE SPIRITUEL OU ORDRE</span><strong>'+safeText(d.religion_maconnique)+'</strong></div>'+((d.religion_sources||[]).length?'<div class="political-affiliation-sources">'+d.religion_sources.map(src=>'<a href="'+src[1]+'" target="_blank" rel="noreferrer">↗ '+safeText(src[0])+'</a>').join('')+'</div>':'')+'</div>' : '';
-  return '<section class="profile-card profile-personal-card profile-card-wide"><div class="profile-card-kicker">REPÈRES BIOGRAPHIQUES</div><h3>Vie, formation & affiliations</h3><div class="political-personal-grid">'+items.map(([label,val])=>'<div class="political-personal-item"><span>'+safeText(label)+'</span><strong>'+safeText(val||'—')+'</strong></div>').join('')+'</div>'+affiliations+'<p class="profile-personal-note">Les appartenances spirituelles ou ordres ne sont affichés que lorsqu’ils sont documentés par des sources publiques ; aucune déduction n’est faite à partir de l’origine, du nom ou de la seule pratique culturelle. Les informations historiquement débattues sont signalées comme telles.</p></section>';
+  ].filter(([,value])=>value && String(value).trim() && String(value).trim()!=='—' && String(value).trim()!=='Non renseigné');
+  const affiliations = d.religion_maconnique ? '<div class="political-affiliation-card"><div class="political-affiliation-copy"><span>APPARTENANCE SPIRITUELLE OU ORDRE</span><strong>'+safeText(d.religion_maconnique)+'</strong></div>'+((d.religion_sources||[]).length?'<div class="political-affiliation-sources">'+d.religion_sources.map(src=>'<a href="'+src[1]+'" target="_blank" rel="noreferrer">↗ '+safeText(src[0])+'</a>').join('')+'</div>':'')+'</div>' : '';
+  if(!items.length && !affiliations) return '';
+  return '<section class="profile-card profile-personal-card profile-card-wide"><div class="profile-card-kicker">REPÈRES BIOGRAPHIQUES</div><h3>Vie, formation & affiliations</h3><div class="political-personal-grid">'+items.map(([label,val])=>'<div class="political-personal-item"><span>'+safeText(label)+'</span><strong>'+safeText(val)+'</strong></div>').join('')+'</div>'+affiliations+'<p class="profile-personal-note">Seules les informations biographiques publiques et suffisamment documentées sont affichées. Les appartenances spirituelles ou ordres ne sont mentionnés que lorsqu’ils sont étayés par des sources publiques ; aucune déduction n’est faite à partir du nom ou de l’origine.</p></section>';
 }
 
 function politicalSourcesHtml(name,d,isParty,isPoliticalOffice=false){
@@ -1406,31 +1535,32 @@ function politicalSourcesHtml(name,d,isParty,isPoliticalOffice=false){
 }
 
 function politicalProfileHtml(name,d,isParty,isPoliticalOffice=false,personalInHero=false){
-  const current=POLITICAL_METER[name];
   const tags=politicalTags(d);
   const role=d.dates || d.type || 'Profil politique';
   const entityLabel=isParty?'FORMATION POLITIQUE':(isPoliticalOffice?'PRÉSIDENCE DE LA RÉPUBLIQUE':'PERSONNALITÉ POLITIQUE');
-  const positionLabel=current ? (POLITICAL_METER_DISPLAY[POLITICAL_METER_GROUPS[current.label]||current.label] || POLITICAL_METER_GROUPS[current.label] || current.label) : (isParty ? 'Formation politique' : 'Positionnement à préciser');
-  const positionGuide=current ? (POLITICAL_POSITION_GUIDE[current.label] || POLITICAL_POSITION_GUIDE[POLITICAL_METER_GROUPS[current.label]] || '') : '';
-  const safe = safeText;
-  const deep = d.deepDescriptionHtml || '';
-  const stripHtml = html => String(html||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
-  const firstDeep = stripHtml(deep).slice(0,900);
-  const sources = politicalSourcesHtml(name,d,isParty,isPoliticalOffice);
+  const safe=safeText;
+  const deep=d.deepDescriptionHtml || '';
+  const stripHtml=html=>String(html||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+  const firstDeep=stripHtml(deep).slice(0,900);
+  const sources=politicalSourcesHtml(name,d,isParty,isPoliticalOffice);
+  const chronology=d.chronology || [d.birth&&('Naissance : '+d.birth),d.death&&d.death!=='—'&&('Décès : '+d.death),d.dates&&('Fonction / période : '+d.dates)].filter(Boolean).join(' · ');
+  const affiliations=[d.parties&&('Partis et affiliations : '+d.parties),d.family&&d.family!=='—'&&('Famille : '+d.family)].filter(Boolean).join(' · ');
   const cards=[
-    ['Présentation', d.history || 'Cette fiche présente les principaux éléments biographiques, politiques et historiques documentés.'],
-    ['Repères chronologiques', [d.birth&&('Naissance : '+d.birth),d.death&&('Décès : '+d.death),d.dates&&('Période : '+d.dates),d.reign&&('Période de règne : '+d.reign)].filter(Boolean).join(' · ') || 'Les repères chronologiques détaillés sont présentés avec les sources de la fiche.'],
-    ['Règne et décisions', d.achievements || 'Les principales décisions, responsabilités ou activités publiques sont documentées dans cette fiche.'],
-    ['Pouvoir et société', positionGuide || `${role}. ${tags.length ? 'Thèmes associés : '+tags.join(', ')+'.' : 'Le positionnement et les rapports au pouvoir sont replacés dans leur contexte historique.'}`],
-    ['Famille et alliances', [d.family&&('Famille : '+d.family),d.marriage&&('Mariage / union : '+d.marriage),d.children&&('Enfants : '+d.children),d.parties&&('Partis / alliances : '+d.parties)].filter(Boolean).join(' · ') || 'Les informations familiales ou les alliances sont présentées uniquement lorsqu’elles sont documentées.'],
-    ['Contexte historique', firstDeep || `${d.type||'Cette figure'} est replacé(e) dans les institutions, débats et événements de son époque. ${role}.`],
-    ['Héritage et mémoire', (d.legacy || d.memory || d.achievements || firstDeep || 'La postérité de cette figure est abordée à travers ses actions, les débats suscités et la manière dont elle est représentée dans les sources.')],
+    ['Présentation',d.history || 'Cette fiche présente les principaux éléments biographiques, politiques et historiques documentés.'],
+    ['Repères chronologiques',chronology || 'Les dates et étapes de parcours ne sont pas toutes renseignées dans les sources actuellement référencées.'],
+    ['Actions et responsabilités',d.achievements || 'Les responsabilités, actions et prises de position publiques sont à compléter à partir de sources vérifiables.'],
+    ['Orientation politique et idées',d.power || d.politicalPosition || d.ideology || 'Le repère idéologique indicatif est présenté dans la rubrique de positionnement ci-dessous.'],
+    ['Responsabilités et affiliations',[role,affiliations].filter(Boolean).join(' · ') || 'Les affiliations et responsabilités sont présentées lorsqu’elles sont documentées.'],
+    ['Contexte historique',d.context || d.historicalContext || firstDeep || `${d.type||'Cette personnalité'} est replacée dans les institutions, débats et événements de son époque. ${role}.`],
+    ['Vie personnelle publique',[d.marriage&&('Union : '+d.marriage),d.children&&('Enfants : '+d.children),d.studies&&('Formation : '+d.studies)].filter(Boolean).join(' · ') || 'Les éléments personnels ne sont affichés que lorsqu’ils sont publiquement documentés.'],
+    ['Héritage et mémoire',d.legacy || d.memory || (d.death && d.death!=='—' ? firstDeep : 'Parcours encore en cours : les conséquences et la postérité de ses actions ne peuvent pas être présentées comme définitivement établies.') || 'La postérité de cette personnalité est abordée à travers ses actions, les débats suscités et les sources disponibles.']
   ];
   const cardsHtml=cards.map(([title,text],i)=>`<section class="profile-card ${i===0?'profile-card-wide':''}"><div class="profile-card-kicker">${safe(title.toUpperCase())}</div><h3>${safe(title)}</h3><p>${safe(text)}</p></section>`).join('');
-  const position=`<section class="profile-card"><div class="profile-card-kicker">POSITIONNEMENT</div><div class="profile-position-name">${safe(positionLabel)}</div><p>${safe(positionGuide||'Ce repère sert à situer la fiche. Il ne résume pas à lui seul l’ensemble du parcours, des propositions, des alliances ou des prises de position.')}</p><div class="profile-tags">${tags.map(t=>'<span>'+safe(t)+'</span>').join('')}</div></section>`;
-  const personal = (!isParty && !personalInHero) ? politicalPersonalFactsHtml(d) : '';
-  const gauge = (!isParty && current) ? politicalGaugeHtml(name) : '';
-  return '<div class="political-unified-sheet"><div class="political-sheet-label">'+entityLabel+'</div><div class="political-profile-grid">'+cardsHtml+position+'</div>'+personal+gauge+(name ? politicalCasesHtml(name) : '')+sources+'</div>';
+  const isHumanProfile=!isParty && !['Antifascisme','Croix celtique'].includes(name);
+  const personal=(isHumanProfile && !personalInHero)?politicalPersonalFactsHtml(d):'';
+  const gauge=isHumanProfile?politicalGaugeHtml(name):'';
+  const legal=isHumanProfile?politicalCasesHtml(name):'';
+  return '<div class="political-unified-sheet"><div class="political-sheet-label">'+entityLabel+'</div><div class="political-profile-grid">'+cardsHtml+'</div>'+personal+gauge+legal+sources+'</div>';
 }
 
 
@@ -1965,7 +2095,7 @@ function openTopic(k){
   // On s'appuie d'abord sur l'épingle .party-pin, puis sur le type pour les recherches directes.
   const partyPin=[...document.querySelectorAll('.party-pin[data-politique]')].find(el=>el.dataset.politique===k);
   const isParty=!!partyPin || /^(?:Parti|Mouvement)\b/i.test(typeText);
-  const isPolitical=typeText.startsWith('Politique') || typeText.startsWith('Président de la République') || typeText.startsWith('Chef de l’État français');
+  const isPolitical=typeText.startsWith('Politique') || typeText.startsWith('Personnalité publique') || typeText.startsWith('Personnalité politique') || typeText.startsWith('Président de la République') || typeText.startsWith('Chef de l’État français');
   const isPoliticalOffice=typeText.startsWith('Président de la République') || typeText.startsWith('Chef de l’État français');
   const normalizeEventLabel = value => String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fr-FR').replace(/[^a-z0-9]+/g,' ').trim();
   const eventKeyLabel = normalizeEventLabel(d.title || k);
@@ -3408,21 +3538,167 @@ decorateRulerPins();
     }
   };
 
+  // Photographies documentaires : liens directs vers les vignettes Wikimedia Commons.
+  // Chaque crédit renvoie à la page du fichier, qui détaille l'auteur et la licence.
+  const photos = {
+    'deputes': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Panorama_de_l'h%C3%A9micycle_de_l'assembl%C3%A9e_nationale.jpg/960px-Panorama_de_l'h%C3%A9micycle_de_l'assembl%C3%A9e_nationale.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Panorama_de_l'hémicycle_de_l'assemblée_nationale.jpg",
+      alt:"Vue panoramique de l'hémicycle de l'Assemblée nationale française",
+      caption:"Hémicycle de l’Assemblée nationale — photographie panoramique, 2009",
+      credit:"Richard Ying et Tangui Morlier",
+      license:"CC BY-SA 3.0"
+    },
+    'senateurs': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Fa%C3%A7ade_du_Palais_du_Luxembourg.JPG/960px-Fa%C3%A7ade_du_Palais_du_Luxembourg.JPG",
+      page:"https://commons.wikimedia.org/wiki/File:Façade_du_Palais_du_Luxembourg.JPG",
+      alt:"Façade du Palais du Luxembourg à Paris, siège du Sénat français",
+      caption:"Palais du Luxembourg, siège du Sénat — Paris",
+      credit:"Frenchinspiration",
+      license:"CC BY-SA 3.0"
+    },
+    'conseillers-constitutionnels': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Conseil_Constitutionnel_Palais-Royal.jpg/960px-Conseil_Constitutionnel_Palais-Royal.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Conseil_Constitutionnel_Palais-Royal.jpg",
+      alt:"Entrée du Conseil constitutionnel au Palais-Royal à Paris",
+      caption:"Entrée du Conseil constitutionnel, au Palais-Royal",
+      credit:"Babyaimeesmom",
+      license:"CC BY-SA 4.0"
+    },
+    'premier-ministre': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Grande_cour_de_l'H%C3%B4tel_Matignon_Sep_2017.jpg/960px-Grande_cour_de_l'H%C3%B4tel_Matignon_Sep_2017.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Grande_cour_de_l'Hôtel_Matignon_Sep_2017.jpg",
+      alt:"Cour d'honneur de l'hôtel Matignon, résidence officielle du Premier ministre",
+      caption:"Hôtel Matignon, résidence officielle du Premier ministre — photo de 2017",
+      credit:"ScareCriterion12",
+      license:"CC BY-SA 4.0"
+    },
+    'ministres': {
+      src:"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Le_Trocquer%2C_Bonnevay%2C_Dior%2C_Maginot%2C_B%C3%A9rard%2C_Loucheur%2C_1921.jpg/960px-Le_Trocquer%2C_Bonnevay%2C_Dior%2C_Maginot%2C_B%C3%A9rard%2C_Loucheur%2C_1921.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Le_Trocquer,_Bonnevay,_Dior,_Maginot,_Bérard,_Loucheur,_1921.jpg",
+      alt:"Photographie d'un groupe de ministres français à la sortie du palais de l'Élysée en 1921",
+      caption:"Le Conseil des ministres à la sortie de l’Élysée, 1921 — photographie d’archives",
+      credit:"Agence de presse Mondial Photo-Presse · source numérisée par la Bibliothèque nationale de France",
+      license:"Domaine public (attribution de l’auteur)"
+    },
+    'maires': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/%C3%89charpe_tricolore_de_maire_(France).jpg/960px-%C3%89charpe_tricolore_de_maire_(France).jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Écharpe_tricolore_de_maire_(France).jpg",
+      alt:"Écharpe tricolore portée par les maires français",
+      caption:"Écharpe tricolore, symbole de la fonction de maire",
+      credit:"Claude Humbert",
+      license:"CC BY-SA 4.0"
+    },
+    'conseillers-municipaux': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/c/cb/Salle_du_Conseil_Municipal.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Salle_du_Conseil_Municipal.jpg",
+      alt:"Salle du conseil municipal de Boulzicourt, avec tables et sièges disposés pour une séance",
+      caption:"Salle du conseil municipal de Boulzicourt",
+      credit:"MAUROY Pascal",
+      license:"CC BY-SA 4.0"
+    },
+    'conseillers-communautaires': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Capitole_Toulouse_-_Salle_du_Conseil_municipal.jpg/960px-Capitole_Toulouse_-_Salle_du_Conseil_municipal.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Capitole_Toulouse_-_Salle_du_Conseil_municipal.jpg",
+      alt:"Salle du conseil municipal du Capitole de Toulouse, exemple d'une assemblée locale délibérante",
+      caption:"Salle du conseil municipal du Capitole de Toulouse — illustration d’une assemblée locale délibérante, et non d’un conseil communautaire précis",
+      credit:"Didier Descouens",
+      license:"CC BY-SA 4.0"
+    },
+    'regions': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Conseil_R%C3%A9gional_d'%C3%8Ele-de-France%2C_%C3%A0_Saint-Ouen-sur-Seine_2.jpg/960px-Conseil_R%C3%A9gional_d'%C3%8Ele-de-France%2C_%C3%A0_Saint-Ouen-sur-Seine_2.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Conseil_Régional_d'Île-de-France,_à_Saint-Ouen-sur-Seine_2.jpg",
+      alt:"Bâtiment du conseil régional d'Île-de-France à Saint-Ouen-sur-Seine",
+      caption:"Conseil régional d’Île-de-France, à Saint-Ouen-sur-Seine",
+      credit:"Teachix",
+      license:"CC BY-SA 4.0"
+    },
+    'departements': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/H%C3%B4tel_du_D%C3%A9partement.jpg/960px-H%C3%B4tel_du_D%C3%A9partement.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Hôtel_du_Département.jpg",
+      alt:"Photographie de l'hôtel du département, vue depuis la citadelle",
+      caption:"Hôtel du Département — vue depuis la citadelle",
+      credit:"LAMI Jean-François",
+      license:"CC BY-SA 4.0"
+    },
+    'paris-capitale': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Paris_aerial_view.jpg/960px-Paris_aerial_view.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Paris_aerial_view.jpg",
+      alt:"Vue aérienne de Paris et de ses monuments",
+      caption:"Vue aérienne de Paris",
+      credit:"pxhere",
+      license:"CC0 1.0 — domaine public"
+    },
+    'devise-republique': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/French_Flag_Flying.jpg/960px-French_Flag_Flying.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:French_Flag_Flying.jpg",
+      alt:"Drapeau français flottant sous l'Arc de Triomphe à Paris",
+      caption:"Drapeau tricolore sous l’Arc de Triomphe, Paris",
+      credit:"Christopher Macsurak",
+      license:"CC BY-SA 4.0"
+    },
+    'symbole-republicain': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Sceau_de_la_R%C3%A9publique.jpg/960px-Sceau_de_la_R%C3%A9publique.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Sceau_de_la_République.jpg",
+      alt:"Reproduction historique des deux faces du Grand Sceau de la République française, daté de 1848",
+      caption:"Grand Sceau de la République, reproduction publiée en 1848 — document historique numérisé",
+      credit:"Jacques-Jean Barre (auteur du sceau) ; scan de L’Illustration",
+      license:"Domaine public"
+    },
+    'elysee': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Fa%C3%A7ade_du_Palais_de_l'Elys%C3%A9e.JPG/960px-Fa%C3%A7ade_du_Palais_de_l'Elys%C3%A9e.JPG",
+      page:"https://commons.wikimedia.org/wiki/File:Façade_du_Palais_de_l'Elysée.JPG",
+      alt:"Façade du palais de l'Élysée, siège de la présidence de la République française",
+      caption:"Façade du palais de l’Élysée, Paris",
+      credit:"Erwmat",
+      license:"CC BY-SA 3.0"
+    },
+    'population': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Jour_de_march%C3%A9_sur_la_place.jpg/960px-Jour_de_march%C3%A9_sur_la_place.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Jour_de_marché_sur_la_place.jpg",
+      alt:"Habitants et visiteurs dans un marché de plein air à Marseille",
+      caption:"Jour de marché, place Jean-Jaurès à Marseille — scène de vie quotidienne",
+      credit:"LaloMassalia",
+      license:"CC0 1.0 — domaine public"
+    },
+    'pib': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Usine_Annemasse.jpg/960px-Usine_Annemasse.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Usine_Annemasse.jpg",
+      alt:"Ligne de production industrielle dans une usine à Annemasse",
+      caption:"Chaîne de production industrielle, usine d’Annemasse",
+      credit:"Sergelamy28",
+      license:"CC0 1.0 — domaine public"
+    },
+    'euro': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Euro_coins_(01).jpg/960px-Euro_coins_(01).jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Euro_coins_(01).jpg",
+      alt:"Photographie de pièces en euros de différentes valeurs",
+      caption:"Pièces en euros — photographie du service audiovisuel de la Commission européenne",
+      credit:"Lukasz Kobus / Commission européenne",
+      license:"CC BY 4.0"
+    },
+    'union-europeenne': {
+      src:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Hemicycle_atmosphere_in_Strasbourg.jpg/960px-Hemicycle_atmosphere_in_Strasbourg.jpg",
+      page:"https://commons.wikimedia.org/wiki/File:Hemicycle_atmosphere_in_Strasbourg.jpg",
+      alt:"Hémicycle du Parlement européen à Strasbourg pendant une séance plénière",
+      caption:"Hémicycle du Parlement européen à Strasbourg — séance plénière de mars 2024",
+      credit:"© European Union 2023 — Source: European Parliament",
+      license:"CC BY 4.0"
+    }
+  };
+
   const escapeHtml=(value)=>String(value).replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
   const openInfo=(id)=>{
-    const data=descriptions[id], overlay=document.getElementById('modal'), reader=document.getElementById('reader');
+    const data=descriptions[id], photo=photos[id], overlay=document.getElementById('modal'), reader=document.getElementById('reader');
     if(!data||!overlay||!reader) return;
     const factsHtml=(data.facts||[]).map(([label,val])=>`<div class="reader-fact"><span>${escapeHtml(label)}</span><strong>${escapeHtml(val||'—')}</strong></div>`).join('');
     const sourcesHtml=(data.sources||[]).map(([label,url])=>`<div class="source-row"><span>↗</span><a href="${url}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a></div>`).join('');
     const visualIcon = id==='deputes'?'Assemblée':id==='senateurs'?'Sénat':id==='regions'?'Régions':id==='departements'?'Départements':id==='paris-capitale'?'PARIS':id==='euro'?'€':id==='union-europeenne'?'UE':id==='population'?'POP':id==='pib'?'PIB':'RF';
+    const photoHtml=photo?`<figure class="institution-photo-frame"><img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.alt)}" loading="eager" decoding="async" referrerpolicy="no-referrer"><div class="institution-photo-overlay"><span class="institution-visual-kicker">${escapeHtml(data.eyebrow)}</span><strong>${escapeHtml(data.value)}</strong><span>${escapeHtml(visualIcon||'')}</span></div><figcaption><span class="institution-photo-caption">${escapeHtml(photo.caption)}</span><span class="institution-photo-credit">Photo : ${escapeHtml(photo.credit)} · ${escapeHtml(photo.license)} · <a href="${escapeHtml(photo.page)}" target="_blank" rel="noopener noreferrer">voir le fichier et sa licence</a></span></figcaption></figure>`:'';
     reader.innerHTML=`
       <div class="reader-hero institution-reader-hero">
         <div class="reader-visual institution-visual">
-          <div class="institution-visual-card">
-            <span class="institution-visual-kicker">${escapeHtml(data.eyebrow)}</span>
-            <strong>${escapeHtml(data.value)}</strong>
-            <span>${escapeHtml(visualIcon)}</span>
-          </div>
+          ${photoHtml}
           <div class="reader-portrait-caption">FICHE INSTITUTIONNELLE</div>
         </div>
         <div class="reader-intro">
@@ -3460,6 +3736,8 @@ decorateRulerPins();
           ${sourcesHtml || '<div class="source-row"><span>•</span><span>Sources institutionnelles à compléter.</span></div>'}
         </div>
       </div>`;
+    const photoImage=reader.querySelector('.institution-photo-frame img');
+    if(photoImage) photoImage.addEventListener('error',()=>{ photoImage.remove(); photoImage.closest('.institution-photo-frame')?.classList.add('is-missing'); },{once:true});
     overlay.hidden=false;
     document.body.style.overflow='hidden';
     const close=overlay.querySelector('[data-close]');
@@ -3537,6 +3815,25 @@ const REBUILT_POLITICAL_PROFILES = {
   }
 };
 
+/* Réintègre les données enrichies des anciennes fiches autonomes au modèle commun. */
+for (const [name,profile] of Object.entries(REBUILT_POLITICAL_PROFILES)) {
+  const base=D[name]||POLITIQUES[name]||{};
+  const fact=(label)=>((profile.facts||[]).find(item=>item[0]===label)||[])[1];
+  D[name]={...base,
+    title:profile.title||base.title||name,
+    type:base.type||profile.type||'Politique · Personnalité publique',
+    dates:profile.role||base.dates,
+    birth:fact('Naissance')||base.birth,
+    death:fact('Décès')||base.death,
+    portrait:profile.portrait||base.portrait,
+    history:profile.history||base.history,
+    achievements:profile.achievements||base.achievements,
+    sources:profile.sources&&profile.sources.length?profile.sources:base.sources,
+    deepDescriptionHtml:base.deepDescriptionHtml||''
+  };
+  D[name].deepDescriptionHtml=buildDeepDescriptionHtml(D[name]);
+}
+
 function openRebuiltPoliticalProfile(name){
   const d = REBUILT_POLITICAL_PROFILES[name];
   const modal = document.getElementById('modal');
@@ -3580,12 +3877,10 @@ function openRebuiltPoliticalProfile(name){
 }
 
 /* Intercepte les trois noms avant le rendu générique afin qu'ils restent toujours accessibles. */
+/* Les anciennes fiches autonomes sont désormais fusionnées dans D ; toutes les personnalités utilisent le même rendu. */
 if (typeof window !== 'undefined' && typeof window.openTopic === 'function') {
   const __lysOriginalOpenTopic = window.openTopic;
-  window.openTopic = function(name){
-    if (REBUILT_POLITICAL_PROFILES[name]) return openRebuiltPoliticalProfile(name);
-    return __lysOriginalOpenTopic(name);
-  };
+  window.openTopic = function(name){ return __lysOriginalOpenTopic(name); };
 }
 
 
@@ -4706,40 +5001,40 @@ for (const [name, d] of Object.entries(POLITIQUES)) D[name] = d;
 /* V129 — Refonte propre des quatre fiches politiques demandées. */
 const REBUILT_FOUR_PROFILES = {
   "Marine Tondelier": {
-    title:"Marine Tondelier", type:"PERSONNALITÉ POLITIQUE · LES ÉCOLOGISTES", role:"Secrétaire nationale des Écologistes depuis 2022 · conseillère régionale des Hauts-de-France",
+    title:"Marine Tondelier", type:"PERSONNALITÉ POLITIQUE · LES ÉCOLOGISTES", role:"Secrétaire nationale des Écologistes · conseillère régionale des Hauts-de-France · candidate déclarée pour 2027 ; candidature autonome maintenue par le conseil fédéral le 21 septembre 2026",
     portrait:"assets/politique/marine-tondelier.jpg", birth:"23 août 1986", death:"—", parties:"Les Écologistes / EELV",
     presentation:"Responsable politique écologiste française née le 23 août 1986 à Bois-Bernard. Engagée dans la vie publique à Hénin-Beaumont, elle devient secrétaire nationale d’EELV en 2022 et accompagne ensuite la transformation du parti en Les Écologistes.",
-    chronology:"1986 : naissance dans le Pas-de-Calais · 2009 : adhésion aux Verts · 2014 : élue conseillère municipale d’Hénin-Beaumont · 2021 : conseillère régionale des Hauts-de-France · 2022 : secrétaire nationale d’EELV.",
+    chronology:"1986 : naissance dans le Pas-de-Calais · 2009 : adhésion aux Verts · 2014–2026 : conseillère municipale d’opposition à Hénin-Beaumont · 2021 : conseillère régionale des Hauts-de-France · décembre 2022 : secrétaire nationale d’EELV, puis des Écologistes · 22 octobre 2025 : déclaration de candidature à la présidentielle de 2027 · 21 septembre 2026 : le conseil fédéral maintient sa candidature autonome ; consultation des adhérents annoncée du 10 au 13 décembre 2026.",
     decisions:"Structuration du mouvement écologiste, campagnes électorales nationales, défense de la transition écologique, de la justice sociale et des services publics.",
     power:"Positionnement écologiste, avec une forte dimension territoriale et une volonté d’élargir l’écologie politique au-delà du seul électorat traditionnel.",
     family:"Vie privée peu exposée. Les sources publiques mentionnent un PACS et un enfant ; la fiche se limite aux éléments rendus publics.",
     context:"Elle s’inscrit dans la recomposition de l’écologie politique française après la présidentielle de 2022 et la transformation d’EELV en Les Écologistes.",
     legacy:"Figure nationale de l’écologie politique contemporaine et du renouvellement générationnel des dirigeants écologistes.",
-    sources:[["Les Écologistes — présentation", "https://lesecologistes.fr/"],["Assemblée nationale — bases biographiques", "https://www.assemblee-nationale.fr/dyn/deputes"],["Terres et Territoires — repères biographiques", "https://terres-et-territoires.com/wp-content/uploads/2025/08/430-22-08-25_compressed-1.pdf"]]
+    sources:[["Les Écologistes — site officiel", "https://lesecologistes.fr/"],["Le Figaro — déclaration de candidature, 13 octobre 2026", "https://www.lefigaro.fr/elections/presidentielles/candidats/presidentielle-2027-marine-tondelier-candidate-du-parti-les-ecologistes-20261013"],["PresiTracker 2027 — statut de candidature, mise à jour du 25 novembre 2026", "https://presitracker2027.fr/candidats/tondelier"],["PoliTrust — parcours et mandats", "https://www.politrust.fr/elus/marine-tondelier"],["Terres et Territoires — repères biographiques", "https://terres-et-territoires.com/wp-content/uploads/2025/08/430-22-08-25_compressed-1.pdf"]]
   },
   "Fabien Roussel": {
-    title:"Fabien Roussel", type:"PERSONNALITÉ POLITIQUE · PARTI COMMUNISTE FRANÇAIS", role:"Secrétaire national du PCF · ancien député du Nord · candidat à la présidentielle de 2022",
+    title:"Fabien Roussel", type:"PERSONNALITÉ POLITIQUE · PARTI COMMUNISTE FRANÇAIS", role:"Secrétaire national du PCF · maire de Saint-Amand-les-Eaux · candidat du PCF à la présidentielle de 2027",
     portrait:"assets/politique/fabien-roussel.jpg", birth:"16 avril 1969", death:"—", parties:"Parti communiste français",
     presentation:"Homme politique français né le 16 avril 1969 à Béthune. Issu du bassin minier du Nord, il travaille dans l’audiovisuel et le journalisme avant de prendre des responsabilités au Parti communiste français puis d’entrer à l’Assemblée nationale.",
-    chronology:"1969 : naissance à Béthune · 2017 : élu député du Nord · 2018 : secrétaire national du PCF · 2022 : candidat à l’élection présidentielle · 2022–2024 : député du Nord.",
+    chronology:"1969 : naissance à Béthune · 2017–2024 : député du Nord · 2018 : secrétaire national du PCF · janvier 2025 : élu maire de Saint-Amand-les-Eaux · mars 2026 : réélu maire · 6 septembre 2026 : désigné candidat du PCF à la présidentielle de 2027 par 72 % des suffrages militants.",
     decisions:"Défense des salaires, des services publics, de l’industrie et de la réindustrialisation ; proposition d’un rôle économique important de l’État.",
     power:"Positionnement communiste contemporain, attaché au monde du travail et à la souveraineté industrielle, avec une stratégie électorale distincte de celle de La France insoumise.",
     family:"Les informations familiales publiquement pertinentes restent limitées dans cette fiche encyclopédique.",
     context:"Son parcours se situe dans la transformation du PCF après le recul du vote communiste traditionnel et dans les recompositions de la gauche française.",
     legacy:"Figure importante du renouvellement du PCF et de son repositionnement sur le travail, l’industrie et la souveraineté économique.",
-    sources:[["Assemblée nationale — Fabien Roussel", "https://www2.assemblee-nationale.fr/sycomore/fiche?num_dept=19365"],["PCF — Fabien Roussel", "https://www.pcf.fr/"]]
+    sources:[["Assemblée nationale — Fabien Roussel", "https://www2.assemblee-nationale.fr/sycomore/fiche?num_dept=19365"],["PCF — désignation de Fabien Roussel, déclaration du 7 novembre 2026", "https://www.pcf.fr/presidentielle_2027_lexigence_de_respect_de_nos_choix_democratiques_declaration_du_conseil_national_du_pcf"],["LCP — candidature officielle du PCF, 6 septembre 2026", "https://lcp.fr/actualites/fabien-roussel-officiellement-candidat-du-pcf-a-l-election-presidentielle-de-2027-441389"]]
   },
   "Nathalie Arthaud": {
-    title:"Nathalie Arthaud", type:"PERSONNALITÉ POLITIQUE · LUTTE OUVRIÈRE", role:"Porte-parole de Lutte ouvrière · enseignante · candidate à trois élections présidentielles",
+    title:"Nathalie Arthaud", type:"PERSONNALITÉ POLITIQUE · LUTTE OUVRIÈRE", role:"Porte-parole de Lutte ouvrière · enseignante · candidate à la présidentielle de 2027",
     portrait:"assets/politique/nathalie-arthaud.jpg", birth:"23 février 1970", death:"—", parties:"Lutte ouvrière",
     presentation:"Responsable politique française née le 23 février 1970 à Peyrins, dans la Drôme. Enseignante en économie et gestion, elle devient porte-parole de Lutte ouvrière et porte à plusieurs reprises la candidature de l’organisation à l’élection présidentielle.",
-    chronology:"1970 : naissance à Peyrins · 1988 : adhésion à Lutte ouvrière · 2008 : conseillère municipale à Vaulx-en-Velin · 2012, 2017 et 2022 : candidate à la présidentielle.",
+    chronology:"1970 : naissance à Peyrins · 1988 : adhésion à Lutte ouvrière · 2008 : conseillère municipale à Vaulx-en-Velin · 2012, 2017 et 2022 : candidatures à la présidentielle · 19 octobre 2026 : annonce une quatrième candidature pour 2027 et lance une tournée de meetings.",
     decisions:"Défense des salariés, opposition au capitalisme, revendication d’augmentations salariales, de services publics renforcés et d’une rupture avec la logique patronale.",
     power:"Communisme révolutionnaire et trotskisme ; stratégie politique fondée sur l’indépendance de classe et la critique des institutions de la Ve République.",
     family:"Informations familiales privées limitées aux éléments rendus publics ; aucun élément non vérifié n’est ajouté.",
     context:"Elle incarne la continuité de Lutte ouvrière dans l’espace électoral français après Arlette Laguiller et représente un courant révolutionnaire distinct de la gauche gouvernementale.",
     legacy:"Figure durable de l’extrême gauche électorale française et principale porte-parole contemporaine de Lutte ouvrière.",
-    sources:[["Lutte ouvrière — Nathalie Arthaud", "https://www.lutte-ouvriere.org/"],["France Politique — Nathalie Arthaud", "https://www.france-politique.fr/nathalie-arthaud.htm"],["Vie publique", "https://www.vie-publique.fr/"]]
+    sources:[["Lutte ouvrière — page de campagne présidentielle 2027", "https://www.lutte-ouvriere.org/portail/nathalie-arthaud.html"],["Le Monde — annonce de la candidature, 19 octobre 2026", "https://www.lemonde.fr/politique/article/2026/10/19/presidentielle-2027-pres-de-toulouse-nathalie-arthaud-candidate-a-une-election-dont-il-ne-faut-pas-tout-attendre_6797506_823448.html"],["France Politique — Nathalie Arthaud", "https://www.france-politique.fr/nathalie-arthaud.htm"]]
   },
   "Robert Badinter": {
     title:"Robert Badinter", type:"PERSONNALITÉ POLITIQUE · JUSTICE ET DROITS DE L’HOMME", role:"Garde des Sceaux (1981–1986) · président du Conseil constitutionnel (1986–1995) · sénateur des Hauts-de-Seine (1995–2011)",
@@ -4755,6 +5050,40 @@ const REBUILT_FOUR_PROFILES = {
   }
 };
 
+/* V129 — ces quatre fiches utilisent désormais le même modèle que toutes les autres personnalités. */
+for (const [name,profile] of Object.entries(REBUILT_FOUR_PROFILES)) {
+  const base=D[name]||POLITIQUES[name]||{};
+  D[name]={...base,
+    title:profile.title||base.title||name,
+    type:base.type||('Politique · '+(profile.parties||profile.type||'Personnalité publique')),
+    dates:profile.role||base.dates,
+    birth:profile.birth||base.birth,
+    death:profile.death||base.death,
+    parties:profile.parties||base.parties,
+    portrait:profile.portrait||base.portrait,
+    history:profile.presentation||base.history,
+    chronology:profile.chronology||base.chronology,
+    context:profile.context||base.context,
+    power:profile.power||base.power,
+    achievements:profile.decisions||base.achievements,
+    family:profile.family||base.family,
+    legacy:profile.legacy||base.legacy,
+    sources:profile.sources&&profile.sources.length?profile.sources:base.sources
+  };
+  D[name].deepDescriptionHtml=buildDeepDescriptionHtml(D[name]);
+}
+
+/* Actualisations de fonctions et mandats après les municipales et les désignations de 2026. */
+Object.assign(POLITIQUES, {
+  "Marine Tondelier": {...POLITIQUES["Marine Tondelier"], dates:"Secrétaire nationale des Écologistes depuis décembre 2022 · conseillère régionale des Hauts-de-France depuis 2021 · s’est déclarée candidate à la présidentielle de 2027 le 22 octobre 2025"},
+  "Fabien Roussel": {...POLITIQUES["Fabien Roussel"], dates:"Secrétaire national du PCF · maire de Saint-Amand-les-Eaux depuis janvier 2025, réélu en mars 2026 · candidature présidentielle investie par le PCF en septembre 2026", history:"Fabien Roussel est un homme politique français, secrétaire national du Parti communiste français depuis 2018. Député du Nord de 2017 à 2024, il est élu maire de Saint-Amand-les-Eaux en janvier 2025 puis réélu en mars 2026. Après un vote favorable des adhérents du PCF, il officialise sa candidature à l’élection présidentielle de 2027 le 6 septembre 2026.", achievements:"Son action et ses propositions mettent notamment l’accent sur les salaires, les services publics, l’industrie, la réindustrialisation et le rôle économique de l’État. Il a été candidat à l’élection présidentielle de 2022 et a été investi par le PCF pour celle de 2027.", sources:[["PCF — composition de l’exécutif national, août 2026","https://www.pcf.fr/le_conseil_national_du_pcf_a_adopte_son_nouvel_executif_national"],["AFP — candidature officialisée le 6 septembre 2026","https://www.afp.com/en/node/3837545"],["Le Monde — élection à la mairie, 31 janvier 2025","https://www.lemonde.fr/politique/article/2025/01/31/le-communiste-fabien-roussel-devient-maire-de-saint-amand-les-eaux_6524865_823448.html"]]},
+  "Nathalie Arthaud": {...POLITIQUES["Nathalie Arthaud"], dates:"Porte-parole de Lutte ouvrière · enseignante · candidature à la présidentielle de 2027 annoncée en octobre 2026", achievements:"Elle défend une orientation communiste révolutionnaire et trotskiste, la lutte contre les inégalités de classe et les revendications des salariés. Candidate en 2012, 2017 et 2022, elle a lancé en octobre 2026 sa tournée de meetings pour une quatrième candidature à l’élection présidentielle.", sources:[["Le Monde — lancement de sa campagne présidentielle, 19 octobre 2026","https://www.lemonde.fr/politique/article/2026/10/19/presidentielle-2027-pres-de-toulouse-nathalie-arthaud-candidate-a-une-election-dont-il-ne-faut-pas-tout-attendre_6797506_823448.html"],["Lutte ouvrière — site officiel","https://www.lutte-ouvriere.org/"]]}
+});
+for (const name of ["Marine Tondelier","Fabien Roussel","Nathalie Arthaud"]) {
+  D[name]={...D[name],...POLITIQUES[name]};
+  D[name].deepDescriptionHtml=buildDeepDescriptionHtml(D[name]);
+}
+
 function openRebuiltFourProfile(name){
   const d=REBUILT_FOUR_PROFILES[name], modal=document.getElementById('modal'), reader=document.getElementById('reader');
   if(!d||!modal||!reader)return;
@@ -4766,11 +5095,45 @@ function openRebuiltFourProfile(name){
 }
 (function(){
   const original=window.openTopic;
-  if(typeof original==='function'){
-    window.openTopic=function(name){if(REBUILT_FOUR_PROFILES[name]) return openRebuiltFourProfile(name); return original(name)};
-  }
+  if(typeof original==='function') window.openTopic=function(name){ return original(name); };
 })();
 
+
+
+/* Repères biographiques historiques vérifiés auprès des archives parlementaires. */
+for (const [name,patch] of Object.entries({
+  "Lionel Jospin": {birth:"12 juillet 1937", death:"22 mars 2026", dates:"Premier ministre (1997–2002) · ministre de l’Éducation nationale (1988–1992) · premier secrétaire du Parti socialiste (1981–1988 et 1995–1997)"},
+  "Olivier Marleix": {birth:"6 février 1971", death:"7 juillet 2025", dates:"Député d’Eure-et-Loir (2012–2025) · président du groupe Les Républicains à l’Assemblée nationale (2022–2024)"}
+})) {
+  if(D[name]) {
+    D[name]={...D[name],...patch};
+    const additions = name==="Lionel Jospin"
+      ? [["Assemblée nationale — biographie de Lionel Jospin","https://www2.assemblee-nationale.fr/sycomore/fiche/4052"]]
+      : [["Assemblée nationale — mandat et biographie d’Olivier Marleix","https://www2.assemblee-nationale.fr/sycomore/fiche/18478"],["Élysée — hommage à Olivier Marleix, 8 juillet 2025","https://www.elysee.fr/emmanuel-macron/2025/07/08/disparition-dolivier-marleix"]];
+    D[name].sources=[...(D[name].sources||[]),...additions].filter((x,i,a)=>a.findIndex(y=>y[1]===x[1])===i);
+    D[name].deepDescriptionHtml=buildDeepDescriptionHtml(D[name]);
+  }
+}
+
+/* Sources de repérage pour les personnalités historiques sans rubrique idéologique préexistante. */
+const POLITICAL_MARKER_SOURCES = {
+  "Bernard Tapie": [["Assemblée nationale — biographie de Bernard Tapie","https://www2.assemblee-nationale.fr/sycomore/fiche?num_dept=6949"]],
+  "Charles Pasqua": [["Sénat — biographie de Charles Pasqua","https://www.senat.fr/senateur/pasqua_charles77053g.html"]],
+  "Jean-Marie Le Pen": [["Assemblée nationale — archives parlementaires","https://www.assemblee-nationale.fr/"]],
+  "Lionel Jospin": [["Assemblée nationale — biographie de Lionel Jospin","https://www2.assemblee-nationale.fr/sycomore/fiche/4052"]],
+  "Olivier Marleix": [["Assemblée nationale — biographie d’Olivier Marleix","https://www2.assemblee-nationale.fr/sycomore/fiche/18478"],["Élysée — hommage à Olivier Marleix","https://www.elysee.fr/emmanuel-macron/2025/07/08/disparition-dolivier-marleix"]],
+  "Pierre Bérégovoy": [["Vie publique — repères sur les Premiers ministres","https://www.vie-publique.fr/fiches/19497-qui-etaient-les-premiers-ministres-de-la-ve-republique"]],
+  "Raymond Barre": [["Ministère de l’Économie — archives Raymond Barre","https://www.economie.gouv.fr/saef/raymond-barre"]],
+  "Robert Badinter": [["Sénat — biographie de Robert Badinter","https://www.senat.fr/senateur/badinter_robert95006b.html"]],
+  "Simone Veil": [["Union européenne — Simone Veil, pionnière de l’UE","https://european-union.europa.eu/principles-countries-history/history-eu/eu-pioneers/simone-veil_fr"],["Assemblée nationale — parcours de Simone Veil","https://www2.assemblee-nationale.fr/17/evenements/2024/cinquantenaire-de-la-loi-veil-relative-a-l-ivg/simone-veil-1927-2017-un-parcours-d-engagement"]],
+  "Caroline Galactéros": [["Geopragma — biographie de Caroline Galactéros","https://geopragma.fr/caroline-galacteros/"],["Geopragma — FAQ sur son approche et son indépendance","https://geopragma.fr/faq/"]],
+  "Dieudonné M'Bala M'Bala": [["Cour européenne des droits de l’homme — M’Bala M’Bala c. France","https://hudoc.echr.coe.int/app/conversion/docx/pdf?filename=CEDH.pdf&id=001-158752&library=ECHR"]],
+  "Francis Lalanne": [["Le Parisien — programme et candidature de 2027, 19 août 2026","https://www.leparisien.fr/elections/presidentielle/presidentielle-2027-francis-lalanne-officiellement-candidat-son-premier-meeting-de-campagne-annonce-a-paris-19-08-2026-2VLEW57SFZDZFP6AQ34HPMAZJM.php"],["TF1 Info — biographie et candidature","https://www.tf1info.fr/actualite/francis-lalanne-14061/"]],
+  "Patrick Sébastien": [["La Dépêche — lancement du mouvement Ça suffit, 29 décembre 2025","https://www.ladepeche.fr/2025/12/29/patrick-sebastien-lance-le-mouvement-ca-suffit-lidee-cest-detre-le-porte-voix-dune-certaine-france-de-ceux-quon-a-oublies-quon-meprise-13135523.php"],["Le Parisien — présentation du mouvement DARD, 25 mars 2010","https://www.leparisien.fr/politique/sebastien-lance-son-mouvement-25-03-2010-862127.php"]]
+};
+for (const [name,items] of Object.entries(POLITICAL_MARKER_SOURCES)) {
+  if(D[name]) D[name].sources=[...(D[name].sources||[]),...items].filter((x,i,a)=>a.findIndex(y=>y[1]===x[1])===i);
+}
 
 /* Wikimedia Commons — images de monuments avec conservation de la provenance et de la licence. */
 (function initMonumentImageSearch(){
@@ -5105,7 +5468,10 @@ Object.entries(LYS_EVENT_TYPE_PATCHES).forEach(([key, type]) => {
   const init=()=>{
     const configs=[
       {button:'financeLaunchButton',overlay:'financeDataOverlay'},
-      {button:'mediaLaunchButton',overlay:'mediaDataOverlay'}
+      {button:'mediaLaunchButton',overlay:'mediaDataOverlay'},
+      {button:'surveyLaunchButton',overlay:'surveyDataOverlay'},
+      {button:'electedLaunchButton',overlay:'electedDataOverlay'},
+      {button:'reviewLaunchButton',overlay:'reviewDataOverlay'}
     ];
     configs.forEach(({button,overlay})=>{
       const launch=document.getElementById(button);
