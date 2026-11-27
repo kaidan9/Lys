@@ -12542,3 +12542,99 @@ header.lys-data-header>h2{white-space:normal!important;overflow-wrap:anywhere!im
 .department-popup-disclaimer{margin-top:12px;color:#81919e;font-size:8px;line-height:1.5}
 @media(max-width:560px){.department-popup-shell{padding:19px 16px 15px}.department-popup-hero{grid-template-columns:122px minmax(0,1fr);gap:13px;padding:16px 0}.department-popup-heading h3{font-size:27px}.department-popup-stats{grid-template-columns:1fr 1fr}.department-popup-gdp{grid-column:1/-1;min-height:82px}.department-popup-stat{min-height:90px}.department-popup-pop strong,.department-popup-gdp strong{font-size:21px}}
 @media(max-width:390px){.department-popup-hero{grid-template-columns:1fr}.department-popup-flag-wrap{max-width:180px}.department-popup-stats{grid-template-columns:1fr}.department-popup-gdp{grid-column:auto}}
+
+
+/* LYS — drapeaux sourcés : bannières héraldiques réelles, sans SVG fabriqué par le site */
+.department-popup-flag-link{display:block;color:inherit;text-decoration:none}
+.department-popup-flag{display:block;width:100%;max-height:160px;aspect-ratio:3/2;object-fit:contain;object-position:center;background:#f7f4eb;border-radius:4px;box-shadow:0 7px 18px rgba(0,0,0,.24)}
+.department-popup-flag-source{display:block;margin:8px 0 0;color:#c6ad7b;text-align:center;font-size:8px;font-weight:800;letter-spacing:.11em;line-height:1.35}
+.department-popup-flag-link:hover .department-popup-flag{outline:1px solid rgba(214,183,125,.65);outline-offset:2px}
+.department-popup-no-flag{width:100%;min-height:145px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:13px;text-align:center;color:#e7dfca;background:linear-gradient(145deg,#17263b,#24364d);border:1px solid rgba(201,170,105,.32);border-radius:8px}
+.department-popup-no-flag-symbol{font-size:26px;color:#c9a968;line-height:1}
+.department-popup-no-flag strong{max-width:145px;font-size:10px;line-height:1.4;letter-spacing:.03em}
+.department-popup-no-flag small{max-width:150px;color:#b9c3cf;font-size:8px;line-height:1.4}
+
+
+/* LYS — cadrage harmonisé des drapeaux départementaux et ultramarins */
+.department-popup-flag-wrap{
+  width:176px!important;max-width:100%!important;box-sizing:border-box!important;
+  padding:9px!important;border:1px solid rgba(213,188,142,.34)!important;
+  border-radius:12px!important;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02))!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.06)!important;
+}
+.department-popup-flag-link{display:block!important;width:100%!important;color:inherit!important;text-decoration:none!important;}
+.department-popup-flag-stage{
+  width:100%!important;height:112px!important;min-height:112px!important;max-height:112px!important;
+  box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:7px!important;overflow:hidden!important;border-radius:7px!important;
+  background:#f6f3eb!important;border:1px solid rgba(24,36,49,.12)!important;
+}
+.department-popup-flag{
+  display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;
+  aspect-ratio:auto!important;object-fit:contain!important;object-position:center center!important;
+  margin:auto!important;border:0!important;border-radius:2px!important;background:transparent!important;
+  box-shadow:0 3px 9px rgba(0,0,0,.18)!important;
+}
+.department-popup-flag-source{
+  display:block!important;margin:8px 0 0!important;min-height:19px!important;
+  color:#c6ad7b!important;text-align:center!important;font-size:7.5px!important;
+  font-weight:800!important;letter-spacing:.105em!important;line-height:1.35!important;
+  overflow-wrap:anywhere!important;
+}
+.department-popup-no-flag{
+  width:100%!important;height:100%!important;min-height:0!important;box-sizing:border-box!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+  gap:6px!important;padding:8px!important;text-align:center!important;
+  border:0!important;border-radius:5px!important;background:linear-gradient(145deg,#17263b,#24364d)!important;
+}
+.department-popup-no-flag-symbol{font-size:21px!important;line-height:1!important;color:#c9a968!important;}
+.department-popup-no-flag strong{max-width:100%!important;color:#e7dfca!important;font-size:9px!important;line-height:1.35!important;}
+.department-popup-no-flag small{max-width:100%!important;color:#b9c3cf!important;font-size:7.5px!important;line-height:1.35!important;}
+@media(max-width:560px){
+  .department-popup-flag-wrap{width:128px!important;padding:7px!important;}
+  .department-popup-flag-stage{height:82px!important;min-height:82px!important;max-height:82px!important;padding:5px!important;}
+  .department-popup-flag-source{font-size:6.5px!important;letter-spacing:.07em!important;}
+}
+@media(max-width:390px){
+  .department-popup-flag-wrap{width:176px!important;max-width:100%!important;}
+  .department-popup-flag-stage{height:112px!important;min-height:112px!important;max-height:112px!important;}
+}
+
+
+/* LYS — cadrage final : bannières entières, centrées, sans étirement ni découpe */
+.department-popup-flag-wrap{width:176px!important;max-width:100%!important;padding:9px!important;box-sizing:border-box!important;}
+.department-popup-flag-stage{
+  width:100%!important;height:112px!important;min-height:112px!important;max-height:112px!important;
+  padding:7px!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  background:#f7f4ec!important;border:1px solid rgba(30,40,52,.16)!important;border-radius:7px!important;overflow:hidden!important;
+}
+.department-popup-flag{
+  display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;
+  object-fit:contain!important;object-position:center!important;aspect-ratio:auto!important;
+  margin:auto!important;padding:0!important;border:0!important;border-radius:1px!important;background:transparent!important;
+  box-shadow:0 2px 8px rgba(0,0,0,.12)!important;
+}
+.department-popup-flag-source{display:block!important;max-width:100%!important;margin-top:8px!important;text-align:center!important;overflow-wrap:anywhere!important;line-height:1.35!important;font-size:7.3px!important;letter-spacing:.08em!important;}
+.department-popup-no-flag{width:100%!important;height:100%!important;min-height:0!important;box-sizing:border-box!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;padding:8px!important;text-align:center!important;}
+@media(max-width:560px){.department-popup-flag-wrap{width:140px!important;padding:7px!important}.department-popup-flag-stage{height:88px!important;min-height:88px!important;max-height:88px!important;padding:5px!important}.department-popup-flag-source{font-size:6.5px!important}}
+@media(max-width:390px){.department-popup-flag-wrap{width:176px!important}.department-popup-flag-stage{height:112px!important;min-height:112px!important;max-height:112px!important}}
+
+
+/* LYS — drapeaux départementaux : image seule, non cliquable, cadrage homogène */
+.department-popup-flag-wrap{display:flex!important;align-items:center!important;justify-content:center!important;min-width:176px!important;}
+.department-popup-flag-stage{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  width:176px!important;height:118px!important;min-height:118px!important;box-sizing:border-box!important;
+  padding:7px!important;overflow:hidden!important;border-radius:9px!important;
+  background:linear-gradient(145deg,#f6f4ef,#e9e7e0)!important;
+  border:1px solid rgba(201,170,105,.26)!important;box-shadow:inset 0 1px 3px rgba(0,0,0,.06)!important;
+}
+.department-popup-flag{
+  display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;
+  object-fit:contain!important;object-position:center!important;align-self:center!important;justify-self:center!important;
+  border:0!important;border-radius:2px!important;background:transparent!important;
+  pointer-events:none!important;user-select:none!important;-webkit-user-drag:none!important;cursor:default!important;
+}
+.department-popup-flag-link,.department-popup-flag-source{display:none!important;}
+.department-popup-flag-stage.department-popup-flag-missing{background:linear-gradient(145deg,#f1efe9,#e7e4dc)!important;}
+.department-popup-province,.department-popup-disclaimer{display:none!important;}

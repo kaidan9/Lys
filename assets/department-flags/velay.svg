@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <title>Bannière héraldique du Velay — armes historiques</title>
+  <desc>Champ de gueules, deux bras d'argent mouvant de nuées d'azur, l'un tenant une crosse d'or, l'autre une épée d'argent garnie d'or, bordure d'argent.</desc>
+  <rect width="1200" height="800" fill="#b51f2b"/>
+  <!-- Bordure d'argent, inspirée de la bordure engrêlée du blason du Velay -->
+  <rect x="26" y="26" width="1148" height="748" rx="8" fill="none" stroke="#f1ece2" stroke-width="24"/>
+  <rect x="48" y="48" width="1104" height="704" rx="3" fill="none" stroke="#8f1b26" stroke-width="5"/>
+
+  <!-- Nuée d'azur à senestre du spectateur -->
+  <g fill="#24457b" stroke="#f1ece2" stroke-width="7" stroke-linejoin="round">
+    <path d="M104 374 C82 346 103 305 140 309 C151 270 209 268 226 307 C270 291 301 326 282 361 C304 388 287 427 251 429 L131 429 C94 429 83 399 104 374 Z"/>
+  </g>
+  <!-- Bras d'argent allant de la nuée vers le centre -->
+  <g fill="#eee9df" stroke="#31415b" stroke-width="9" stroke-linejoin="round">
+    <path d="M246 349 C293 335 343 341 386 353 L455 359 C475 361 490 377 489 397 C488 418 470 433 449 430 L378 420 C337 417 292 425 247 411 Z"/>
+    <path d="M432 358 C448 340 471 339 488 353 C499 362 502 380 493 394 L476 418 C464 436 441 437 426 424 C412 411 415 376 432 358 Z"/>
+  </g>
+  <!-- Main gauche tenant une crosse -->
+  <g fill="none" stroke="#d5a744" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M487 356 L487 596"/>
+    <path d="M487 360 C487 247 593 224 627 295 C652 348 610 388 565 372 C543 364 531 346 534 326"/>
+    <path d="M487 596 L487 627" stroke-width="28"/>
+  </g>
+  <g fill="#eee9df" stroke="#31415b" stroke-width="8" stroke-linejoin="round">
+    <path d="M466 349 C451 331 455 310 472 298 C488 310 491 330 478 349 L478 370 L466 370 Z"/>
+  </g>
+
+  <!-- Nuée d'azur à dextre du spectateur -->
+  <g fill="#24457b" stroke="#f1ece2" stroke-width="7" stroke-linejoin="round">
+    <path d="M1096 374 C1118 346 1097 305 1060 309 C1049 270 991 268 974 307 C930 291 899 326 918 361 C896 388 913 427 949 429 L1069 429 C1106 429 1117 399 1096 374 Z"/>
+  </g>
+  <!-- Bras d'argent allant de la nuée vers le centre -->
+  <g fill="#eee9df" stroke="#31415b" stroke-width="9" stroke-linejoin="round">
+    <path d="M954 349 C907 335 857 341 814 353 L745 359 C725 361 710 377 711 397 C712 418 730 433 751 430 L822 420 C863 417 908 425 953 411 Z"/>
+    <path d="M768 358 C752 340 729 339 712 353 C701 362 698 380 707 394 L724 418 C736 436 759 437 774 424 C788 411 785 376 768 358 Z"/>
+  </g>
+  <!-- Main droite tenant une épée haute -->
+  <g fill="#eee9df" stroke="#31415b" stroke-width="8" stroke-linejoin="round">
+    <path d="M715 360 L715 203 L739 203 L739 360 Z"/>
+    <path d="M704 214 L750 214 L727 149 Z"/>
+  </g>
+  <g fill="#d5a744" stroke="#31415b" stroke-width="6" stroke-linejoin="round">
+    <path d="M690 364 L764 364 L752 382 L702 382 Z"/>
+    <path d="M715 385 L739 385 L739 423 Q727 438 715 423 Z"/>
+    <circle cx="727" cy="435" r="13"/>
+  </g>
+  <g fill="#eee9df" stroke="#31415b" stroke-width="7" stroke-linejoin="round">
+    <path d="M712 356 C698 338 703 317 720 305 C736 317 739 338 726 356 L726 374 L712 374 Z"/>
+  </g>
+
+  <!-- Liseré intérieur discret -->
+  <rect x="66" y="66" width="1068" height="668" rx="2" fill="none" stroke="#d9c9a1" stroke-width="3" opacity=".8"/>
+</svg>
