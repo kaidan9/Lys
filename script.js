@@ -794,10 +794,7 @@ const isDynasty=String(d.type||'').startsWith('Dynastie');
     ];
     return sections.map(([h,p,q])=>{
       const heraldic = h === 'Emblème et tradition héraldique';
-      const source = heraldic && d.heraldrySourceUrl
-        ? `<p class="dynasty-heraldry-source"><a href="${d.heraldrySourceUrl}" target="_blank" rel="noopener noreferrer">${d.heraldrySourceLabel||'Consulter la référence historique'} ↗</a></p>`
-        : '';
-      return `<section class="bio-section${heraldic ? ' dynasty-heraldry-section' : ''}"><h4>${h}</h4><p>${p}</p><p>${q}</p>${source}</section>`;
+      return `<section class="bio-section${heraldic ? ' dynasty-heraldry-section' : ''}"><h4>${h}</h4><p>${p}</p><p>${q}</p></section>`;
     }).join('');
   }
   const dynasty=safeText((d.type||'Souverain').replace(/^Souverain\s*·\s*/, ''));
@@ -979,15 +976,17 @@ const isDynasty=String(d.type||'').startsWith('Dynastie');
           <span class="rev-chapter-rule" aria-hidden="true"></span>
         </div>
         <figure class="rev-chapter-figure">
-          <a href="${htmlEscape(href)}" target="_blank" rel="noopener noreferrer" aria-label="Consulter la provenance de l’image : ${htmlEscape(art.title)}">
-            <img loading="lazy" decoding="async" src="${htmlEscape(src)}" alt="${htmlEscape(art.alt)}">
-          </a>
-          <figcaption><span>${htmlEscape(art.title)}</span><a href="${htmlEscape(href)}" target="_blank" rel="noopener noreferrer">PROVENANCE ↗</a></figcaption>
+          <img loading="lazy" decoding="async" src="${htmlEscape(src)}" alt="${htmlEscape(art.alt)}">
+          <figcaption><span>${htmlEscape(art.title)}</span></figcaption>
           ${note}
         </figure>
       </article>`;
     }).join('');
-    return `<div class="rev-chapters">${chapters}</div>`;
+    const illustrationSources = artworks.map(art => {
+      const href = art.page || commonsPage(art.file);
+      return `<a href="${htmlEscape(href)}" target="_blank" rel="noopener noreferrer">${htmlEscape(art.title)} · provenance et licence ↗</a>`;
+    }).join('');
+    return `<div class="rev-chapters">${chapters}<section class="rev-illustration-sources"><span class="rev-section-label">SOURCES DES ILLUSTRATIONS</span><div>${illustrationSources}</div></section></div>`;
   }
   const base=sections.map(([h,p,q])=>`<section class="bio-section"><h4>${h}</h4><p>${p}</p><p>${q}</p></section>`).join('');
   const extras=(d.extraSections||[]).map(x=>`<section class="deep-section"><span class="section-kicker">ÉCLAIRAGE</span><h4>${safeText(x.title)}</h4><p>${safeText(x.text)}</p></section>`).join('');
@@ -2021,7 +2020,10 @@ function openMonumentProfile(key,rawData){
     d.architect&&['ARCHITECTE / MAÎTRE D’ŒUVRE',d.architect]
   ].filter(Boolean);
   const sources=monumentCleanSources(rawData,meta);
-  const sourceHtml=sources.map(([label,url])=>`<a class="monument-source-link" href="${monumentEscape(url)}" target="_blank" rel="noopener noreferrer">${monumentEscape(label)} <span>↗</span></a>`).join('');
+  const imageSourcePage=cardImg?.dataset.sourceUrl || d.imageSource || '';
+  if(imageSourcePage && imageSourcePage !== 'https://commons.wikimedia.org/' && !sources.some(row=>row[1]===imageSourcePage)) {
+    sources.push(['Provenance et licence du visuel', imageSourcePage]);
+  }
   const contentSections=[
     ['Histoire du lieu',d.history],
     ['Architecture et composition',d.architecture],
@@ -2029,11 +2031,16 @@ function openMonumentProfile(key,rawData){
     ['Patrimoine et mémoire',d.heritage]
   ].filter(([label,text])=>!monumentTextIsPlaceholder(text));
   const introHtml=d.intro?`<div class="monument-atlas-intro"><span class="monument-section-kicker">${monumentEscape(category.toUpperCase())}</span><h3>Un lieu, plusieurs histoires</h3><p>${monumentEscape(d.intro)}</p></div>`:'';
-  const fallbackContent=contentSections.length?'':`<section class="monument-research-note"><span class="monument-section-kicker">NOTICE À COMPLÉTER</span><h3>Repères patrimoniaux</h3><p>Les informations vérifiées dans cette fiche sont encore limitées. Les dates de construction, les commanditaires, les auteurs et les étapes de transformation ne sont pas affichés tant qu’ils ne sont pas renseignés par une source précise.</p><div class="monument-research-links"><a href="https://pop.culture.gouv.fr/" target="_blank" rel="noopener noreferrer">Consulter la base POP du ministère de la Culture ↗</a><a href="https://commons.wikimedia.org/w/index.php?search=${encodeURIComponent(key)}" target="_blank" rel="noopener noreferrer">Consulter les notices photographiques Wikimedia Commons ↗</a></div></section>`;
+  if(!contentSections.length){
+    if(!sources.some(row=>row[1]==='https://pop.culture.gouv.fr/')) sources.push(['Base POP · ministère de la Culture','https://pop.culture.gouv.fr/']);
+    const commonsSearch='https://commons.wikimedia.org/w/index.php?search='+encodeURIComponent(key);
+    if(!sources.some(row=>row[1]===commonsSearch)) sources.push(['Notices photographiques · Wikimedia Commons',commonsSearch]);
+  }
+  const fallbackContent=contentSections.length?'':`<section class="monument-research-note"><span class="monument-section-kicker">NOTICE À COMPLÉTER</span><h3>Repères patrimoniaux</h3><p>Les informations vérifiées dans cette fiche sont encore limitées. Les dates de construction, les commanditaires, les auteurs et les étapes de transformation ne sont pas affichés tant qu’ils ne sont pas renseignés par une source précise.</p></section>`;
+  const sourceHtml=sources.map(([label,url])=>`<a class="monument-source-link" href="${monumentEscape(url)}" target="_blank" rel="noopener noreferrer">${monumentEscape(label)} <span>↗</span></a>`).join('');
   const factHtml=facts.map(([label,value])=>`<div class="monument-fact"><span>${monumentEscape(label)}</span><strong>${monumentEscape(value)}</strong></div>`).join('');
   /* La catégorie est annoncée une seule fois dans les repères : elle n'est plus répétée devant chaque chapitre. */
   const sectionHtml=contentSections.map(([label,text],i)=>`<section class="monument-story-section"><div class="monument-story-number">${String(i+1).padStart(2,'0')}</div><div class="monument-story-copy"><h3>${monumentEscape(label)}</h3><p>${monumentEscape(text)}</p></div></section>`).join('');
-  const captionSource=(d.imageSource&&d.imageSource!=='https://commons.wikimedia.org/')?`<a href="${monumentEscape(d.imageSource)}" target="_blank" rel="noopener noreferrer">Source et licence de l’image ↗</a>`:'';
   reader.innerHTML=`
     <article class="monument-atlas">
       <header class="monument-atlas-hero">
@@ -2041,7 +2048,6 @@ function openMonumentProfile(key,rawData){
           ${photoSrc?`<img class="monument-atlas-photo" src="${monumentEscape(photoSrc)}" alt="Vue de ${monumentEscape(key)}">`:`<div class="monument-atlas-photo-placeholder"><span>LYS · PATRIMOINE</span><strong>${monumentEscape(category)}</strong></div>`}
           <div class="monument-atlas-veil"></div>
           <div class="monument-atlas-title"><span class="monument-atlas-kicker">ATLAS DU PATRIMOINE · FRANCE</span><h2>${monumentEscape(d.title||key)}</h2><p>${monumentEscape(location||category)}${shownPeriod?' · '+monumentEscape(shownPeriod):''}</p></div>
-          <div class="monument-atlas-image-credit">${captionSource||'Photographie patrimoniale · illustration du lieu'}</div>
         </div>
       </header>
       ${factHtml?`<section class="monument-atlas-facts" aria-label="Repères du monument">${factHtml}</section>`:''}
@@ -2059,14 +2065,8 @@ function openMonumentProfile(key,rawData){
       const image=document.createElement('img');image.className='monument-atlas-photo';image.alt='Vue de '+key;image.src=src;
       reader.querySelector('.monument-atlas-visual')?.replaceChild(image,photo);
     }
-    if(sourceUrl){
-      const credit=reader.querySelector('.monument-atlas-image-credit');
-      if(credit)credit.innerHTML=`<a href="${monumentEscape(sourceUrl)}" target="_blank" rel="noopener noreferrer">Source et licence de l’image ↗</a>`;
-    }
   };
-  if(cardImg&&cardImg.dataset.sourceUrl){
-    const credit=reader.querySelector('.monument-atlas-image-credit');if(credit)credit.innerHTML=`<a href="${monumentEscape(cardImg.dataset.sourceUrl)}" target="_blank" rel="noopener noreferrer">Source et licence de l’image ↗</a>`;
-  } else if(!photoSrc&&query&&window.LYS_LOOKUP_MONUMENT_IMAGE){
+  if(!photoSrc&&query&&window.LYS_LOOKUP_MONUMENT_IMAGE){
     window.LYS_LOOKUP_MONUMENT_IMAGE(query).then(result=>{if(result?.src)applyImage(result.src,result.descriptionurl||'');}).catch(()=>{});
   }
   modal.hidden=false;modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
@@ -2109,7 +2109,7 @@ function openTopic(k){
       }) || null;
   })() : null;
   const eventImageSrc = eventCard?.querySelector('.art img')?.getAttribute('src') || '';
-  const eventSourcePage = eventCard?.querySelector('.event-source-link')?.getAttribute('href') || eventCard?.querySelector('.event-featured-image-link')?.getAttribute('href') || '';
+  const eventSourcePage = eventCard?.querySelector('.event-source-link')?.dataset.sourceUrl || eventCard?.querySelector('.event-featured-image-link')?.dataset.sourceUrl || eventCard?.querySelector('.event-source-link')?.getAttribute('href') || eventCard?.querySelector('.event-featured-image-link')?.getAttribute('href') || '';
 
   const partyLogoSrc=partyPin?.querySelector('img')?.getAttribute('src') || (typeof d.portrait==='string' ? d.portrait : '');
   const portraits = d.portraits || (!isParty && typeof d.portrait==='string' ? [d.portrait] : []);
@@ -2117,7 +2117,7 @@ function openTopic(k){
   const portraitHtml = isEvent
     ? (eventImageSrc ? `<div class="reader-event-cover"><img src="${eventImageSrc}" alt="Illustration historique de ${safeText(d.title||k)}"><span class="reader-event-cover-date">${safeText(d.dates || 'REPÈRE HISTORIQUE')}</span></div>` : '<div class="reader-event-cover reader-event-cover-empty"><span>CHRONOLOGIE</span></div>')
     : isMonument
-      ? `<div class="reader-monument-image"><img src="${monumentPhoto}" alt="${safeText(d.title||k)}"><div class="reader-photo-credit">Photographie : Wikimedia Commons · <a href="${d.imageSource||'#'}" target="_blank" rel="noreferrer">voir la source et la licence</a></div></div>`
+      ? `<div class="reader-monument-image"><img src="${monumentPhoto}" alt="${safeText(d.title||k)}"></div>`
       : isParty
         ? (partyLogoSrc ? `<div class="reader-party-logo"><img src="${partyLogoSrc}" alt="Logo de ${d.title||k}"></div>` : '<div class="reader-party-logo reader-party-logo-empty"><span>LOGO</span></div>')
         : (portraits.length ? `<div class="reader-portraits">${portraits.map((src,i)=>`<img class="portrait${(name==='Emmanuel Macron' && i===0)?' portrait-macron':''}" src="${src}" alt="Portrait de ${i===0?d.title:'second portrait'}">`).join('')}</div>` : '<div class="reader-portraits reader-portraits-empty"><div class="portrait-placeholder">⚜<span>Portrait à documenter</span></div></div>');
@@ -2190,7 +2190,7 @@ function openTopic(k){
           <section class="rev-source-panel" aria-labelledby="rev-sources-title">
             <div class="rev-source-heading"><span class="rev-section-label">TRACES &amp; DOCUMENTS</span><h3 id="rev-sources-title">Les archives de cette histoire</h3><p>Institutions patrimoniales, archives, bibliothèques et travaux de recherche utilisés pour documenter cette fiche.</p></div>
             <details class="rev-source-details"><summary>Afficher les ${ (d.sources || []).length } références de la fiche</summary><div class="rev-source-list">${sourceHtml}</div></details>
-            <p class="rev-credits">Les images renvoient individuellement à leur notice de provenance. Les droits et licences sont indiqués sur chaque page source.</p>
+            <p class="rev-credits">Les notices de provenance et les licences des illustrations sont regroupées dans la liste des sources des illustrations.</p>
           </section>
         </div>
       </div>`;
@@ -2221,7 +2221,7 @@ function openTopic(k){
       ${isPolitical || isParty
         ? politicalProfileHtml(k,d,isParty,isPoliticalOffice,!!personalInHeroHtml)
         : isEvent
-          ? `<section class="event-description-hero"><div class="event-description-copy"><span class="event-description-kicker">LYS · CHRONOLOGIE HISTORIQUE</span><h3>${d.title||k}</h3><p>${d.history||'Aucune synthèse disponible pour cette fiche.'}</p>${eventSourcePage ? `<a class="event-description-source" href="${eventSourcePage}" target="_blank" rel="noopener noreferrer">Voir l’image, sa provenance et sa licence ↗</a>` : ''}</div></section><div class="deep-description">${d.deepDescriptionHtml||buildDeepDescriptionHtml(d)}</div>`
+          ? `<section class="event-description-hero"><div class="event-description-copy"><span class="event-description-kicker">LYS · CHRONOLOGIE HISTORIQUE</span><h3>${d.title||k}</h3><p>${d.history||'Aucune synthèse disponible pour cette fiche.'}</p></div></section><div class="deep-description">${d.deepDescriptionHtml||buildDeepDescriptionHtml(d)}</div>`
           : isDynasty
             ? `<div class="deep-description dynasty-deep-description">${d.deepDescriptionHtml||buildDeepDescriptionHtml(d)}</div>`
             : `<section class="reader-summary ${isMonument?'reader-summary-monument':''}"><span class="section-kicker">${isMonument?'À RETENIR':'EN BREF'}</span><h3>${isMonument?'Un monument, plusieurs siècles':'Portrait et contexte'}</h3><p>${d.history||'Aucune synthèse disponible pour cette fiche.'}</p></section>
@@ -2229,6 +2229,52 @@ function openTopic(k){
       ${successorHtml}
 
     </div>`;
+  const profileSourceRows = [...(Array.isArray(d.sources) ? d.sources : [])];
+  if (isDynasty && d.heraldrySourceUrl) profileSourceRows.push([d.heraldrySourceLabel || 'Référence héraldique', d.heraldrySourceUrl]);
+  if (isEvent && eventSourcePage) profileSourceRows.push(['Provenance et licence du visuel', eventSourcePage]);
+  if (d.imageSource && d.imageSource !== 'https://commons.wikimedia.org/') profileSourceRows.push(['Provenance et licence du visuel', d.imageSource]);
+  const uniqueProfileSources = [];
+  const seenProfileSources = new Set();
+  profileSourceRows.forEach(row => {
+    if (!Array.isArray(row) || !row[0] || !row[1]) return;
+    const url = String(row[1]);
+    if (!/^https?:\/\//i.test(url) || seenProfileSources.has(url)) return;
+    seenProfileSources.add(url);
+    uniqueProfileSources.push([String(row[0]), url]);
+  });
+  if (uniqueProfileSources.length && !isPolitical && !isParty) {
+    const body = reader.querySelector('.reader-body');
+    if (body && !body.querySelector('.sourcebox, .rev-source-panel, .political-sources')) {
+      const sourceBox = document.createElement('section');
+      sourceBox.className = 'sourcebox reader-bottom-sources';
+      const heading = document.createElement('div');
+      heading.className = 'sourcebox-title';
+      heading.innerHTML = '<span class="section-kicker">DOCUMENTATION</span><b>Sources et provenance des visuels</b>';
+      const list = document.createElement('div');
+      list.className = 'reader-bottom-source-list';
+      uniqueProfileSources.forEach(([label, url]) => {
+        const row = document.createElement('div');
+        row.className = 'source-row';
+        const icon = document.createElement('span'); icon.textContent = '↗';
+        const link = document.createElement('a'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.textContent = label;
+        row.append(icon, link); list.append(row);
+      });
+      sourceBox.append(heading, list);
+      body.append(sourceBox);
+    }
+  }
+  // In the reading pane, images are illustrations, not links. Source links live in the final documentation block.
+  reader.querySelectorAll('a').forEach(link => {
+    if (!link.querySelector('img')) return;
+    if (link.closest('.sourcebox, .political-sources, .rev-source-panel, .monument-atlas-sources, .france-history-popup-sources')) return;
+    const fragment = document.createDocumentFragment();
+    [...link.childNodes].forEach(node => {
+      if (node.nodeType === 1 && node.matches('.event-source-label')) return;
+      fragment.append(node);
+    });
+    link.replaceWith(fragment);
+  });
+  reader.querySelectorAll('.event-description-source, .reader-photo-credit, .institution-photo-credit, .monument-atlas-image-credit, .dynasty-heraldry-source').forEach(node => node.remove());
   const eventDescriptionHero = reader.querySelector('.event-description-hero');
   if (eventDescriptionHero && eventImageSrc) {
     eventDescriptionHero.style.backgroundImage = `linear-gradient(90deg, rgba(5,10,17,.94) 0%, rgba(5,10,17,.78) 55%, rgba(5,10,17,.48) 100%), linear-gradient(0deg, rgba(5,10,17,.55), rgba(5,10,17,.16)), url("${eventImageSrc.replace(/["\\]/g, '')}")`;
@@ -3692,9 +3738,11 @@ decorateRulerPins();
     const data=descriptions[id], photo=photos[id], overlay=document.getElementById('modal'), reader=document.getElementById('reader');
     if(!data||!overlay||!reader) return;
     const factsHtml=(data.facts||[]).map(([label,val])=>`<div class="reader-fact"><span>${escapeHtml(label)}</span><strong>${escapeHtml(val||'—')}</strong></div>`).join('');
-    const sourcesHtml=(data.sources||[]).map(([label,url])=>`<div class="source-row"><span>↗</span><a href="${url}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a></div>`).join('');
+    const institutionSources=[...(data.sources||[])];
+    if(photo?.page && !institutionSources.some(row=>row[1]===photo.page)) institutionSources.push(['Provenance et licence du visuel',photo.page]);
+    const sourcesHtml=institutionSources.map(([label,url])=>`<div class="source-row"><span>↗</span><a href="${url}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a></div>`).join('');
     const visualIcon = id==='deputes'?'Assemblée':id==='senateurs'?'Sénat':id==='regions'?'Régions':id==='departements'?'Départements':id==='paris-capitale'?'PARIS':id==='euro'?'€':id==='union-europeenne'?'UE':id==='population'?'POP':id==='pib'?'PIB':'RF';
-    const photoHtml=photo?`<figure class="institution-photo-frame"><img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.alt)}" loading="eager" decoding="async" referrerpolicy="no-referrer"><div class="institution-photo-overlay"><span class="institution-visual-kicker">${escapeHtml(data.eyebrow)}</span><strong>${escapeHtml(data.value)}</strong><span>${escapeHtml(visualIcon||'')}</span></div><figcaption><span class="institution-photo-caption">${escapeHtml(photo.caption)}</span><span class="institution-photo-credit">Photo : ${escapeHtml(photo.credit)} · ${escapeHtml(photo.license)} · <a href="${escapeHtml(photo.page)}" target="_blank" rel="noopener noreferrer">voir le fichier et sa licence</a></span></figcaption></figure>`:'';
+    const photoHtml=photo?`<figure class="institution-photo-frame"><img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.alt)}" loading="eager" decoding="async" referrerpolicy="no-referrer"><div class="institution-photo-overlay"><span class="institution-visual-kicker">${escapeHtml(data.eyebrow)}</span><strong>${escapeHtml(data.value)}</strong><span>${escapeHtml(visualIcon||'')}</span></div><figcaption><span class="institution-photo-caption">${escapeHtml(photo.caption)}</span></figcaption></figure>`:'';
     reader.innerHTML=`
       <div class="reader-hero institution-reader-hero">
         <div class="reader-visual institution-visual">
@@ -5528,4 +5576,47 @@ Object.entries(LYS_EVENT_TYPE_PATCHES).forEach(([key, type]) => {
   };
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true});
   else init();
+})();
+
+
+function disableEventImageSourceLinks(){
+  document.querySelectorAll('#evenements a.event-source-link, #evenements a.event-featured-image-link').forEach(link=>{
+    link.dataset.sourceUrl = link.href;
+    link.setAttribute('tabindex','-1');
+    link.setAttribute('aria-hidden','true');
+    link.removeAttribute('title');
+    link.style.pointerEvents = 'none';
+    link.querySelector('.event-source-label')?.remove();
+  });
+}
+disableEventImageSourceLinks();
+
+
+/* LYS — la rubrique Dons est une vue dédiée, jamais un bloc de l’accueil ou d’À propos.
+   Elle n’est affichée que lorsque l’utilisateur choisit Dons dans le menu. */
+(function isolateDonationSection(){
+  const donSection = document.getElementById('don');
+  if (!donSection) return;
+
+  const setDonationVisible = (visible) => {
+    donSection.classList.toggle('don-nav-hidden', !visible);
+    donSection.setAttribute('aria-hidden', String(!visible));
+  };
+  const syncFromNavigation = () => {
+    setDonationVisible(window.location.hash === '#don');
+  };
+
+  // Réagit immédiatement au clic, avant le défilement natif vers l’ancre.
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('header nav a[href^="#"], header a.logo[href="#accueil"]');
+    if (!link) return;
+    setDonationVisible(link.getAttribute('href') === '#don');
+  }, true);
+
+  window.addEventListener('hashchange', syncFromNavigation);
+  window.addEventListener('pageshow', syncFromNavigation);
+  syncFromNavigation();
+  if (window.location.hash === '#don') {
+    requestAnimationFrame(() => donSection.scrollIntoView({ block: 'start' }));
+  }
 })();

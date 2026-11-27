@@ -10564,7 +10564,7 @@ header nav a[href="#don"]{color:#d8bd84!important;font-weight:700!important;}
 
 /* V139 — Une fresque de Versailles bleu nuit, fondue dans l'atmosphère du dossier. */
 #modal .reader.reader-revolution-mode .rev-cover-photo{
-  background-image:url("assets/revolution-versailles-blue-bg.webp")!important;
+  background-image:none!important;
   background-position:center 43%!important;
   background-size:cover!important;
   filter:saturate(.88) contrast(1.08) brightness(.72)!important;
@@ -10580,7 +10580,7 @@ header nav a[href="#don"]{color:#d8bd84!important;font-weight:700!important;}
   background:
     linear-gradient(90deg,rgba(5,17,34,.91) 0%,rgba(5,17,34,.73) 48%,rgba(5,17,34,.87) 100%),
     linear-gradient(180deg,rgba(5,17,34,.25) 0%,rgba(5,17,34,.66) 48%,rgba(5,17,34,.92) 100%),
-    url("assets/revolution-versailles-blue-bg.webp") center 38% / cover no-repeat!important;
+    none center 38% / cover no-repeat!important;
   background-attachment:scroll,scroll,fixed!important;
   animation:rev-blue-photo-drift 42s ease-in-out infinite alternate!important;
   opacity:1!important;
@@ -12650,3 +12650,1766 @@ header.lys-data-header>h2{white-space:normal!important;overflow-wrap:anywhere!im
 .france-paris-zoom-label{font-size:19px;stroke-width:4px}
 .france-paris-zoom-card>p{margin:4px 0 0;text-align:center;color:#8f9da6;font-size:10px}
 @media(max-width:600px){.france-paris-zoom-card{padding:12px 9px}.france-paris-zoom-svg{max-height:300px}.france-paris-zoom-label{font-size:16px}}
+
+
+/* LYS · commutateur cartographique : carte schématique du royaume des Francs en 987 */
+.france-map-card-head{flex-direction:row;align-items:center;gap:14px}
+.france-map-card-heading-copy{display:flex;min-width:0;flex-direction:column;gap:5px}
+.france-map-card-heading-copy>span{font-size:10px;font-weight:800;letter-spacing:.16em;color:#d8c08f}
+.france-map-card-heading-copy small{font-size:10px;color:#8f9da7}
+.france-map-mode-toggle{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:9px;flex:0 0 auto;min-height:39px;padding:9px 14px;border:1px solid rgba(214,185,126,.42);border-radius:999px;background:linear-gradient(135deg,rgba(195,158,91,.19),rgba(255,255,255,.045));color:#f0dfbb;font:700 10px "DM Sans",sans-serif;letter-spacing:.045em;cursor:pointer;transition:background .18s,border-color .18s,transform .18s,opacity .18s}
+.france-map-mode-toggle>span:first-child{font-size:15px;color:#dfc18a;line-height:1}
+.france-map-mode-toggle:hover:not(:disabled){transform:translateY(-1px);border-color:#e6c98f;background:rgba(202,166,103,.2)}
+.france-map-mode-toggle:focus-visible{outline:2px solid #e2c38b;outline-offset:3px}
+.france-map-mode-toggle:disabled{opacity:.48;cursor:wait}
+.france-987-map[hidden],.france-department-svg[hidden],.france-history-side-card[hidden],.france-987-map-note[hidden],.france-map-map-note[hidden],.france-department-side-card[hidden],.france-paris-zoom-card[hidden],.france-department-overseas-section[hidden],.france-map-other-territories[hidden]{display:none!important}
+.france-987-map{background:#d7edf6;border-radius:9px;max-height:720px;min-height:390px;margin-top:8px}
+.france-987-land-base{fill:#e8d8ac;stroke:#7a6a4d;stroke-width:1.25;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.france-987-territory{stroke:#302d24;stroke-width:1.65;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.97}
+.france-987-outline-stroke{stroke:#312f27;stroke-width:2.25;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.france-987-territory-label{font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:.015em;fill:#171c1d;stroke:rgba(246,235,205,.82);stroke-width:2.8px;stroke-linejoin:round;paint-order:stroke;opacity:.96}
+.france-987-city-dot{fill:#101010;stroke:#fff6dd;stroke-width:1.15;vector-effect:non-scaling-stroke}
+.france-987-city-label{font:600 11px "DM Sans",sans-serif;fill:#101820;stroke:rgba(245,238,218,.9);stroke-width:2.8px;stroke-linejoin:round;paint-order:stroke}
+.france-987-sea-label{font:italic 19px Georgia,"Times New Roman",serif;fill:#369fc2;opacity:.9;letter-spacing:.015em}
+.france-987-map-note{color:#c9b991}
+.france-history-side-card{padding:20px 18px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.france-history-side-card .france-map-card-head{align-items:flex-start;flex-direction:column;gap:5px}
+.france-history-side-card .france-map-card-head>span{font-size:10px;font-weight:800;letter-spacing:.16em;color:#d8c08f}
+.france-history-side-card .france-map-card-head small{font-size:10px;color:#8f9da7}
+.france-history-legend{display:grid;grid-template-columns:1fr;gap:7px}
+.france-history-legend-item{display:flex;align-items:center;gap:10px;min-width:0;padding:7px 9px;border:1px solid rgba(203,188,157,.11);border-radius:9px;background:rgba(255,255,255,.027);color:#dce2e2;font-size:11px;line-height:1.35}
+.france-history-swatch{flex:0 0 13px;width:13px;height:13px;border:1px solid rgba(25,29,30,.7);border-radius:3px;background:var(--history-color);box-shadow:0 0 0 2px rgba(255,255,255,.05)}
+.france-history-cities{padding:13px 12px;border:1px solid rgba(203,188,157,.15);border-radius:11px;background:rgba(255,255,255,.025)}
+.france-history-cities p{margin:8px 0 0;color:#b9c4c8;font-size:11px;line-height:1.7}
+.france-history-disclaimer{margin-top:auto;padding:14px 13px;border:1px solid rgba(207,177,120,.24);border-radius:11px;background:linear-gradient(135deg,rgba(190,157,103,.1),rgba(255,255,255,.02))}
+.france-history-disclaimer strong{display:block;margin-bottom:7px;color:#dfc48f;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.france-history-disclaimer p{margin:0;color:#aeb9c0;font-size:10px;line-height:1.65}
+#carte.is-historic-mode .france-map-card-head{border-bottom-color:rgba(203,188,157,.22)}
+#carte.is-historic-mode .france-map-map-note{padding-top:10px}
+@media(max-width:760px){
+  .france-map-card-head{flex-direction:row;align-items:center}
+  .france-987-map{min-height:0;max-height:none}
+  .france-history-side-card{order:2}
+  .france-history-legend{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:440px){
+  .france-map-card-head{flex-direction:row!important;align-items:center!important;gap:8px!important}
+  .france-map-card-heading-copy>span{font-size:8px;letter-spacing:.11em}
+  .france-map-card-heading-copy small{font-size:9px}
+  .france-map-mode-toggle{min-height:34px;padding:7px 9px;gap:6px;font-size:9px;white-space:nowrap}
+  .france-map-mode-toggle>span:first-child{font-size:13px}
+  .france-history-legend{grid-template-columns:1fr}
+  .france-987-territory-label{font-size:11px}
+  .france-987-city-label{font-size:10px}
+}
+
+.france-987-title-label{font:800 12px "DM Sans",Arial,sans-serif;fill:#151515;letter-spacing:.035em}
+
+.france-987-neighbour-label{font:700 11px "DM Sans",Arial,sans-serif;fill:#5a513f;letter-spacing:.13em;opacity:.9}
+
+
+/* LYS · Vue du royaume des Francs en 987 : image de référence fidèle */
+.france-map-section.is-historic-mode .france-map-layout {
+  grid-template-columns:minmax(0, 1fr);
+}
+.france-map-section.is-historic-mode .france-map-visual-card {
+  width:100%;
+}
+.france-987-image-frame {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:0;
+  margin:12px auto 0;
+  padding:0;
+  background:transparent;
+}
+.france-987-reference-image {
+  display:block;
+  width:min(100%, 920px);
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+  object-position:center;
+  border-radius:8px;
+  background:#d7edf6;
+}
+.france-map-section.is-historic-mode .france-987-map-note {
+  justify-content:center;
+  text-align:center;
+  line-height:1.5;
+}
+@media(max-width:760px) {
+  .france-987-image-frame { margin-top:8px; }
+  .france-987-reference-image { width:100%; border-radius:5px; }
+}
+.france-987-image-frame { height:auto; max-height:none; }
+
+/* Carte historique 987 : véritables entités GeoJSON fusionnées et cliquables */
+.france-987-map{background:transparent;max-height:none;min-height:0;overflow:hidden}
+.france-history-svg{display:block;width:100%;height:auto;min-height:420px;max-height:760px;overflow:visible}
+.france-history-territory{stroke:#24323b;stroke-width:1.15;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;cursor:pointer;transition:filter .15s,opacity .15s}
+.france-history-territory:hover,.france-history-territory:focus-visible{filter:brightness(1.16);stroke:#fff;stroke-width:2.2;outline:none}
+.france-history-territory.is-selected{stroke:#fff4cf;stroke-width:3;filter:brightness(1.18)}
+.france-history-label{font:700 12px system-ui,sans-serif;fill:#15232c;paint-order:stroke;stroke:rgba(255,255,255,.78);stroke-width:2.8px;stroke-linejoin:round;text-transform:uppercase}
+.france-history-legend-item{width:100%;text-align:left;cursor:pointer;transition:border-color .15s,background .15s}
+.france-history-legend-item:hover,.france-history-legend-item[aria-pressed="true"]{border-color:rgba(232,195,122,.75);background:rgba(226,195,139,.11)}
+.france-history-legend-item[aria-pressed="true"]{box-shadow:inset 3px 0 #e2c38b}
+.france-history-selection{margin-top:12px;padding:12px;border:1px solid rgba(226,195,139,.28);border-radius:10px;background:rgba(226,195,139,.06);color:#e5e9e8}
+.france-history-selection strong{display:block;color:#f0cb88;font-size:13px}
+.france-history-selection p{margin:6px 0;color:#bdc9ce;font-size:11px;line-height:1.5}
+.france-history-selection small{display:block;color:#8fa3ad;font-size:10px;line-height:1.5}
+
+
+/* LYS · correction vue 987 : une seule carte visible et fiche ouvrante au clic */
+#franceMetropoleMap[hidden],
+#france987Map[hidden],
+#franceHistorySideCard[hidden],
+#franceParisZoomCard[hidden],
+#franceDepartmentSideCard[hidden],
+#franceDepartmentOverseasSection[hidden] {
+  display:none!important;
+}
+#carte.is-historic-mode #franceMetropoleMap,
+#carte.is-historic-mode .france-paris-zoom-card,
+#carte.is-historic-mode .france-department-side-card,
+#carte.is-historic-mode .france-department-overseas-section,
+#carte.is-historic-mode .france-map-other-territories {
+  display:none!important;
+  visibility:hidden!important;
+}
+#carte.is-historic-mode #france987Map {
+  display:block!important;
+  visibility:visible!important;
+}
+#carte:not(.is-historic-mode) #france987Map {
+  display:none!important;
+}
+.france-map-section.is-historic-mode .france-map-layout {
+  grid-template-columns:minmax(0,1.42fr) minmax(285px,.72fr)!important;
+  align-items:start;
+}
+.france-map-section.is-historic-mode .france-map-visual-card {
+  min-height:0;
+  width:100%;
+}
+.france-map-section.is-historic-mode .france-history-side-card {
+  display:flex;
+  visibility:visible;
+}
+.france-history-svg {
+  display:block;
+  width:100%;
+  height:auto;
+  min-height:420px;
+  max-height:760px;
+  margin:8px auto 0;
+}
+.france-history-territory {
+  stroke:#202a31;
+  stroke-width:1.35;
+  stroke-linejoin:round;
+  stroke-linecap:round;
+  vector-effect:non-scaling-stroke;
+  cursor:pointer;
+  transition:filter .16s ease,stroke-width .16s ease,opacity .16s ease;
+}
+.france-history-territory:hover,
+.france-history-territory:focus-visible {
+  filter:brightness(1.14) drop-shadow(0 2px 4px rgba(0,0,0,.35));
+  stroke:#fff0c5;
+  stroke-width:2.5;
+  outline:none;
+}
+.france-history-territory.is-selected {
+  stroke:#fff0c5;
+  stroke-width:3.2;
+  filter:brightness(1.16) drop-shadow(0 0 7px rgba(255,220,156,.48));
+}
+.france-history-label {
+  font:800 10px "DM Sans",Arial,sans-serif;
+  fill:#15212a;
+  paint-order:stroke;
+  stroke:rgba(255,248,225,.92);
+  stroke-width:2.8px;
+  stroke-linejoin:round;
+  letter-spacing:.035em;
+  text-transform:uppercase;
+}
+.france-987-city-dot {
+  fill:#090d10;
+  stroke:#fff6df;
+  stroke-width:1.2;
+  vector-effect:non-scaling-stroke;
+}
+.france-987-city-label {
+  font:700 11px "DM Sans",Arial,sans-serif;
+  fill:#111a20;
+  stroke:rgba(246,238,216,.95);
+  stroke-width:3px;
+  stroke-linejoin:round;
+  paint-order:stroke;
+}
+.france-987-neighbour-label {
+  font:800 10px "DM Sans",Arial,sans-serif;
+  letter-spacing:.1em;
+  fill:#83919a;
+  opacity:.82;
+}
+.france-history-legend-item {
+  cursor:pointer;
+}
+.france-history-dialog {
+  width:min(530px,calc(100vw - 30px));
+  max-width:530px;
+  max-height:min(86vh,680px);
+  overflow:auto;
+  padding:0;
+  border:1px solid rgba(216,187,131,.55);
+  border-radius:18px;
+  color:#eee8da;
+  background:linear-gradient(145deg,#1b2a37,#101923 76%);
+  box-shadow:0 26px 90px rgba(0,0,0,.68);
+}
+.france-history-dialog::backdrop {
+  background:rgba(3,8,14,.76);
+  backdrop-filter:blur(5px);
+}
+.france-history-popup-shell {
+  position:relative;
+  padding:26px 28px 24px;
+}
+.france-history-popup-topline {
+  padding:0 42px 13px 0;
+  border-bottom:1px solid rgba(203,188,157,.2);
+  color:#d9bd83;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.france-history-popup-hero {
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:22px 0 13px;
+}
+.france-history-popup-swatch {
+  flex:0 0 48px;
+  width:48px;
+  height:48px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:12px;
+  box-shadow:inset 0 1px rgba(255,255,255,.18),0 7px 18px rgba(0,0,0,.25);
+}
+.france-history-popup-kicker {
+  color:#d0ad6d;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.france-history-popup-hero h3 {
+  margin:5px 0 0;
+  color:#f0e5cf;
+  font:600 34px/1.06 "Cormorant Garamond",Georgia,serif;
+}
+#franceHistoryPopupText {
+  margin:7px 0 18px;
+  color:#c2ccd1;
+  font-size:13px;
+  line-height:1.7;
+}
+.france-history-popup-meta {
+  padding:12px 13px;
+  border:1px solid rgba(203,188,157,.18);
+  border-radius:10px;
+  background:rgba(255,255,255,.035);
+  color:#aab8bf;
+  font-size:10px;
+  line-height:1.5;
+}
+.france-history-popup-action {
+  display:block;
+  margin:18px 0 0 auto;
+  padding:9px 16px;
+  border:1px solid rgba(216,187,131,.45);
+  border-radius:999px;
+  background:rgba(216,187,131,.1);
+  color:#f1dfbb;
+  font:700 11px "DM Sans",sans-serif;
+  cursor:pointer;
+}
+.france-history-popup-action:hover {
+  background:rgba(216,187,131,.2);
+}
+@media(max-width:900px) {
+  .france-map-section.is-historic-mode .france-map-layout {
+    grid-template-columns:1fr!important;
+  }
+  .france-map-section.is-historic-mode .france-history-side-card {
+    order:2;
+  }
+  .france-history-legend {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media(max-width:520px) {
+  .france-history-popup-shell {padding:24px 20px 20px}
+  .france-history-popup-hero h3 {font-size:29px}
+  .france-history-legend {grid-template-columns:1fr}
+  .france-history-svg {min-height:0}
+}
+
+/* LYS · garde-fou mode 987 : aucun élément de la carte moderne ne doit rester visible */
+#carte.is-historic-mode .france-department-svg,
+#carte.is-historic-mode #franceMetropoleMap,
+#carte.is-historic-mode #franceParisZoomCard,
+#carte.is-historic-mode #franceMapStaticFallback,
+#carte.is-historic-mode .france-department-side-card,
+#carte.is-historic-mode .france-department-overseas-section,
+#carte.is-historic-mode .france-map-other-territories,
+#carte.is-historic-mode .france-map-map-note:not(.france-987-map-note) {
+  display:none!important;
+  visibility:hidden!important;
+}
+#carte.is-historic-mode #france987Map {
+  display:block!important;
+  visibility:visible!important;
+}
+#carte.is-historic-mode #franceHistorySideCard {
+  display:flex!important;
+  visibility:visible!important;
+}
+
+
+/* Finition cartographique 987 — tracés arrondis, labels seuls, aucun repère de ville */
+.france-history-svg {
+  display:block;
+  width:100%;
+  height:auto;
+  min-height:420px;
+  max-height:780px;
+  overflow:visible;
+  shape-rendering:geometricPrecision;
+}
+.france-history-territory {
+  stroke:#24323b;
+  stroke-width:1.25;
+  stroke-linejoin:round;
+  stroke-linecap:round;
+  vector-effect:non-scaling-stroke;
+  cursor:pointer;
+  transition:filter .16s ease, stroke-width .16s ease, opacity .16s ease;
+}
+.france-history-territory:hover,
+.france-history-territory:focus-visible {
+  filter:brightness(1.08);
+  stroke:#f6ebd3;
+  stroke-width:1.9;
+  outline:none;
+}
+.france-history-territory.is-selected {
+  stroke:#fff0c5;
+  stroke-width:2.45;
+  filter:brightness(1.08) drop-shadow(0 1px 3px rgba(0,0,0,.24));
+}
+.france-history-label {
+  font-family:"DM Sans",Arial,sans-serif;
+  font-weight:800;
+  fill:#172630;
+  paint-order:stroke fill;
+  stroke:rgba(248,241,222,.96);
+  stroke-width:1.6px;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  letter-spacing:.025em;
+  text-transform:uppercase;
+  user-select:none;
+}
+.france-history-side-card .france-history-selection {
+  margin-top:0;
+}
+.france-history-side-card .france-history-disclaimer {
+  margin-top:auto;
+}
+
+
+/* LYS · intégration du SVG historique original fourni par l’utilisateur */
+.france-987-map {
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  min-height:0;
+  max-height:none;
+  overflow:visible;
+  background:transparent;
+}
+.france-history-source-svg {
+  display:block;
+  width:100%;
+  max-width:700px;
+  height:auto;
+  min-height:0;
+  max-height:none;
+  margin:8px auto 0;
+  overflow:visible;
+}
+.france-history-source-svg .france-history-territory {
+  cursor:pointer;
+  transition:filter .16s ease,stroke-width .16s ease;
+  vector-effect:non-scaling-stroke;
+}
+.france-history-source-svg .france-history-territory:hover,
+.france-history-source-svg .france-history-territory:focus-visible {
+  stroke:#fff2c9 !important;
+  stroke-width:2.8px !important;
+  filter:brightness(1.12) drop-shadow(0 1px 3px rgba(0,0,0,.32));
+  outline:none;
+}
+.france-history-source-svg .france-history-territory.is-selected {
+  stroke:#fff0c4 !important;
+  stroke-width:3.2px !important;
+  filter:brightness(1.12) drop-shadow(0 0 5px rgba(255,222,159,.42));
+}
+.france-history-source-svg text.france-history-source-label {
+  cursor:pointer;
+  pointer-events:visiblePainted;
+}
+.france-history-source-svg text.france-history-source-label:hover tspan,
+.france-history-source-svg text.france-history-source-label:focus-visible tspan {
+  fill:#fff2cc !important;
+  stroke:#1d2b34 !important;
+  stroke-width:1.8px !important;
+}
+.france-history-source-svg text.france-history-source-label.is-selected tspan {
+  fill:#f2ca7e !important;
+  stroke:#15242d !important;
+  stroke-width:2px !important;
+}
+.france-history-source-svg text.france-history-source-label:focus-visible {
+  outline:none;
+}
+@media(max-width:760px) {
+  .france-history-source-svg {max-width:100%; margin-top:0}
+  .france-987-map {overflow:visible}
+}
+
+
+/* ===== LYS · Finitions de la carte de 987 et du répertoire départemental ===== */
+
+/* Le SVG source garde ses contours, mais les traits de sélection restent sobres.
+   Aucun filtre de type drop-shadow : certains navigateurs dessinaient un cadre rectangulaire. */
+#france987Svg.france-history-source-svg {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+#france987Svg.france-history-source-svg path.france-history-territory {
+  cursor: pointer !important;
+  stroke: #26333b !important;
+  stroke-width: 1.15px !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  vector-effect: non-scaling-stroke !important;
+  shape-rendering: geometricPrecision;
+  filter: none !important;
+  outline: none !important;
+  transition: stroke 140ms ease, stroke-width 140ms ease, opacity 140ms ease;
+}
+#france987Svg.france-history-source-svg path.france-history-territory:hover {
+  stroke: #101b23 !important;
+  stroke-width: 1.65px !important;
+  filter: none !important;
+}
+#france987Svg.france-history-source-svg path.france-history-territory:focus,
+#france987Svg.france-history-source-svg path.france-history-territory:focus-visible,
+#france987Svg.france-history-source-svg text.france-history-source-label:focus,
+#france987Svg.france-history-source-svg text.france-history-source-label:focus-visible {
+  outline: none !important;
+  filter: none !important;
+}
+#france987Svg.france-history-source-svg path.france-history-territory.is-selected {
+  stroke: #f1d39a !important;
+  stroke-width: 2px !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+#france987Svg.france-history-source-svg text,
+#france987Svg.france-history-source-svg tspan {
+  font-family: "DM Sans", Arial, sans-serif !important;
+  font-style: normal !important;
+  font-weight: 750 !important;
+  fill: #101820 !important;
+  stroke: rgba(255,255,255,.88) !important;
+  stroke-width: 1.15px !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  paint-order: stroke fill !important;
+  letter-spacing: .01em !important;
+}
+#france987Svg.france-history-source-svg text.france-history-source-label {
+  cursor: pointer !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+#france987Svg.france-history-source-svg text.france-history-source-label:hover tspan {
+  fill: #050b10 !important;
+  stroke: rgba(255,255,255,.96) !important;
+  stroke-width: 1.35px !important;
+}
+#france987Svg.france-history-source-svg text.france-history-source-label.is-selected tspan {
+  fill: #050b10 !important;
+  stroke: rgba(255,255,255,.98) !important;
+}
+
+/* Fiche historique nettement plus large, avec une grille de lecture claire. */
+.france-history-dialog {
+  width: min(900px, calc(100vw - 36px)) !important;
+  max-width: 900px !important;
+  max-height: min(90vh, 920px) !important;
+  overflow: hidden !important;
+  border-radius: 22px !important;
+}
+.france-history-popup-shell {
+  max-height: min(90vh, 920px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 32px 38px 30px !important;
+  scrollbar-width: thin;
+  scrollbar-color: #62717d transparent;
+}
+.france-history-popup-topline {
+  font-size: 10px !important;
+  letter-spacing: .12em !important;
+  line-height: 1.55;
+  padding-right: 58px !important;
+}
+.france-history-popup-hero {
+  align-items: center !important;
+  gap: 20px !important;
+  padding: 24px 0 12px !important;
+}
+.france-history-popup-swatch {
+  display: flex !important;
+  flex-direction: column;
+  flex: 0 0 88px !important;
+  width: 88px !important;
+  height: 62px !important;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.48) !important;
+  border-radius: 7px !important;
+  box-shadow: 0 7px 20px rgba(0,0,0,.24) !important;
+}
+.france-history-banner-stripe { display:block; flex:1 1 0; min-height:0; }
+.france-history-popup-hero h3 {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: clamp(32px, 4vw, 43px) !important;
+  line-height: 1.05 !important;
+  margin: 5px 0 0 !important;
+}
+.france-history-popup-intro {
+  max-width: 720px;
+  margin: 9px 0 0 !important;
+  color: #d3dce1 !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+}
+.france-history-banner-note {
+  margin: 4px 0 18px;
+  color: #aeb9c0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.france-history-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  margin: 18px 0 16px;
+}
+.france-history-detail-block {
+  min-width: 0;
+  padding: 17px 18px 16px;
+  border: 1px solid rgba(194,177,145,.22);
+  border-radius: 13px;
+  background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+}
+.france-history-detail-block h4,
+.france-history-popup-sources-wrap h4 {
+  margin: 0 0 8px;
+  color: #e4c58d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.france-history-detail-block p {
+  margin: 0;
+  color: #e1e7e9;
+  font-size: 13px;
+  line-height: 1.68;
+}
+.france-history-popup-caution {
+  margin: 12px 0 16px;
+  padding: 15px 17px;
+  border-left: 3px solid #cba96b;
+  border-radius: 0 10px 10px 0;
+  color: #e1d4b8;
+  background: rgba(203,169,107,.09);
+  font-size: 12px;
+  line-height: 1.65;
+}
+.france-history-popup-sources-wrap {
+  padding-top: 13px;
+  border-top: 1px solid rgba(203,188,157,.18);
+}
+.france-history-popup-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.france-history-popup-sources a {
+  color: #9fc6dc;
+  font-size: 11px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-color: rgba(159,198,220,.4);
+  text-underline-offset: 3px;
+}
+.france-history-popup-sources a:hover { color: #f1d39a; }
+.france-history-popup-meta {
+  margin-top: 17px !important;
+  line-height: 1.55 !important;
+}
+.france-history-popup-action {
+  margin-top: 18px !important;
+  min-height: 42px;
+  padding: 10px 20px !important;
+}
+
+/* La fiche de prévisualisation dans la colonne reste utile après fermeture de la fenêtre. */
+.france-history-side-card .france-history-selection {
+  padding: 16px !important;
+  margin-top: 14px !important;
+}
+.france-history-selection strong {
+  display: block;
+  color: #f0d39d;
+  font-size: 17px;
+  line-height: 1.3;
+}
+.france-history-selection p {
+  margin: 9px 0 0;
+  color: #d7e0e4;
+  font-size: 12px;
+  line-height: 1.58;
+}
+.france-history-selection .france-history-selection-dynasty {
+  color: #c3d4dd;
+  font-size: 11px;
+  line-height: 1.55;
+}
+.france-history-selection small {
+  display: block;
+  margin-top: 11px;
+  color: #a8b5bd;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* La liste des 101 départements a sa propre zone de défilement, toujours complète. */
+.france-department-side-card {
+  align-self: start;
+  min-height: 0 !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+#franceMetropoleList.france-department-list {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  align-content: start;
+  min-height: 340px;
+  height: min(72vh, 820px) !important;
+  max-height: min(72vh, 820px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #647482 rgba(255,255,255,.025);
+  padding: 4px 7px 8px 0 !important;
+  margin-top: 9px !important;
+}
+#franceMetropoleList.france-department-list::-webkit-scrollbar { width: 9px; }
+#franceMetropoleList.france-department-list::-webkit-scrollbar-track {
+  background: rgba(255,255,255,.035);
+  border-radius: 10px;
+}
+#franceMetropoleList.france-department-list::-webkit-scrollbar-thumb {
+  background: #586b79;
+  border: 2px solid #1b2934;
+  border-radius: 10px;
+}
+#franceMetropoleList .france-department-choice { min-height: 34px; }
+@media (max-width: 760px) {
+  .france-history-dialog { width: calc(100vw - 18px) !important; max-height: 92vh !important; }
+  .france-history-popup-shell { max-height: 92vh; padding: 24px 18px 20px !important; }
+  .france-history-detail-grid { grid-template-columns: 1fr; gap: 9px; }
+  #franceMetropoleList.france-department-list {
+    height: min(62vh, 600px) !important;
+    max-height: calc(100vh - 270px) !important;
+    min-height: 270px;
+  }
+}
+@media (max-width: 440px) {
+  .france-history-popup-hero { align-items: flex-start !important; gap: 12px !important; }
+  .france-history-popup-swatch { flex-basis: 64px !important; width:64px !important; height:48px !important; }
+  .france-history-popup-hero h3 { font-size: 29px !important; }
+  #franceMetropoleList.france-department-list {
+    height: min(58vh, 500px) !important;
+    max-height: calc(100vh - 235px) !important;
+  }
+}
+
+
+/* ===== Ajustements finaux demandés : focus SVG, libellés sobres et défilement ===== */
+#france987Svg.france-history-source-svg,
+#france987Svg.france-history-source-svg * {
+  outline: 0 !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+#france987Svg.france-history-source-svg path.france-history-territory {
+  stroke: #26323a !important;
+  stroke-width: .9px !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  vector-effect: non-scaling-stroke !important;
+  filter: none !important;
+  outline: 0 !important;
+  cursor: pointer !important;
+  transition: stroke-width 120ms ease, stroke 120ms ease !important;
+}
+#france987Svg.france-history-source-svg path.france-history-territory:hover {
+  stroke: #101820 !important;
+  stroke-width: 1.25px !important;
+  filter: none !important;
+}
+#france987Svg.france-history-source-svg path.france-history-territory.is-selected {
+  stroke: #101820 !important;
+  stroke-width: 1.55px !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+#france987Svg.france-history-source-svg path.france-history-territory:focus,
+#france987Svg.france-history-source-svg path.france-history-territory:focus-visible,
+#france987Svg.france-history-source-svg text.france-history-source-label:focus,
+#france987Svg.france-history-source-svg text.france-history-source-label:focus-visible {
+  outline: 0 !important;
+  filter: none !important;
+}
+#france987Svg.france-history-source-svg text,
+#france987Svg.france-history-source-svg text tspan {
+  font-family: "DM Sans", Arial, sans-serif !important;
+  font-size: 10.5px !important;
+  font-style: normal !important;
+  font-weight: 750 !important;
+  fill: #101820 !important;
+  stroke: rgba(255,248,230,.32) !important;
+  stroke-width: .3px !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  paint-order: stroke fill !important;
+  letter-spacing: .015em !important;
+  text-decoration: none !important;
+}
+#france987Svg.france-history-source-svg text.france-history-source-label,
+#france987Svg.france-history-source-svg text.france-history-source-label:hover,
+#france987Svg.france-history-source-svg text.france-history-source-label.is-selected {
+  cursor: pointer !important;
+  fill: #101820 !important;
+  text-decoration: none !important;
+}
+#france987Svg.france-history-source-svg text.france-history-source-label:hover tspan,
+#france987Svg.france-history-source-svg text.france-history-source-label.is-selected tspan {
+  fill: #101820 !important;
+  stroke: rgba(255,248,230,.32) !important;
+}
+
+.france-history-dialog {
+  width: min(980px, calc(100vw - 32px)) !important;
+  max-width: 980px !important;
+  max-height: min(92vh, 980px) !important;
+}
+.france-history-popup-shell {
+  max-height: min(92vh, 980px) !important;
+  padding: 36px 42px 34px !important;
+}
+.france-history-detail-grid { gap: 15px !important; }
+.france-history-detail-block { padding: 19px 20px 18px !important; }
+.france-history-detail-block h4 { font-size: 12px !important; }
+.france-history-detail-block p { font-size: 14px !important; line-height: 1.72 !important; }
+.france-history-popup-intro { font-size: 15px !important; }
+
+.france-department-side-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: start !important;
+  min-height: 0 !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+#franceMetropoleList.france-department-list {
+  height: min(72vh, 820px) !important;
+  max-height: min(72vh, 820px) !important;
+  min-height: 320px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior-y: contain !important;
+  scroll-behavior: smooth;
+  scroll-padding-block: 12px;
+  scrollbar-gutter: stable;
+  flex: 0 1 auto !important;
+}
+@media (max-width: 760px) {
+  .france-history-popup-shell { padding: 26px 20px 22px !important; }
+  .france-history-detail-grid { grid-template-columns: 1fr !important; }
+  #franceMetropoleList.france-department-list {
+    height: min(62vh, 620px) !important;
+    max-height: calc(100vh - 230px) !important;
+    min-height: 260px !important;
+  }
+}
+
+
+/* LYS — harmonisation finale : carte 987, cartes de souverains, sources et dons. */
+#france987Svg.france-history-source-svg text,
+#france987Svg.france-history-source-svg text tspan,
+#france987Svg.france-history-source-svg text textPath,
+#france987Svg.france-history-source-svg text.france-history-source-label,
+#france987Svg.france-history-source-svg text.france-history-source-label:hover,
+#france987Svg.france-history-source-svg text.france-history-source-label.is-selected,
+#france987Svg.france-history-source-svg text.france-history-source-label:hover tspan,
+#france987Svg.france-history-source-svg text.france-history-source-label.is-selected tspan {
+  font-family: "Cinzel", Georgia, serif !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  fill: #000 !important;
+  letter-spacing: .035em !important;
+}
+#france987Svg.france-history-source-svg text.france-history-source-label:hover,
+#france987Svg.france-history-source-svg text.france-history-source-label.is-selected {
+  fill: #000 !important;
+}
+.france-history-popup-swatch {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 96px !important;
+  width: 96px !important;
+  height: 96px !important;
+  min-width: 96px !important;
+  overflow: hidden !important;
+  padding: 8px !important;
+  border: 1px solid rgba(75, 58, 34, .18) !important;
+  border-radius: 15px !important;
+  background: #f7f4ed !important;
+  box-shadow: 0 8px 22px rgba(20, 25, 30, .11) !important;
+}
+.france-history-emblem-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+.france-history-emblem-empty {
+  display: block !important;
+  color: #77736a !important;
+  font: 600 10px/1.35 "DM Sans", sans-serif !important;
+  text-align: center !important;
+}
+.france-history-banner-note { font-size: 11px !important; line-height: 1.65 !important; }
+
+/* Cartes de souverains : le focus reste dans la vignette et ne déborde plus sur les bords. */
+#souverains, #souverains .dynasty, #souverains .ruler-list { overflow: visible !important; }
+#souverains .ruler-list { padding: 7px !important; margin: -7px !important; }
+#souverains .ruler { position: relative !important; z-index: 0 !important; outline: 0 !important; }
+#souverains .ruler:hover { z-index: 2 !important; transform: translateY(-2px) !important; }
+#souverains .ruler:focus-visible {
+  z-index: 3 !important;
+  outline: 2px solid rgba(196, 159, 99, .95) !important;
+  outline-offset: -4px !important;
+}
+#souverains .ruler:hover, #souverains .ruler:focus-visible {
+  border-color: rgba(196, 159, 99, .72) !important;
+}
+
+/* Sources de fiche uniquement en pied de description ; les visuels restent non cliquables. */
+.reader .reader-bottom-sources { margin-top: 34px !important; padding-top: 22px !important; }
+.reader .reader-bottom-source-list { display: grid !important; gap: 9px !important; }
+.reader .reader-bottom-source-list .source-row { display: flex !important; gap: 10px !important; align-items: flex-start !important; }
+.reader .reader-bottom-source-list .source-row a { text-decoration: underline !important; text-decoration-color: rgba(120, 94, 55, .35) !important; }
+.reader .reader-body a:has(img),
+.reader .reader-visual a:has(img) { pointer-events: none !important; cursor: default !important; }
+#evenements .event-source-link, #evenements .event-featured-image-link { pointer-events: none !important; cursor: default !important; }
+#evenements .event-source-label { display: none !important; }
+
+/* Dons : une seule composition éditoriale, plus lisible et mieux équilibrée. */
+#don.don-page {
+  min-height: 0 !important;
+  padding: clamp(42px, 6vw, 82px) clamp(16px, 4vw, 34px) !important;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(196, 158, 95, .13), transparent 50%),
+    linear-gradient(180deg, #0b121c 0%, #080e17 100%) !important;
+}
+#don .don-shell {
+  display: block !important;
+  width: min(920px, 100%) !important;
+  margin-inline: auto !important;
+}
+#don .don-copy {
+  position: relative !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding: clamp(28px, 5vw, 58px) !important;
+  border: 1px solid rgba(213, 181, 124, .26) !important;
+  border-radius: 24px !important;
+  background: linear-gradient(145deg, rgba(20, 31, 44, .98), rgba(8, 15, 24, .99)) !important;
+  box-shadow: 0 28px 75px rgba(0, 0, 0, .34), inset 0 1px 0 rgba(255,255,255,.035) !important;
+}
+#don .don-copy h2 {
+  margin: 20px 0 20px !important;
+  font-size: clamp(42px, 6vw, 68px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.025em !important;
+}
+#don .don-copy > p { max-width: 720px !important; font-size: 14px !important; line-height: 1.85 !important; }
+#don .don-pillars { gap: 12px !important; margin-top: 30px !important; }
+#don .don-pillar {
+  min-height: 82px !important;
+  padding: 15px 14px !important;
+  border-radius: 14px !important;
+  background: rgba(255,255,255,.035) !important;
+  border-color: rgba(213,181,124,.17) !important;
+}
+#don .don-pillar strong { font-size: 11px !important; }
+#don .don-pillar small { font-size: 10px !important; line-height: 1.5 !important; }
+#don .don-button {
+  margin-top: 30px !important;
+  min-height: 72px !important;
+  border-radius: 16px !important;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease !important;
+}
+#don .don-sites {
+  width: min(100%, 700px) !important;
+  margin-top: 30px !important;
+  padding-top: 26px !important;
+  border-top: 1px solid rgba(213,181,124,.16) !important;
+  gap: 14px !important;
+}
+#don .don-site {
+  min-height: 86px !important;
+  border-radius: 15px !important;
+  background: linear-gradient(120deg, rgba(30,46,62,.82), rgba(255,255,255,.035)) !important;
+}
+@media (max-width: 680px) {
+  #souverains .ruler-list { padding: 6px !important; margin: -6px !important; }
+  #don.don-page { padding: 34px 14px 48px !important; }
+  #don .don-copy { padding: 26px 21px !important; }
+  #don .don-pillars { grid-template-columns: 1fr !important; gap: 9px !important; }
+  #don .don-pillar { min-height: 0 !important; }
+  #don .don-sites { grid-template-columns: 1fr !important; gap: 10px !important; }
+}
+
+.reader .rev-illustration-sources {
+  display: grid !important;
+  gap: 12px !important;
+  margin: 30px 0 12px !important;
+  padding: 20px 22px !important;
+  border: 1px solid rgba(126, 158, 190, .18) !important;
+  border-radius: 15px !important;
+  background: rgba(20, 32, 46, .035) !important;
+}
+.reader .rev-illustration-sources > div {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 9px 16px !important;
+}
+.reader .rev-illustration-sources a {
+  color: #6d532d !important;
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+  text-decoration: underline !important;
+  text-decoration-color: rgba(120, 94, 55, .35) !important;
+}
+@media (max-width: 600px) {
+  .reader .rev-illustration-sources { padding: 16px !important; }
+  .reader .rev-illustration-sources > div { grid-template-columns: 1fr !important; }
+}
+
+/* LYS — Dons : écrin néon bleu royal avec le château de Versailles en arrière-plan. */
+#don.don-page {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  min-height: clamp(700px, calc(100svh - 72px), 980px) !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: clamp(42px, 6vw, 88px) clamp(16px, 4vw, 38px) !important;
+  background-color: #050d25 !important;
+  background-image:
+    linear-gradient(90deg, rgba(2, 8, 25, .92) 0%, rgba(3, 13, 37, .82) 43%, rgba(3, 12, 34, .58) 100%),
+    linear-gradient(0deg, rgba(2, 7, 22, .58), rgba(2, 9, 28, .12)),
+    radial-gradient(ellipse at 82% 37%, rgba(28, 145, 255, .24), transparent 43%),
+    none !important;
+  background-size: cover, cover, cover, cover !important;
+  background-position: center, center, center, center 54% !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+}
+#don.don-page::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  pointer-events: none !important;
+  background: linear-gradient(180deg, rgba(20, 98, 185, .10), transparent 24%, transparent 76%, rgba(1, 5, 18, .34)) !important;
+}
+#don.don-page::after {
+  content: "" !important;
+  position: absolute !important;
+  z-index: 0 !important;
+  width: min(68vw, 760px) !important;
+  height: min(68vw, 760px) !important;
+  right: -24vw !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  border: 1px solid rgba(91, 203, 255, .16) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 75px rgba(19, 132, 255, .10), inset 0 0 75px rgba(19, 132, 255, .07) !important;
+  pointer-events: none !important;
+}
+#don .don-shell {
+  position: relative !important;
+  z-index: 1 !important;
+  width: min(1000px, 100%) !important;
+  margin-inline: auto !important;
+}
+#don .don-copy {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: clamp(30px, 5.2vw, 62px) !important;
+  border: 1px solid rgba(105, 207, 255, .40) !important;
+  border-radius: 26px !important;
+  background: linear-gradient(135deg, rgba(5, 18, 45, .86), rgba(7, 19, 44, .76) 54%, rgba(4, 13, 34, .86)) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(135%) !important;
+  backdrop-filter: blur(16px) saturate(135%) !important;
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, .48),
+    0 0 0 1px rgba(164, 230, 255, .07),
+    0 0 38px rgba(24, 136, 255, .16),
+    inset 0 1px 0 rgba(230, 249, 255, .12) !important;
+}
+#don .don-copy::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, #38d8ff 18%, #8ceeff 48%, #d8bf83 78%, transparent) !important;
+  box-shadow: 0 0 18px rgba(49, 194, 255, .62), 0 0 32px rgba(49, 194, 255, .22) !important;
+}
+#don .don-overline {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+}
+#don .don-kicker {
+  color: #8be7ff !important;
+  font-size: 10px !important;
+  letter-spacing: .22em !important;
+  text-shadow: 0 0 14px rgba(64, 203, 255, .52) !important;
+}
+#don .don-edition {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 9px 12px !important;
+  border: 1px solid rgba(111, 212, 255, .26) !important;
+  border-radius: 999px !important;
+  background: rgba(31, 112, 185, .12) !important;
+  color: #b7eaff !important;
+  font: 700 8px/1.2 'DM Sans', sans-serif !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+  box-shadow: inset 0 0 16px rgba(45, 165, 255, .06), 0 0 18px rgba(45, 165, 255, .08) !important;
+}
+#don .don-copy h2 {
+  margin: 22px 0 20px !important;
+  color: #f3f9ff !important;
+  font-size: clamp(46px, 6vw, 74px) !important;
+  line-height: .96 !important;
+  letter-spacing: -.025em !important;
+  text-shadow: 0 0 26px rgba(69, 170, 255, .22) !important;
+}
+#don .don-copy h2 em {
+  color: #8deaff !important;
+  text-shadow: 0 0 12px rgba(54, 203, 255, .52), 0 0 34px rgba(36, 143, 255, .28) !important;
+}
+#don .don-copy > p {
+  max-width: 720px !important;
+  color: #d0dfef !important;
+  font-size: 14px !important;
+  line-height: 1.85 !important;
+}
+#don .don-pillars {
+  gap: 12px !important;
+  margin-top: 30px !important;
+}
+#don .don-pillar {
+  min-height: 84px !important;
+  padding: 15px 14px !important;
+  border: 1px solid rgba(105, 198, 255, .22) !important;
+  border-radius: 15px !important;
+  background: linear-gradient(145deg, rgba(18, 78, 133, .26), rgba(8, 28, 59, .34)) !important;
+  box-shadow: inset 0 1px 0 rgba(218, 243, 255, .06), 0 8px 22px rgba(0, 0, 0, .12) !important;
+}
+#don .don-pillar > span {
+  color: #7fe6ff !important;
+  text-shadow: 0 0 12px rgba(55, 199, 255, .48) !important;
+}
+#don .don-pillar strong {
+  color: #f0f8ff !important;
+  font-size: 11px !important;
+}
+#don .don-pillar small {
+  color: #a9c5df !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+}
+#don .don-button {
+  position: relative !important;
+  margin-top: 30px !important;
+  min-height: 74px !important;
+  width: min(100%, 370px) !important;
+  padding: 15px 18px !important;
+  border: 1px solid rgba(164, 239, 255, .9) !important;
+  border-radius: 17px !important;
+  background: linear-gradient(110deg, #39dfff 0%, #159ef2 48%, #245bd9 100%) !important;
+  box-shadow: 0 10px 28px rgba(0, 116, 255, .26), 0 0 22px rgba(43, 194, 255, .32), inset 0 1px 0 rgba(255, 255, 255, .42) !important;
+  text-decoration: none !important;
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease !important;
+}
+#don .don-button:hover {
+  transform: translateY(-3px) !important;
+  border-color: #e0fbff !important;
+  filter: brightness(1.08) !important;
+  box-shadow: 0 14px 36px rgba(0, 132, 255, .34), 0 0 34px rgba(54, 211, 255, .52), inset 0 1px 0 rgba(255, 255, 255, .5) !important;
+}
+#don .don-button > span {
+  border: 1px solid rgba(255, 255, 255, .30) !important;
+  background: rgba(2, 33, 82, .22) !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 12px rgba(255, 255, 255, .65) !important;
+}
+#don .don-button strong {
+  color: #ffffff !important;
+  font-size: 11px !important;
+  letter-spacing: .09em !important;
+  text-shadow: 0 1px 8px rgba(0, 30, 78, .35) !important;
+}
+#don .don-button small { color: rgba(245, 252, 255, .84) !important; }
+#don .don-button > i { color: #ffffff !important; }
+#don .don-note {
+  display: block !important;
+  margin-top: 15px !important;
+  color: #bed6e9 !important;
+  font: 500 10px/1.6 'DM Sans', sans-serif !important;
+}
+#don .don-sites {
+  width: min(100%, 720px) !important;
+  margin-top: 30px !important;
+  padding-top: 25px !important;
+  border-top: 1px solid rgba(111, 203, 255, .20) !important;
+  gap: 13px !important;
+}
+#don .don-site {
+  min-height: 84px !important;
+  border: 1px solid rgba(102, 194, 255, .23) !important;
+  border-radius: 16px !important;
+  background: linear-gradient(125deg, rgba(18, 65, 110, .50), rgba(9, 24, 50, .45)) !important;
+  box-shadow: inset 0 1px 0 rgba(228, 247, 255, .07), 0 8px 24px rgba(0, 0, 0, .14) !important;
+}
+#don .don-site:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(117, 223, 255, .75) !important;
+  background: linear-gradient(125deg, rgba(26, 105, 165, .62), rgba(10, 34, 69, .56)) !important;
+  box-shadow: 0 0 24px rgba(28, 151, 255, .18), inset 0 1px 0 rgba(240, 251, 255, .12) !important;
+}
+#don .don-site-logo {
+  border-color: rgba(125, 210, 255, .26) !important;
+  background: rgba(3, 17, 43, .66) !important;
+}
+#don .don-site-copy strong { color: #effaff !important; }
+#don .don-site-copy small { color: #a9c8e1 !important; }
+#don .don-site-arrow { color: #80e6ff !important; text-shadow: 0 0 12px rgba(53, 200, 255, .48) !important; }
+#don a:focus-visible {
+  outline: 2px solid #8cecff !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 0 5px rgba(51, 185, 255, .16), 0 0 22px rgba(51, 185, 255, .34) !important;
+}
+@media (max-width: 680px) {
+  #don.don-page {
+    min-height: 0 !important;
+    padding: 34px 14px 48px !important;
+    background-position: center, center, center, 66% center !important;
+  }
+  #don.don-page::after { width: 420px !important; height: 420px !important; right: -300px !important; }
+  #don .don-copy { padding: 26px 21px !important; border-radius: 21px !important; }
+  #don .don-overline { align-items: flex-start !important; flex-direction: column !important; gap: 10px !important; }
+  #don .don-copy h2 { font-size: clamp(43px, 12vw, 54px) !important; }
+  #don .don-pillars { grid-template-columns: 1fr !important; gap: 9px !important; margin-top: 22px !important; }
+  #don .don-pillar { min-height: 0 !important; align-items: center !important; }
+  #don .don-sites { grid-template-columns: 1fr !important; gap: 10px !important; margin-top: 24px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #don .don-button, #don .don-site { transition: none !important; }
+}
+
+
+/* Encadré de présentation du second projet — limité à la page Dons. */
+#don .don-discover {
+  position: relative !important;
+  margin-top: 30px !important;
+  padding: 21px 23px 20px !important;
+  border: 1px solid rgba(115, 211, 255, .28) !important;
+  border-radius: 17px !important;
+  background: linear-gradient(115deg, rgba(20, 91, 157, .30), rgba(7, 27, 62, .48)) !important;
+  box-shadow: inset 0 1px 0 rgba(230, 249, 255, .07), 0 10px 28px rgba(0, 0, 0, .13) !important;
+}
+#don .don-discover-kicker {
+  display: block !important;
+  margin-bottom: 8px !important;
+  color: #82ddff !important;
+  font: 700 9px/1.4 'DM Sans', sans-serif !important;
+  letter-spacing: .19em !important;
+}
+#don .don-discover h3 {
+  margin: 0 0 8px !important;
+  color: #f2f9ff !important;
+  font: 600 clamp(19px, 2.4vw, 25px)/1.2 'Cinzel', Georgia, serif !important;
+}
+#don .don-discover p {
+  max-width: 760px !important;
+  margin: 0 !important;
+  color: #c9ddef !important;
+  font-size: 13px !important;
+  line-height: 1.75 !important;
+}
+#don .don-discover p strong { color: #ffffff !important; }
+#don .don-discover > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  margin-top: 13px !important;
+  color: #8ce8ff !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+  text-decoration: none !important;
+  transition: color .18s ease, transform .18s ease !important;
+}
+#don .don-discover > a:hover { color: #ffffff !important; transform: translateX(3px) !important; }
+@media (max-width: 600px) {
+  #don .don-discover { margin-top: 22px !important; padding: 18px !important; }
+}
+
+
+/* La rubrique Dons conserve son propre contenu et reste accessible par la navigation.
+   Ne pas la masquer via :target : la navigation du site ne repose pas sur ce mécanisme. */
+#don.don-page { scroll-margin-top: 90px !important; }
+
+/* Emblèmes 987 : aucun cartouche clair derrière les blasons ; dimensions strictement contenues. */
+#franceHistoryPopupSwatch.france-history-popup-swatch {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 104px !important;
+  width: 104px !important;
+  min-width: 104px !important;
+  height: 104px !important;
+  min-height: 104px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+#franceHistoryPopupSwatch .france-history-emblem-image {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 94px !important;
+  max-height: 94px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+@media (max-width: 440px) {
+  #franceHistoryPopupSwatch.france-history-popup-swatch {
+    flex-basis: 74px !important; width: 74px !important; min-width: 74px !important;
+    height: 74px !important; min-height: 74px !important;
+  }
+  #franceHistoryPopupSwatch .france-history-emblem-image {
+    max-width: 66px !important; max-height: 66px !important;
+  }
+}
+
+/* La carte des dons est absente de toutes les autres rubriques. */
+#don.don-nav-hidden { display: none !important; }
+
+/* ===== Finition éditoriale de la carte 987 ===== */
+#carte.is-historic-mode {
+  background:
+    radial-gradient(ellipse at 50% 4%, rgba(196, 160, 100, .16), transparent 42%),
+    radial-gradient(ellipse at 8% 78%, rgba(44, 107, 133, .13), transparent 34%),
+    linear-gradient(155deg, #0b1722 0%, #111f2b 52%, #0b151f 100%) !important;
+}
+#carte.is-historic-mode::before {
+  opacity: .14 !important;
+  background-size: 58px 58px !important;
+  mask-image: linear-gradient(115deg, rgba(0,0,0,.8), transparent 78%) !important;
+}
+#carte.is-historic-mode .france-map-inner {
+  max-width: 1580px !important;
+}
+#carte.is-historic-mode .france-map-heading {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 0 auto 34px !important;
+  text-align: center !important;
+}
+#carte.is-historic-mode .france-map-heading > div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+#carte.is-historic-mode .france-map-heading > div > label {
+  color: #d7b77c !important;
+  font-size: 10px !important;
+  letter-spacing: .24em !important;
+}
+#carte.is-historic-mode .france-map-heading h2 {
+  max-width: 1000px !important;
+  margin: 0 !important;
+  color: #f0e7d6 !important;
+  font: 600 clamp(38px, 4.8vw, 58px)/1.06 "Cormorant Garamond", Georgia, serif !important;
+  letter-spacing: -.018em !important;
+}
+#carte.is-historic-mode .france-map-heading > p {
+  max-width: 820px !important;
+  margin: 0 auto !important;
+  color: #b7c1c6 !important;
+  font-size: 13px !important;
+  line-height: 1.8 !important;
+}
+#carte.is-historic-mode #franceMapStatus,
+#carte.is-historic-mode .france-map-status {
+  display: none !important;
+}
+#carte.is-historic-mode .france-map-layout {
+  grid-template-columns: minmax(0, 1.34fr) minmax(340px, .76fr) !important;
+  align-items: start !important;
+  gap: clamp(16px, 2vw, 26px) !important;
+}
+#carte.is-historic-mode .france-map-visual-card {
+  min-width: 0 !important;
+  padding: 22px 24px 18px !important;
+  border: 1px solid rgba(202, 177, 129, .28) !important;
+  border-radius: 22px !important;
+  background: linear-gradient(150deg, rgba(25, 39, 51, .97), rgba(11, 22, 32, .98)) !important;
+  box-shadow: 0 24px 58px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.045) !important;
+}
+#carte.is-historic-mode .france-map-card-head {
+  padding: 2px 3px 16px !important;
+  border-bottom: 1px solid rgba(211, 188, 145, .23) !important;
+}
+#carte.is-historic-mode .france-map-card-heading-copy > span,
+#carte.is-historic-mode .france-map-card-head > span {
+  color: #ddbd83 !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: .19em !important;
+}
+#carte.is-historic-mode .france-map-card-heading-copy small,
+#carte.is-historic-mode .france-map-card-head small {
+  color: #aeb9c1 !important;
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+}
+#carte.is-historic-mode .france-map-mode-toggle {
+  min-height: 42px !important;
+  padding: 10px 16px !important;
+  border-color: rgba(224, 194, 139, .46) !important;
+  background: linear-gradient(135deg, rgba(196, 158, 95, .18), rgba(255,255,255,.035)) !important;
+  color: #f1dfbd !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+#carte.is-historic-mode #france987Map {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin: 20px auto 0 !important;
+  padding: clamp(12px, 2vw, 22px) !important;
+  border: 1px solid rgba(202, 177, 129, .20) !important;
+  border-radius: 17px !important;
+  /* La carte reste sur le fond bleu nuit du site : aucun panneau blanc/parchemin. */
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#carte.is-historic-mode .france-history-source-svg {
+  width: 100% !important;
+  max-width: 740px !important;
+  height: auto !important;
+  max-height: 860px !important;
+  min-height: 0 !important;
+  margin: 0 auto !important;
+  overflow: visible !important;
+}
+#carte.is-historic-mode .france-history-source-svg path.france-history-territory {
+  stroke: #34434a !important;
+  stroke-width: 1.15px !important;
+  stroke-linejoin: round !important;
+  stroke-linecap: round !important;
+  filter: saturate(.86) contrast(1.035) !important;
+  transition: filter .2s ease, stroke-width .2s ease !important;
+}
+#carte.is-historic-mode .france-history-source-svg path.france-history-territory:hover,
+#carte.is-historic-mode .france-history-source-svg path.france-history-territory:focus-visible {
+  stroke: #15252f !important;
+  stroke-width: 1.8px !important;
+  filter: saturate(.96) contrast(1.06) brightness(1.035) !important;
+}
+#carte.is-historic-mode .france-history-source-svg path.france-history-territory.is-selected {
+  stroke: #9a7441 !important;
+  stroke-width: 2.2px !important;
+  filter: saturate(.96) contrast(1.06) brightness(1.04) !important;
+}
+#carte.is-historic-mode .france-history-source-svg text,
+#carte.is-historic-mode .france-history-source-svg text tspan {
+  font-family: "Cinzel", Georgia, serif !important;
+  font-weight: 700 !important;
+  fill: #101820 !important;
+  stroke: rgba(246, 239, 222, .68) !important;
+  stroke-width: .7px !important;
+  letter-spacing: .025em !important;
+  paint-order: stroke fill !important;
+}
+#carte.is-historic-mode .france-987-map-note {
+  margin-top: 5px !important;
+  padding: 12px 8px 0 !important;
+  color: #b8c2c8 !important;
+  font-size: 10px !important;
+  letter-spacing: .025em !important;
+}
+#carte.is-historic-mode .france-history-side-card {
+  align-self: stretch !important;
+  padding: 22px 20px !important;
+  gap: 18px !important;
+  border: 1px solid rgba(202, 177, 129, .28) !important;
+  border-radius: 22px !important;
+  background: linear-gradient(150deg, rgba(25, 39, 51, .97), rgba(11, 22, 32, .98)) !important;
+  box-shadow: 0 24px 58px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+#carte.is-historic-mode .france-history-side-card .france-map-card-head {
+  padding: 2px 2px 16px !important;
+}
+#carte.is-historic-mode .france-history-legend {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 9px !important;
+}
+#carte.is-historic-mode .france-history-legend-item {
+  min-height: 43px !important;
+  box-sizing: border-box !important;
+  padding: 8px 9px !important;
+  border: 1px solid rgba(207, 190, 157, .14) !important;
+  border-radius: 10px !important;
+  background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.014)) !important;
+  color: #e4e6e3 !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease !important;
+}
+#carte.is-historic-mode .france-history-legend-item:hover {
+  transform: translateY(-1px) !important;
+  border-color: rgba(223, 190, 130, .55) !important;
+  background: rgba(205, 170, 112, .09) !important;
+}
+#carte.is-historic-mode .france-history-legend-item[aria-pressed="true"] {
+  border-color: rgba(223, 190, 130, .72) !important;
+  background: linear-gradient(120deg, rgba(205, 170, 112, .16), rgba(255,255,255,.025)) !important;
+  box-shadow: inset 2px 0 #d9b778 !important;
+}
+#carte.is-historic-mode .france-history-swatch {
+  flex-basis: 12px !important;
+  width: 12px !important;
+  height: 12px !important;
+  border: 1px solid rgba(12, 19, 26, .6) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.07) !important;
+}
+#carte.is-historic-mode .france-history-side-card .france-history-selection {
+  margin: 0 !important;
+  padding: 18px 17px !important;
+  border: 1px solid rgba(209, 180, 126, .26) !important;
+  border-left: 3px solid #c9a66e !important;
+  border-radius: 0 13px 13px 0 !important;
+  background: linear-gradient(110deg, rgba(198, 161, 99, .10), rgba(255,255,255,.018)) !important;
+}
+#carte.is-historic-mode .france-history-selection strong {
+  color: #f0d7a8 !important;
+  font: 600 21px/1.2 "Cormorant Garamond", Georgia, serif !important;
+}
+#carte.is-historic-mode .france-history-selection p {
+  margin: 9px 0 0 !important;
+  color: #d0d9dd !important;
+  font-size: 12px !important;
+  line-height: 1.68 !important;
+}
+#carte.is-historic-mode .france-history-selection small {
+  margin-top: 12px !important;
+  color: #9eacb4 !important;
+  font-size: 10px !important;
+  line-height: 1.55 !important;
+}
+#carte.is-historic-mode .france-history-disclaimer {
+  margin-top: auto !important;
+  padding: 16px 16px 15px !important;
+  border: 1px solid rgba(207, 177, 120, .23) !important;
+  border-radius: 13px !important;
+  background: linear-gradient(145deg, rgba(190,157,103,.09), rgba(255,255,255,.018)) !important;
+}
+#carte.is-historic-mode .france-history-disclaimer strong {
+  margin-bottom: 9px !important;
+  color: #dfc48f !important;
+  font-size: 9px !important;
+  letter-spacing: .16em !important;
+}
+#carte.is-historic-mode .france-history-disclaimer p {
+  color: #aebbc2 !important;
+  font-size: 10px !important;
+  line-height: 1.7 !important;
+}
+@media (max-width: 1120px) {
+  #carte.is-historic-mode .france-map-layout {
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr) !important;
+  }
+  #carte.is-historic-mode .france-history-legend {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 760px) {
+  #carte.is-historic-mode .france-map-heading { margin-bottom: 24px !important; }
+  #carte.is-historic-mode .france-map-heading h2 { font-size: clamp(34px, 8vw, 46px) !important; }
+  #carte.is-historic-mode .france-map-layout { grid-template-columns: 1fr !important; }
+  #carte.is-historic-mode .france-map-visual-card { padding: 15px 13px 13px !important; }
+  #carte.is-historic-mode #france987Map { margin-top: 14px !important; padding: 9px !important; }
+  #carte.is-historic-mode .france-history-source-svg { max-height: none !important; }
+  #carte.is-historic-mode .france-history-side-card { padding: 17px 15px !important; }
+  #carte.is-historic-mode .france-history-legend { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 440px) {
+  #carte.is-historic-mode .france-map-card-head { align-items: flex-start !important; flex-direction: column !important; }
+  #carte.is-historic-mode .france-map-mode-toggle { align-self: flex-start !important; }
+  #carte.is-historic-mode .france-history-legend { grid-template-columns: 1fr !important; }
+}
+
+/* Blasons des fenêtres 987 : restaurer le trait complet et supprimer tout cartouche derrière. */
+#franceHistoryPopupSwatch.france-history-popup-swatch {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 136px !important;
+  width: 136px !important;
+  min-width: 136px !important;
+  height: 142px !important;
+  min-height: 142px !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#franceHistoryPopupSwatch .france-history-emblem-image {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 132px !important;
+  max-height: 136px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#franceHistoryPopupSwatch .france-history-emblem-empty {
+  max-width: 120px !important;
+  color: #b7c2c8 !important;
+  font-size: 10px !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
+}
+.france-history-popup-hero {
+  align-items: center !important;
+  gap: 23px !important;
+  padding: 25px 0 15px !important;
+}
+.france-history-popup-hero > div { min-width: 0 !important; }
+.france-history-popup-hero h3 {
+  color: #f1e7d4 !important;
+  font: 600 clamp(35px, 4vw, 48px)/1.04 "Cormorant Garamond", Georgia, serif !important;
+  letter-spacing: -.012em !important;
+}
+.france-history-popup-intro {
+  max-width: 760px !important;
+  color: #d1dce0 !important;
+  font-size: 14px !important;
+  line-height: 1.72 !important;
+}
+.france-history-banner-note {
+  margin: 7px 0 18px !important;
+  padding: 12px 15px !important;
+  border-left: 2px solid #c6a46a !important;
+  border-radius: 0 9px 9px 0 !important;
+  background: linear-gradient(90deg, rgba(198,164,106,.10), rgba(255,255,255,.012)) !important;
+  color: #bdc8cd !important;
+  font-size: 11px !important;
+  line-height: 1.72 !important;
+}
+.france-history-detail-grid {
+  gap: 22px 28px !important;
+  margin: 23px 0 23px !important;
+  counter-reset: history-detail !important;
+}
+.france-history-detail-block {
+  position: relative !important;
+  min-width: 0 !important;
+  padding: 18px 34px 12px 2px !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(203,188,157,.25) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  counter-increment: history-detail !important;
+}
+.france-history-detail-block::after {
+  content: "0" counter(history-detail) !important;
+  position: absolute !important;
+  top: 14px !important;
+  right: 3px !important;
+  color: rgba(220,190,136,.52) !important;
+  font: 600 22px/1 "Cormorant Garamond", Georgia, serif !important;
+  letter-spacing: -.02em !important;
+}
+.france-history-detail-block h4 {
+  margin: 0 0 10px !important;
+  color: #dfc18d !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: .13em !important;
+  line-height: 1.5 !important;
+}
+.france-history-detail-block p {
+  color: #d8e0e3 !important;
+  font-size: 13px !important;
+  line-height: 1.78 !important;
+}
+.france-history-popup-sources-wrap {
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(203,188,157,.21) !important;
+}
+.france-history-popup-sources-wrap h4 {
+  margin-bottom: 12px !important;
+  color: #dfc18d !important;
+  font-size: 10px !important;
+  letter-spacing: .15em !important;
+}
+@media (max-width: 600px) {
+  #franceHistoryPopupSwatch.france-history-popup-swatch {
+    flex-basis: 88px !important;
+    width: 88px !important;
+    min-width: 88px !important;
+    height: 94px !important;
+    min-height: 94px !important;
+  }
+  #franceHistoryPopupSwatch .france-history-emblem-image {
+    max-width: 86px !important;
+    max-height: 90px !important;
+  }
+  .france-history-popup-hero { gap: 13px !important; align-items: flex-start !important; }
+  .france-history-popup-hero h3 { font-size: clamp(28px, 7vw, 36px) !important; }
+  .france-history-detail-grid { grid-template-columns: 1fr !important; gap: 13px !important; }
+}
+
+/* Dons : utiliser toute la largeur de la photographie de Versailles, sans aplat vertical à gauche. */
+#don.don-page {
+  background-color: #06112a !important;
+  background-image:
+    linear-gradient(90deg, rgba(2, 8, 25, .72) 0%, rgba(3, 13, 37, .58) 46%, rgba(3, 12, 34, .40) 100%),
+    linear-gradient(0deg, rgba(2, 7, 22, .45), rgba(2, 9, 28, .08)),
+    radial-gradient(ellipse at 82% 37%, rgba(28, 145, 255, .17), transparent 43%),
+    none !important;
+  background-size: cover, cover, cover, 132% auto !important;
+  background-position: center, center, center, right 52% !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+}
+@media (max-width: 760px) {
+  #don.don-page {
+    background-size: cover, cover, cover, auto 100% !important;
+    background-position: center, center, center, 62% center !important;
+  }
+}
+
+
+/* LYS — Dons : fond bleu dégradé profond, sans photographie ni décor graphique. */
+#don.don-page {
+  background: linear-gradient(135deg, #102b59 0%, #091d40 42%, #06132f 72%, #02091b 100%) !important;
+  background-color: #06132f !important;
+  background-image: linear-gradient(135deg, #102b59 0%, #091d40 42%, #06132f 72%, #02091b 100%) !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+}
+#don.don-page::before,
+#don.don-page::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
