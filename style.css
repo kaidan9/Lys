@@ -12638,3 +12638,15 @@ header.lys-data-header>h2{white-space:normal!important;overflow-wrap:anywhere!im
 .department-popup-flag-link,.department-popup-flag-source{display:none!important;}
 .department-popup-flag-stage.department-popup-flag-missing{background:linear-gradient(145deg,#f1efe9,#e7e4dc)!important;}
 .department-popup-province,.department-popup-disclaimer{display:none!important;}
+
+
+/* LYS — zoom cartographique de Paris et de la petite couronne */
+.france-paris-zoom-card{margin:18px 0 8px;padding:15px 17px 12px;border:1px solid rgba(201,170,105,.35);border-radius:13px;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(7,15,23,.72));box-shadow:0 12px 30px rgba(0,0,0,.14)}
+.france-paris-zoom-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#dfc58e;font-size:10px;letter-spacing:.13em}
+.france-paris-zoom-heading span{color:#aab7c0;font-size:10px;letter-spacing:.08em}
+.france-paris-zoom-svg{display:block;width:100%;height:auto;max-height:390px;margin:10px auto 4px;overflow:visible}
+.france-paris-zoom-shape{stroke:#172633;stroke-width:2.4!important;cursor:pointer}
+.france-paris-zoom-shape:hover{stroke:#fff0c9;stroke-width:4!important;filter:brightness(1.2) drop-shadow(0 3px 5px rgba(0,0,0,.45))}
+.france-paris-zoom-label{font-size:19px;stroke-width:4px}
+.france-paris-zoom-card>p{margin:4px 0 0;text-align:center;color:#8f9da6;font-size:10px}
+@media(max-width:600px){.france-paris-zoom-card{padding:12px 9px}.france-paris-zoom-svg{max-height:300px}.france-paris-zoom-label{font-size:16px}}

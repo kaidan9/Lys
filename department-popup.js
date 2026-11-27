@@ -159,30 +159,30 @@
     "05": "Flag of Hautes-Alpes.svg",
     "16": "Flag of Charente.svg",
     "26": "Flag of the Department of Drôme.svg",
-    "27": "Flag of the Department of Eure.svg",
+    "27": "Drapeau de Normandie.svg",
     "31": "Banner of the County of Toulouse (2 by 3).svg",
     "33": "Flag of Gironde.svg",
-    "34": "Flag of the Department of Hérault.svg",
+    "34": "Flag of Languedoc.svg",
     "38": "Flag of Dauphiné.svg",
     "39": "Flag of Jura (department).svg",
     "43": "Bannière héraldique du Velay.svg",
     "44": "Drapeau fr département Loire-Atlantique.svg",
-    "46": "Flag of the Department of Lot.svg",
-    "48": "Flag of the Department of Lozère.svg",
-    "50": "Flag of the Department of Manche.svg",
-    "59": "Flag of the Department of Nord.svg",
+    "46": "Bannière historique du Quercy.svg",
+    "48": "Bannière historique du Gévaudan.svg",
+    "50": "Drapeau de Normandie.svg",
+    "59": "Flag of Flanders.svg",
     "61": "Flag of Orne.svg",
     "65": "Flag of the Department of Hautes-Pyrénées.svg",
-    "71": "Flag of the Department of Saône-et-Loire.svg",
+    "71": "Flag of Burgundy.svg",
     "74": "Flag of Haute-Savoie Departement.jpg",
     "75": "Flag of Paris with coat of arms.svg",
-    "76": "Flag of the Department of Seine-Maritime (Variant 1).svg",
+    "76": "Drapeau de Normandie.svg",
     "77": "Drapeau culturel pour le département de Seine-et-Marne.svg",
     "78": "Drapeau fr département Yvelines.svg",
     "82": "Flag of Tarn-et-Garonne.svg",
     "89": "Drapeau fr département Yonne.svg",
     "93": "Cultural flag of Île-de-France.svg",
-    "94": "Flag of the Department of Val-de-Marne.svg"
+    "94": "Cultural flag of Île-de-France.svg",
 };
   const PROVINCE_FLAGS = {"bugey": "Flag of Bugey.svg", "picardie": "Drapeau de la Picardie.svg", "bourbonnais": "Flag of Bourbonnais.svg", "provence": "Drapeau de Provence « ancien ».svg", "dauphine": "Flag of Dauphiné.svg", "nice": "Flag of the County of Nice.svg", "foix": "Flag of the County of Foix.svg", "rouergue": "Flag of Rouergue.svg", "normandie": "Drapeau de Normandie.svg", "saintonge": "Drapeau de la Saintonge.svg", "berry": "Flag of Berry.svg", "limousin": "Drapeau du Limousin.svg", "corse": "Drapeau de la Corse.svg", "bourgogne": "Flag of Burgundy.svg", "marche": "Drapeau de la Marche.svg", "franchecomte": "Drapeau de la Franche-Comté.svg", "orleanais": "Flag of Orléanais.svg", "gascogne": "Gascogne flag.svg", "touraine": "Flag of Touraine.svg", "anjou": "Drapeau de la province d'Anjou.svg", "maine": "Flag of Maine (province).svg", "lorraine": "Drapeau de la Lorraine.svg", "artois": "Flag of Artois.svg", "bearn": "Flag of Béarn.svg", "lyonnais": "Flag of Lyonnais.svg", "nivernais": "Flag of Nivernais (province).svg", "poitou": "Drapeau du Poitou.svg", "savoie": "Flag of Savoie.svg", "auvergne": "Flag of Auvergne.svg", "languedoc": "Flag of Languedoc.svg", "roussillon": "Flag of Roussillon.svg", "alsace": "Flag of Alsace (historical).svg", "bretagne": "Drapeau de la province de Bretagne (1532).svg"};
     const DEPARTMENT_FLAG_META = {"2A":{"label":"ÉTENDARD CORSE HISTORIQUE · AVANT 1755","alt":"Étendard historique de la Corse avant 1755","note":"Étendard insulaire corse antérieur à 1755, documenté par une source historique. Il concerne l'île entière et non spécifiquement le département de Corse-du-Sud, créé en 1976."},"2B":{"label":"ÉTENDARD DU ROYAUME ANGLO-CORSE · 1794–1796","alt":"Drapeau historique du Royaume anglo-corse de 1794 à 1796","note":"Drapeau historique du Royaume anglo-corse (1794–1796). Il est utilisé ici comme repère historique de l'île, et non comme drapeau propre au département de Haute-Corse."},"971":{"label":"DRAPEAU LOCAL GUADELOUPÉEN · NON OFFICIEL","alt":"Drapeau local non officiel de la Guadeloupe, motif héraldique soleil et canne à sucre","note":"Drapeau local non officiel de la Guadeloupe, issu d'une ancienne collection vexillologique : fleurs de lys, soleil et canne à sucre. Il s'agit d'un symbole local et non du drapeau officiel de l'État français, qui demeure le tricolore."},"972":{"label":"DRAPEAU AUX SERPENTS · EMBLÈME HISTORIQUE COLONIAL","alt":"Drapeau aux serpents associé à l’iconographie coloniale de la Martinique","note":"Emblème aux serpents dérivé d'un ancien écusson de la gendarmerie en région Antilles-Guyane. Son iconographie est liée à l'histoire coloniale et fait l'objet de controverses ; il est présenté comme document historique, pas comme drapeau officiel ni comme symbole consensuel actuel."},"973":{"label":"DRAPEAU TERRITORIAL GUYANAIS · 2010","alt":"Drapeau local de la Guyane, vert et jaune avec étoile rouge","note":"Drapeau vert et jaune à étoile rouge, adopté par le Conseil général de Guyane le 29 janvier 2010. Il s'agit d'un emblème territorial local, distinct du drapeau national français."},"974":{"label":"DRAPEAU LOCAL DE FACTO · MAHAVÉLI / VOLCAN RAYONNANT","alt":"Drapeau local de facto Mahavéli, également appelé Volcan rayonnant, associé à La Réunion","note":"Mahavéli (Volcan rayonnant) : drapeau local non officiel conçu en 1975, sélectionné le 1er mars 2003 par le jury de l’Association Réunionnaise de Vexillologie, puis largement accepté de facto localement dans les années 2010–2014. Il ne s’agit pas du drapeau officiel de La Réunion : le drapeau national officiel demeure le tricolore français. Source vexillologique : Flags of the World (FOTW)."},"976":{"label":"BANNIÈRE HÉRALDIQUE DES ARMOIRIES DE MAYOTTE","alt":"Bannière héraldique reprenant les armoiries de Mayotte","note":"Bannière héraldique reprenant les armoiries de Mayotte, publiée en 2023. C'est une représentation vexillologique locale des armes, non un drapeau officiellement adopté ni un étendard historique."}};
@@ -301,6 +301,8 @@
   const commonsFilePageUrl = title => 'https://commons.wikimedia.org/wiki/File:' + encodeURIComponent(title.replace(/ /g, '_'));
   const DEPARTMENT_FLAG_DIRECT_URLS = {
     "43": "assets/department-flags/velay.svg",
+    "46": "assets/department-flags/quercy.svg",
+    "48": "assets/department-flags/gevaudan.svg",
     "974": "https://upload.wikimedia.org/wikipedia/commons/d/db/ReunionRadiantVolcanoFlag.png"
   };
   // Dates de création et de réorganisation des départements : exceptions à la date générale de 1790.
